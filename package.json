@@ -1,0 +1,10 @@
+{
+  "name": "aapdanet-ai-disaster-management-platform",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "npm --prefix frontend run dev",
+    "build": "cd frontend && npm install && npm run build",
+    "preview": "npm --prefix frontend run preview"
+  }
+}

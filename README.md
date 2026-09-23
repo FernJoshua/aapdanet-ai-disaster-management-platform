@@ -41,43 +41,26 @@ An advanced, inclusive, AI-powered disaster management platform combining multi-
 
 ## 🚀 How to Deploy to Vercel (Live Website)
 
-The platform is pre-configured with `vercel.json` for one-click deployment.
+The platform is pre-configured with root and frontend `vercel.json` configurations for instant zero-configuration deployment.
 
-### Option A: Deploy via Vercel CLI (Recommended & Fastest)
+### Deploy via GitHub & Vercel Dashboard (1-Click)
+1. Go to [vercel.com/new](https://vercel.com/new) and log in.
+2. Select your repository: **`FernJoshua/aapdanet-ai-disaster-management-platform`**.
+3. **Root Directory**:
+   - Both `./` (default) and `frontend` are fully supported out-of-the-box!
+   - If deploying from root (`./`), the root `vercel.json` automatically triggers `cd frontend && npm install && npm run build` and outputs to `frontend/dist`.
+   - Alternatively, you can click **Edit** next to **Root Directory** and select `frontend`.
+4. Click **Deploy**!
+5. Within ~30 seconds, your site will be live at `https://aapdanet-ai-disaster-management-platform.vercel.app` (or your assigned Vercel URL).
+
+### Deploy via Vercel CLI (Alternative)
 ```bash
 # 1. Open your terminal in the frontend directory
-cd disaster-management-platform/frontend
+cd frontend
 
 # 2. Run the Vercel deploy command
-npx vercel
-```
-- When prompted:
-  - **Set up and deploy?** Press `y`
-  - **Which scope?** Choose your Vercel account
-  - **Link to existing project?** `n`
-  - **What's your project's name?** `aapdanet-ai` (or any name you choose)
-  - **In which directory is your code located?** `./`
-  - **Want to modify settings?** `n` (Vercel automatically detects Vite and `dist/`)
-- To deploy directly to production:
-```bash
 npx vercel --prod
 ```
-Your live URL will be generated immediately (e.g., `https://aapdanet-ai.vercel.app`).
-
-### Option B: Deploy via GitHub & Vercel Dashboard
-1. Push this folder to a GitHub repository:
-   ```bash
-   git init
-   git add .
-   git commit -m "Deploy AapdaNet AI Disaster Management Platform"
-   git remote add origin https://github.com/your-username/disaster-management-platform.git
-   git push -u origin main
-   ```
-2. Go to [vercel.com/new](https://vercel.com/new) and log in.
-3. Import your GitHub repository.
-4. Set **Root Directory** to `frontend`.
-5. Framework preset will automatically be detected as **Vite**.
-6. Click **Deploy**!
 
 ---
 
