@@ -1,0 +1,100 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg-primary: #0a0e17;
+  --bg-surface: #111827;
+  --bg-card: #161f30;
+  --border-color: #1f2d44;
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+  --accent-cyan: #06b6d4;
+  --accent-red: #ef4444;
+  --accent-amber: #f59e0b;
+  --accent-emerald: #10b981;
+}
+
+/* High Contrast Mode for Visually Impaired */
+.high-contrast {
+  --bg-primary: #000000 !important;
+  --bg-surface: #0a0a0a !important;
+  --bg-card: #121212 !important;
+  --border-color: #ffff00 !important;
+  --text-main: #ffffff !important;
+  --text-muted: #ffff55 !important;
+  --accent-cyan: #00ffff !important;
+  --accent-red: #ff3333 !important;
+  --accent-amber: #ffff00 !important;
+  --accent-emerald: #33ff33 !important;
+}
+
+.high-contrast * {
+  border-color: var(--border-color) !important;
+}
+
+.high-contrast button, .high-contrast a, .high-contrast input, .high-contrast select {
+  outline: 2px solid #ffff00 !important;
+}
+
+body {
+  margin: 0;
+  background-color: var(--bg-primary);
+  color: var(--text-main);
+  overflow-x: hidden;
+}
+
+/* Custom Radar Sweep Animation */
+@keyframes radar-sweep {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.animate-radar {
+  animation: radar-sweep 4s linear infinite;
+}
+
+/* Pulse animation for emergency beacons */
+@keyframes beacon-pulse {
+  0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7); }
+  70% { transform: scale(1.05); box-shadow: 0 0 0 16px rgba(239, 68, 68, 0); }
+  100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); }
+}
+
+.beacon-critical {
+  animation: beacon-pulse 2s infinite;
+}
+
+/* Leaflet styling */
+.leaflet-container {
+  width: 100%;
+  height: 100%;
+  border-radius: 0.75rem;
+}
+
+.leaflet-popup-content-wrapper {
+  background: #111827 !important;
+  color: #f8fafc !important;
+  border: 1px solid #1f2d44;
+  border-radius: 0.5rem;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5);
+}
+
+.leaflet-popup-tip {
+  background: #111827 !important;
+}
+
+/* Accessible focus styling */
+:focus-visible {
+  outline: 3px solid #06b6d4;
+  outline-offset: 2px;
+}
+
+/* Smooth card hover lift */
+.card-hover {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.card-hover:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.4);
+}
