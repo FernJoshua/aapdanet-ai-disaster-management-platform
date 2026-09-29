@@ -3,268 +3,344 @@
 @tailwind utilities;
 
 :root {
-  --bg-primary: #0a0e17;
-  --bg-surface: #0f172a;
-  --bg-card: #1e293b;
-  --border-color: #334155;
-  --text-main: #f8fafc;
-  --text-muted: #94a3b8;
-  --accent-cyan: #06b6d4;
-  --accent-red: #ef4444;
-  --accent-amber: #f59e0b;
-  --accent-emerald: #10b981;
-  color-scheme: dark;
+  /* User's Recommended AI + Disaster Tech Palette */
+  --navy-primary: #0B1F33;
+  --teal-secondary: #155E75;
+  --ocean-blue: #1769AA;
+  --sky-blue: #0284C7;
+  --emergency-orange: #F97316;
+  --warning-amber: #F59E0B;
+  --danger-red: #DC2626;
+  --alert-red: #EF4444;
+  --safe-green: #15803D;
+  --safe-green-bright: #16A34A;
+  --bg-page: #F1F5F9;
+  --bg-offwhite: #F8FAFC;
+  --bg-card: #FFFFFF;
+  --text-main: #0F172A;
+  --text-dark-slate: #172033;
+  --text-secondary: #64748B;
+  --border-light: #CBD5E1;
 }
 
-/* Light Mode Theme Overrides */
-html.light-mode {
-  --bg-primary: #f1f5f9;
-  --bg-surface: #ffffff;
-  --bg-card: #f8fafc;
-  --border-color: #cbd5e1;
-  --text-main: #0f172a;
-  --text-muted: #475569;
-  color-scheme: light;
+* {
+  box-sizing: border-box;
 }
 
-html.light-mode body {
-  background-color: #f1f5f9 !important;
-  color: #0f172a !important;
+html,
+body,
+#root {
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
 }
 
-/* Automatically adapt dark utility classes when in Light Mode */
-html.light-mode .bg-\[\#0a0e17\],
-html.light-mode .bg-slate-950 {
-  background-color: #f1f5f9 !important;
-  color: #0f172a !important;
-}
-
-html.light-mode .bg-\[\#0c121e\]\/95,
-html.light-mode .bg-slate-900,
-html.light-mode .bg-slate-900\/95,
-html.light-mode .bg-slate-900\/90 {
-  background-color: #ffffff !important;
-  color: #0f172a !important;
-}
-
-html.light-mode .bg-slate-800,
-html.light-mode .bg-slate-800\/90,
-html.light-mode .bg-slate-800\/80,
-html.light-mode .bg-slate-800\/60,
-html.light-mode .bg-slate-800\/40 {
-  background-color: #f1f5f9 !important;
-  color: #1e293b !important;
-}
-
-html.light-mode .border-slate-800,
-html.light-mode .border-slate-800\/80,
-html.light-mode .border-slate-700,
-html.light-mode .border-slate-700\/60,
-html.light-mode .border-\[\#1e293b\] {
-  border-color: #e2e8f0 !important;
-}
-
-html.light-mode .divide-slate-800 > :not([hidden]) ~ :not([hidden]) {
-  border-color: #e2e8f0 !important;
-}
-
-html.light-mode .text-white,
-html.light-mode .text-slate-100,
-html.light-mode .text-slate-200 {
-  color: #0f172a !important;
-}
-
-html.light-mode .text-slate-300 {
-  color: #334155 !important;
-}
-
-html.light-mode .text-slate-400,
-html.light-mode .text-slate-500 {
-  color: #475569 !important;
-}
-
-html.light-mode .text-cyan-400,
-html.light-mode .text-cyan-300 {
-  color: #0284c7 !important;
-}
-
-html.light-mode .text-emerald-400,
-html.light-mode .text-emerald-300 {
-  color: #059669 !important;
-}
-
-html.light-mode .text-amber-400,
-html.light-mode .text-amber-300 {
-  color: #d97706 !important;
-}
-
-html.light-mode .text-red-400,
-html.light-mode .text-red-300 {
-  color: #dc2626 !important;
-}
-
-html.light-mode .bg-cyan-950,
-html.light-mode .bg-cyan-950\/80,
-html.light-mode .bg-cyan-950\/60,
-html.light-mode .bg-cyan-950\/40 {
-  background-color: #e0f2fe !important;
-  color: #0369a1 !important;
-  border-color: #7dd3fc !important;
-}
-
-html.light-mode .bg-emerald-950,
-html.light-mode .bg-emerald-950\/80,
-html.light-mode .bg-emerald-950\/60,
-html.light-mode .bg-emerald-950\/40 {
-  background-color: #d1fae5 !important;
-  color: #047857 !important;
-  border-color: #6ee7b7 !important;
-}
-
-html.light-mode .bg-red-950,
-html.light-mode .bg-red-950\/85,
-html.light-mode .bg-red-950\/80,
-html.light-mode .bg-red-950\/70,
-html.light-mode .bg-red-950\/40 {
-  background-color: #fee2e2 !important;
-  color: #b91c1c !important;
-  border-color: #fca5a5 !important;
-}
-
-html.light-mode .bg-amber-950,
-html.light-mode .bg-amber-950\/70,
-html.light-mode .bg-amber-950\/40 {
-  background-color: #fef3c7 !important;
-  color: #b45309 !important;
-  border-color: #fcd34d !important;
-}
-
-html.light-mode .bg-blue-950\/40 {
-  background-color: #dbeafe !important;
-  border-color: #93c5fd !important;
-}
-
-html.light-mode .bg-teal-950\/40 {
-  background-color: #ccfbf1 !important;
-  border-color: #5eead4 !important;
-}
-
-html.light-mode .bg-orange-950\/40 {
-  background-color: #ffedd5 !important;
-  border-color: #fdba74 !important;
-}
-
-/* Keep solid action buttons with white text in Light Mode */
-html.light-mode .keep-white,
-html.light-mode .bg-red-600,
-html.light-mode .bg-cyan-600,
-html.light-mode .bg-emerald-600,
-html.light-mode .bg-blue-600,
-html.light-mode .bg-amber-600,
-html.light-mode .bg-indigo-600 {
-  color: #ffffff !important;
-}
-
-html.light-mode .bg-red-600 *,
-html.light-mode .bg-cyan-600 *,
-html.light-mode .bg-emerald-600 *,
-html.light-mode .bg-blue-600 *,
-html.light-mode .keep-white * {
-  color: #ffffff !important;
-}
-
-/* High Contrast Mode for Visually Impaired */
-.high-contrast {
-  --bg-primary: #000000 !important;
-  --bg-surface: #0a0a0a !important;
-  --bg-card: #121212 !important;
-  --border-color: #ffff00 !important;
-  --text-main: #ffffff !important;
-  --text-muted: #ffff55 !important;
-  --accent-cyan: #00ffff !important;
-  --accent-red: #ff3333 !important;
-  --accent-amber: #ffff00 !important;
-  --accent-emerald: #33ff33 !important;
-}
-
-.high-contrast * {
-  border-color: var(--border-color) !important;
-}
-
-.high-contrast button, .high-contrast a, .high-contrast input, .high-contrast select {
-  outline: 2px solid #ffff00 !important;
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
 }
 
 body {
-  margin: 0;
-  background-color: var(--bg-primary);
+  background-color: var(--bg-page);
   color: var(--text-main);
-  overflow-x: hidden;
-  transition: background-color 0.25s ease, color 0.25s ease;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  line-height: 1.6;
 }
 
-/* Custom Radar Sweep Animation */
-@keyframes radar-sweep {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+/* ==========================================================================
+   DEFAULT PALETTE: Clean Professional Navy (#0B1F33) + Off-White (#F1F5F9) + White Cards (#FFFFFF)
+   ========================================================================== */
+html:not(.dark-mode):not(.high-contrast) body,
+html:not(.dark-mode):not(.high-contrast) .bg-\[\#0a0e17\] {
+  background-color: #F1F5F9 !important;
+  color: #0F172A !important;
 }
 
-.animate-radar {
-  animation: radar-sweep 4s linear infinite;
+/* White cards with #CBD5E1 borders */
+html:not(.dark-mode):not(.high-contrast) .bg-slate-900,
+html:not(.dark-mode):not(.high-contrast) .bg-slate-900\/95,
+html:not(.dark-mode):not(.high-contrast) .bg-slate-900\/90,
+html:not(.dark-mode):not(.high-contrast) .bg-slate-900\/80 {
+  background-color: #FFFFFF !important;
+  color: #0F172A !important;
+  border-color: #CBD5E1 !important;
+  box-shadow: 0 2px 8px -2px rgba(11, 31, 51, 0.07), 0 1px 3px -1px rgba(11, 31, 51, 0.05) !important;
 }
 
-/* Pulse animation for emergency beacons */
-@keyframes beacon-pulse {
-  0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7); }
-  70% { transform: scale(1.05); box-shadow: 0 0 0 16px rgba(239, 68, 68, 0); }
-  100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); }
+/* Off-white secondary surfaces (#F8FAFC) */
+html:not(.dark-mode):not(.high-contrast) .bg-slate-950,
+html:not(.dark-mode):not(.high-contrast) .bg-slate-950\/90,
+html:not(.dark-mode):not(.high-contrast) .bg-slate-950\/80,
+html:not(.dark-mode):not(.high-contrast) .bg-slate-950\/70,
+html:not(.dark-mode):not(.high-contrast) .bg-slate-950\/60 {
+  background-color: #F8FAFC !important;
+  color: #172033 !important;
+  border-color: #CBD5E1 !important;
 }
 
-.beacon-critical {
-  animation: beacon-pulse 2s infinite;
+html:not(.dark-mode):not(.high-contrast) .bg-slate-800,
+html:not(.dark-mode):not(.high-contrast) .bg-slate-800\/90,
+html:not(.dark-mode):not(.high-contrast) .bg-slate-800\/80,
+html:not(.dark-mode):not(.high-contrast) .bg-slate-800\/70,
+html:not(.dark-mode):not(.high-contrast) .bg-slate-800\/60 {
+  background-color: #F1F5F9 !important;
+  color: #172033 !important;
+  border-color: #CBD5E1 !important;
 }
 
-/* Leaflet styling */
+html:not(.dark-mode):not(.high-contrast) .bg-slate-800:hover {
+  background-color: #E2E8F0 !important;
+}
+
+/* Typography in Default Clean Palette */
+html:not(.dark-mode):not(.high-contrast) .text-white:not(.keep-white),
+html:not(.dark-mode):not(.high-contrast) .text-slate-100:not(.keep-white),
+html:not(.dark-mode):not(.high-contrast) .text-slate-200:not(.keep-white) {
+  color: #0F172A !important;
+}
+
+html:not(.dark-mode):not(.high-contrast) .text-slate-300:not(.keep-white) {
+  color: #172033 !important;
+}
+
+html:not(.dark-mode):not(.high-contrast) .text-slate-400:not(.keep-white),
+html:not(.dark-mode):not(.high-contrast) .text-slate-500:not(.keep-white) {
+  color: #64748B !important;
+}
+
+/* Borders (#CBD5E1) */
+html:not(.dark-mode):not(.high-contrast) .border-slate-800,
+html:not(.dark-mode):not(.high-contrast) .border-slate-800\/80,
+html:not(.dark-mode):not(.high-contrast) .border-slate-700,
+html:not(.dark-mode):not(.high-contrast) .border-slate-700\/80,
+html:not(.dark-mode):not(.high-contrast) .border-slate-900 {
+  border-color: #CBD5E1 !important;
+}
+
+/* Semantic Color Accents in Default Palette:
+   Navy (#0B1F33) -> Blue (#1769AA / #0284C7) -> Teal (#155E75) -> Orange (#F97316) -> Amber (#F59E0B) -> Green (#15803D) -> Red (#DC2626) */
+html:not(.dark-mode):not(.high-contrast) .text-cyan-400,
+html:not(.dark-mode):not(.high-contrast) .text-cyan-300,
+html:not(.dark-mode):not(.high-contrast) .text-blue-400,
+html:not(.dark-mode):not(.high-contrast) .text-blue-300 {
+  color: #1769AA !important;
+}
+
+html:not(.dark-mode):not(.high-contrast) .text-teal-400,
+html:not(.dark-mode):not(.high-contrast) .text-teal-300 {
+  color: #155E75 !important;
+}
+
+html:not(.dark-mode):not(.high-contrast) .text-emerald-400,
+html:not(.dark-mode):not(.high-contrast) .text-emerald-300 {
+  color: #15803D !important;
+}
+
+html:not(.dark-mode):not(.high-contrast) .text-amber-400,
+html:not(.dark-mode):not(.high-contrast) .text-amber-300 {
+  color: #B45309 !important;
+}
+
+html:not(.dark-mode):not(.high-contrast) .text-orange-400,
+html:not(.dark-mode):not(.high-contrast) .text-orange-300 {
+  color: #EA580C !important;
+}
+
+html:not(.dark-mode):not(.high-contrast) .text-red-400,
+html:not(.dark-mode):not(.high-contrast) .text-red-300 {
+  color: #DC2626 !important;
+}
+
+html:not(.dark-mode):not(.high-contrast) .text-purple-400,
+html:not(.dark-mode):not(.high-contrast) .text-purple-300,
+html:not(.dark-mode):not(.high-contrast) .text-indigo-400,
+html:not(.dark-mode):not(.high-contrast) .text-indigo-300 {
+  color: #1769AA !important;
+}
+
+/* Soft Tinted Badges & Alert Boxes in Default Light Mode */
+html:not(.dark-mode):not(.high-contrast) .bg-cyan-950,
+html:not(.dark-mode):not(.high-contrast) .bg-cyan-950\/90,
+html:not(.dark-mode):not(.high-contrast) .bg-cyan-950\/80,
+html:not(.dark-mode):not(.high-contrast) .bg-cyan-950\/50,
+html:not(.dark-mode):not(.high-contrast) .bg-cyan-950\/40,
+html:not(.dark-mode):not(.high-contrast) .bg-cyan-950\/30,
+html:not(.dark-mode):not(.high-contrast) .bg-blue-950,
+html:not(.dark-mode):not(.high-contrast) .bg-blue-950\/60,
+html:not(.dark-mode):not(.high-contrast) .bg-blue-950\/40,
+html:not(.dark-mode):not(.high-contrast) .bg-indigo-950,
+html:not(.dark-mode):not(.high-contrast) .bg-indigo-950\/40,
+html:not(.dark-mode):not(.high-contrast) .bg-purple-950\/40 {
+  background-color: #E0F2FE !important;
+  color: #0B1F33 !important;
+  border-color: #7DD3FC !important;
+}
+
+html:not(.dark-mode):not(.high-contrast) .bg-red-950,
+html:not(.dark-mode):not(.high-contrast) .bg-red-950\/85,
+html:not(.dark-mode):not(.high-contrast) .bg-red-950\/80,
+html:not(.dark-mode):not(.high-contrast) .bg-red-950\/60,
+html:not(.dark-mode):not(.high-contrast) .bg-red-950\/50,
+html:not(.dark-mode):not(.high-contrast) .bg-red-950\/40,
+html:not(.dark-mode):not(.high-contrast) .bg-red-950\/30,
+html:not(.dark-mode):not(.high-contrast) .bg-red-950\/20 {
+  background-color: #FEF2F2 !important;
+  color: #991B1B !important;
+  border-color: #FCA5A5 !important;
+}
+
+html:not(.dark-mode):not(.high-contrast) .bg-emerald-950,
+html:not(.dark-mode):not(.high-contrast) .bg-emerald-950\/80,
+html:not(.dark-mode):not(.high-contrast) .bg-emerald-950\/60,
+html:not(.dark-mode):not(.high-contrast) .bg-emerald-950\/40,
+html:not(.dark-mode):not(.high-contrast) .bg-emerald-950\/30,
+html:not(.dark-mode):not(.high-contrast) .bg-emerald-950\/20 {
+  background-color: #DCFCE7 !important;
+  color: #14532D !important;
+  border-color: #86EFAC !important;
+}
+
+html:not(.dark-mode):not(.high-contrast) .bg-amber-950,
+html:not(.dark-mode):not(.high-contrast) .bg-amber-950\/80,
+html:not(.dark-mode):not(.high-contrast) .bg-amber-950\/60,
+html:not(.dark-mode):not(.high-contrast) .bg-amber-950\/40,
+html:not(.dark-mode):not(.high-contrast) .bg-amber-950\/30,
+html:not(.dark-mode):not(.high-contrast) .bg-orange-950,
+html:not(.dark-mode):not(.high-contrast) .bg-orange-950\/60,
+html:not(.dark-mode):not(.high-contrast) .bg-orange-950\/40 {
+  background-color: #FFF7ED !important;
+  color: #9A3412 !important;
+  border-color: #FDBA74 !important;
+}
+
+/* Primary Buttons -> Ocean Blue (#1769AA) / Sky Blue (#0284C7) */
+html:not(.dark-mode):not(.high-contrast) .bg-cyan-600,
+html:not(.dark-mode):not(.high-contrast) .bg-blue-600,
+html:not(.dark-mode):not(.high-contrast) .bg-indigo-600,
+html:not(.dark-mode):not(.high-contrast) .bg-purple-600 {
+  background-color: #1769AA !important;
+  color: #FFFFFF !important;
+}
+
+html:not(.dark-mode):not(.high-contrast) .bg-cyan-600:hover,
+html:not(.dark-mode):not(.high-contrast) .bg-blue-600:hover,
+html:not(.dark-mode):not(.high-contrast) .bg-indigo-600:hover,
+html:not(.dark-mode):not(.high-contrast) .bg-purple-600:hover {
+  background-color: #0284C7 !important;
+  color: #FFFFFF !important;
+}
+
+/* Safe Buttons -> Forest Green (#15803D) */
+html:not(.dark-mode):not(.high-contrast) .bg-emerald-600 {
+  background-color: #15803D !important;
+  color: #FFFFFF !important;
+}
+html:not(.dark-mode):not(.high-contrast) .bg-emerald-600:hover {
+  background-color: #16A34A !important;
+}
+
+/* Action / High Risk Buttons -> Emergency Orange (#F97316) */
+html:not(.dark-mode):not(.high-contrast) .bg-orange-600 {
+  background-color: #F97316 !important;
+  color: #FFFFFF !important;
+}
+
+/* Danger / Critical Buttons -> Alert Red (#DC2626) */
+html:not(.dark-mode):not(.high-contrast) .bg-red-600 {
+  background-color: #DC2626 !important;
+  color: #FFFFFF !important;
+}
+
+/* Deep Navy (#0B1F33) Surfaces (Navbar, Sidebar Drawer, Hero Banner, Footer) always preserve crisp light text */
+.navy-surface {
+  background-color: #0B1F33 !important;
+  color: #F8FAFC !important;
+}
+
+.navy-surface .text-white,
+.navy-surface .keep-white {
+  color: #FFFFFF !important;
+}
+
+.navy-surface .text-slate-300 {
+  color: #CBD5E1 !important;
+}
+
+.navy-surface .text-slate-400 {
+  color: #94A3B8 !important;
+}
+
+/* Solid badges & buttons always keep white text */
+.bg-red-600,
+.bg-emerald-600,
+.bg-cyan-600,
+.bg-blue-600,
+.bg-indigo-600,
+.bg-orange-600,
+.bg-purple-600,
+.keep-white {
+  color: #FFFFFF !important;
+}
+
+/* ==========================================================================
+   ACCESSIBILITY: HIGH CONTRAST MODE (WCAG AAA FOR VISUALLY IMPAIRED)
+   ========================================================================== */
+.high-contrast,
+.high-contrast body,
+.high-contrast main,
+.high-contrast div,
+.high-contrast section,
+.high-contrast header,
+.high-contrast footer,
+.high-contrast nav,
+.high-contrast aside {
+  background-color: #000000 !important;
+  color: #FFFF00 !important;
+  border-color: #FFFF00 !important;
+}
+
+.high-contrast h1,
+.high-contrast h2,
+.high-contrast h3,
+.high-contrast h4,
+.high-contrast p,
+.high-contrast span,
+.high-contrast label,
+.high-contrast td,
+.high-contrast th {
+  color: #FFFF00 !important;
+}
+
+.high-contrast button,
+.high-contrast a,
+.high-contrast select,
+.high-contrast input,
+.high-contrast textarea {
+  background-color: #000000 !important;
+  color: #00FFFF !important;
+  border: 2px solid #00FFFF !important;
+  font-weight: 700 !important;
+}
+
+*:focus-visible {
+  outline: 3px solid #0284C7 !important;
+  outline-offset: 2px !important;
+}
+
+/* Leaflet Map overrides */
 .leaflet-container {
   width: 100%;
   height: 100%;
-  border-radius: 0.75rem;
-  z-index: 1;
+  background: #E2E8F0 !important;
+  font-family: 'Inter', sans-serif !important;
+  z-index: 10;
 }
 
-.leaflet-popup-content-wrapper {
-  background: #111827 !important;
-  color: #f8fafc !important;
-  border: 1px solid #1f2d44;
-  border-radius: 0.75rem;
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5);
-}
-
-html.light-mode .leaflet-popup-content-wrapper {
-  background: #ffffff !important;
-  color: #0f172a !important;
-  border: 1px solid #cbd5e1;
-}
-
-.leaflet-popup-tip {
-  background: #111827 !important;
-}
-
-html.light-mode .leaflet-popup-tip {
-  background: #ffffff !important;
-}
-
-/* Accessible focus styling */
-:focus-visible {
-  outline: 3px solid #06b6d4;
-  outline-offset: 2px;
-}
-
-/* Smooth card hover lift */
 .card-hover {
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
 }
 .card-hover:hover {
   transform: translateY(-2px);
-  box-shadow: 0 12px 28px -6px rgba(0, 0, 0, 0.25);
 }

@@ -8,10 +8,10 @@ export default function LiveAlertBanner({ alerts, lang, onSelectAlert, onSpeakAl
 
   if (!alerts || alerts.length === 0) {
     return (
-      <div className="bg-emerald-950/40 border-y border-emerald-800/40 px-4 py-2 text-xs flex items-center justify-between text-emerald-300">
+      <div className="bg-[#15803D] px-4 py-2 text-xs flex items-center justify-between text-white keep-white">
         <div className="flex items-center gap-2">
-          <ShieldCheck className="w-4 h-4 text-emerald-400" />
-          <span>{t('noActiveAlerts')}</span>
+          <ShieldCheck className="w-4 h-4 text-white" />
+          <span className="keep-white">{t('noActiveAlerts')}</span>
         </div>
       </div>
     );
@@ -22,46 +22,52 @@ export default function LiveAlertBanner({ alerts, lang, onSelectAlert, onSpeakAl
   return (
     <aside 
       aria-label="Emergency Broadcast Banner"
-      className="bg-red-950/85 border-b border-red-800/60 px-4 py-2.5 text-xs text-slate-100 shadow-inner"
+      className="bg-[#0B1F33] border-b-2 border-[#F97316] px-3 sm:px-6 py-2.5 text-xs text-white keep-white shadow-sm w-full max-w-full"
     >
-      <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-3">
-        <div className="flex items-center gap-3 flex-1 min-w-[280px]">
-          <span className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-red-600 font-extrabold text-white text-[11px] tracking-wider animate-pulse shrink-0">
-            <AlertTriangle className="w-3.5 h-3.5" />
-            {tr(primaryAlert.severity)} ALERT
+      <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-2.5">
+        <div className="flex flex-wrap sm:flex-nowrap items-center gap-2.5 flex-1 min-w-0">
+          <span className="keep-white inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#DC2626] font-extrabold text-white text-[10px] sm:text-[11px] tracking-wider shrink-0">
+            <AlertTriangle className="w-3.5 h-3.5 shrink-0" />
+            <span className="keep-white">{tr(primaryAlert.severity)} ALERT</span>
           </span>
-          <div className="text-xs leading-relaxed text-slate-200">
-            <span className="font-bold text-amber-300 mr-1.5">[{tr(primaryAlert.district)}] {tr(primaryAlert.title)}:</span>
-            <span>{tr(primaryAlert.description)}</span>
+          <div className="text-xs leading-relaxed text-slate-100 keep-white min-w-0 break-words">
+            <span className="font-bold text-[#F59E0B] keep-white mr-1.5">
+              [{tr(primaryAlert.district)}] {tr(primaryAlert.title)}:
+            </span>
+            <span className="text-slate-200 keep-white">{tr(primaryAlert.description)}</span>
           </div>
         </div>
 
-        <div className="flex items-center gap-2 shrink-0">
+        <div className="flex flex-wrap items-center gap-2 shrink-0">
           {onOpenContacts && (
             <button
               onClick={onOpenContacts}
-              className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-red-900/70 hover:bg-red-800 text-red-100 text-xs font-bold transition-colors border border-red-500/40"
+              className="keep-white flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-[#F97316] hover:bg-orange-500 text-white text-xs font-bold transition-colors shadow-xs"
             >
-              <PhoneCall className="w-3.5 h-3.5" />
-              <span className="hidden sm:inline">101 / 108 / 112</span>
+              <PhoneCall className="w-3.5 h-3.5 shrink-0" />
+              <span>101 / 108 / DM</span>
             </button>
           )}
           <button
-            onClick={() => onSpeakAlert(tr(primaryAlert.title) + ". " + tr(primaryAlert.description))}
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-amber-300 text-xs font-semibold transition-colors border border-amber-500/30"
+            onClick={() =>
+              onSpeakAlert(
+                `${tr(primaryAlert.severity)} Alert in ${tr(primaryAlert.district)}. ${tr(primaryAlert.title)}. ${tr(primaryAlert.description)}. For emergency help dial 1 1 2, Fire 1 0 1, Ambulance 1 0 8, or District Collector 1 0 7 7.`
+              )
+            }
+            className="keep-white flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-[#155E75] hover:bg-[#1769AA] text-white text-xs font-semibold transition-colors border border-sky-400/30"
             title="Read this alert aloud"
             aria-label="Listen to active alert"
           >
-            <Volume2 className="w-3.5 h-3.5" />
+            <Volume2 className="w-3.5 h-3.5 text-amber-300 shrink-0" />
             <span>{t('listenBtn')}</span>
           </button>
 
           <button
             onClick={() => onSelectAlert(primaryAlert)}
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-red-600 hover:bg-red-500 text-white text-xs font-bold transition-colors shadow-sm"
+            className="keep-white flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-[#1769AA] hover:bg-[#0284C7] text-white text-xs font-bold transition-colors shadow-xs"
           >
             <span>{t('viewMapBtn')}</span>
-            <ArrowRight className="w-3.5 h-3.5" />
+            <ArrowRight className="w-3.5 h-3.5 shrink-0" />
           </button>
         </div>
       </div>
