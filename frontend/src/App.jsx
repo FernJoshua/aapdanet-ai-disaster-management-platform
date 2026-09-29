@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import Navbar from './components/Navbar';
 import LiveAlertBanner from './components/LiveAlertBanner';
+import HomeView from './components/HomeView';
 import MapView from './components/MapView';
 import LiveWeatherAndCyclone from './components/LiveWeatherAndCyclone';
 import DisasterGuide from './components/DisasterGuide';
@@ -10,26 +11,44 @@ import ResourceOptimizer from './components/ResourceOptimizer';
 import CitizenPortal from './components/CitizenPortal';
 import DatasetsExplorer from './components/DatasetsExplorer';
 import AnalyticsDashboard from './components/AnalyticsDashboard';
-import ResearchShowcase from './components/ResearchShowcase';
+import EmergencyContacts from './components/EmergencyContacts';
+import AuthPortal from './components/AuthPortal';
+import AboutContactView from './components/AboutContactView';
 import { 
   INITIAL_ALERTS, 
   SHELTERS_DATA, 
   RESCUE_TEAMS, 
   CITIZEN_SOS_REPORTS 
 } from './services/mockData';
-import { getTranslation } from './utils/translations';
-import { ShieldAlert, X, Volume2, Mic, Send } from 'lucide-react';
+import { getTranslation, translatePhrase } from './utils/translations';
+import { ShieldAlert, X, PhoneCall, Flame, HeartHandshake, Shield } from 'lucide-react';
 
 export default function App() {
-  const [activeTab, setActiveTab] = useState('overview');
-  const [lang, setLang] = useState('mr'); // Default to Marathi
+  // Default tab is Home ('home') and default language is English ('en')
+  const [activeTab, setActiveTab] = useState('home');
+  const [lang, setLang] = useState('en');
+  const [theme, setTheme] = useState(() => {
+    try {
+      return localStorage.getItem('aapdanet_theme') || 'dark';
+    } catch {
+      return 'dark';
+    }
+  });
   const [highContrast, setHighContrast] = useState(false);
   const [fontSize, setFontSize] = useState('normal'); // 'normal', 'large', 'xl'
+  const [currentUser, setCurrentUser] = useState(() => {
+    try {
+      const saved = localStorage.getItem('aapdanet_user');
+      return saved ? JSON.parse(saved) : null;
+    } catch {
+      return null;
+    }
+  });
 
-  const [alerts, setAlerts] = useState(INITIAL_ALERTS);
+  const [alerts] = useState(INITIAL_ALERTS);
   const [selectedAlert, setSelectedAlert] = useState(INITIAL_ALERTS[0]);
-  const [shelters, setShelters] = useState(SHELTERS_DATA);
-  const [rescueTeams, setRescueTeams] = useState(RESCUE_TEAMS);
+  const [shelters] = useState(SHELTERS_DATA);
+  const [rescueTeams] = useState(RESCUE_TEAMS);
   const [sosReports, setSosReports] = useState(CITIZEN_SOS_REPORTS);
 
   const [isSpeaking, setIsSpeaking] = useState(false);
@@ -41,17 +60,38 @@ export default function App() {
   const sirenOscRef = useRef(null);
 
   const t = (key) => getTranslation(lang, key);
+  const tr = (text) => translatePhrase(lang, text);
+
+  // Light / Dark Mode synchronization on root <html> element
+  useEffect(() => {
+    const root = document.documentElement;
+    if (theme === 'light') {
+      root.classList.add('light-mode');
+    } else {
+      root.classList.remove('light-mode');
+    }
+    try {
+      localStorage.setItem('aapdanet_theme', theme);
+    } catch {
+      // ignore storage errors
+    }
+  }, [theme]);
 
   // Global Font Sizing Engine (Accurately scales root rem font-size for entire DOM)
   useEffect(() => {
     if (fontSize === 'xl') {
-      document.documentElement.style.fontSize = '125%';
+      document.documentElement.style.fontSize = '122%';
     } else if (fontSize === 'large') {
-      document.documentElement.style.fontSize = '112.5%';
+      document.documentElement.style.fontSize = '111%';
     } else {
       document.documentElement.style.fontSize = '100%';
     }
   }, [fontSize]);
+
+  // Scroll to top on tab switch for clean website UX
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [activeTab]);
 
   // Keyboard accessibility shortcuts (Alt+S = SOS, Alt+A = Audio, Alt+C = Contrast)
   useEffect(() => {
@@ -69,7 +109,7 @@ export default function App() {
     };
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [alerts, isSpeaking]);
+  }, [alerts, isSpeaking, lang]);
 
   // Web Speech API Text-to-Speech Engine
   const speakText = (text) => {
@@ -81,15 +121,12 @@ export default function App() {
     const utterance = new SpeechSynthesisUtterance(text);
     utterance.rate = 0.95;
     utterance.pitch = 1.0;
-    
-    // Choose appropriate voice tag based on selected language
+
     if (lang === 'mr') utterance.lang = 'mr-IN';
     else if (lang === 'hi') utterance.lang = 'hi-IN';
     else if (lang === 'gu') utterance.lang = 'gu-IN';
     else if (lang === 'bn') utterance.lang = 'bn-IN';
     else if (lang === 'ta') utterance.lang = 'ta-IN';
-    else if (lang === 'te') utterance.lang = 'te-IN';
-    else if (lang === 'ur') utterance.lang = 'ur-PK';
     else utterance.lang = 'en-IN';
 
     utterance.onstart = () => setIsSpeaking(true);
@@ -149,7 +186,7 @@ export default function App() {
   };
 
   return (
-    <div className={`min-h-screen bg-[#0a0e17] text-slate-100 flex flex-col ${highContrast ? 'high-contrast' : ''}`}>
+    <div className={`min-h-screen bg-[#0a0e17] text-slate-100 flex flex-col transition-colors duration-200 ${highContrast ? 'high-contrast' : ''}`}>
       {/* Accessible Skip Link */}
       <a 
         href="#main-content" 
@@ -158,12 +195,14 @@ export default function App() {
         Skip directly to Main Disaster Content (Screen Reader)
       </a>
 
-      {/* Top Navbar & Accessibility Toolbar */}
+      {/* Top Website Navbar with Dropdowns, Language Switcher, Theme Toggle & Auth */}
       <Navbar
         activeTab={activeTab}
         setActiveTab={setActiveTab}
         lang={lang}
         setLang={setLang}
+        theme={theme}
+        setTheme={setTheme}
         highContrast={highContrast}
         setHighContrast={setHighContrast}
         fontSize={fontSize}
@@ -173,6 +212,7 @@ export default function App() {
         isSirenActive={isSirenActive}
         onToggleSiren={toggleSiren}
         onOpenSOSModal={() => setIsSOSModalOpen(true)}
+        currentUser={currentUser}
       />
 
       {/* Live Emergency Alert Ticker */}
@@ -184,10 +224,23 @@ export default function App() {
           setActiveTab('overview');
         }}
         onSpeakAlert={speakText}
+        onOpenContacts={() => setActiveTab('contacts')}
       />
 
-      {/* Main Content Viewport */}
-      <main id="main-content" className="flex-1 max-w-7xl w-full mx-auto p-4 md:p-6" role="main">
+      {/* Spacious Main Content Viewport */}
+      <main id="main-content" className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 md:py-8" role="main">
+        {activeTab === 'home' && (
+          <HomeView
+            lang={lang}
+            setActiveTab={setActiveTab}
+            onSpeakText={speakText}
+            onSelectAlert={(alt) => {
+              setSelectedAlert(alt);
+              setActiveTab('overview');
+            }}
+          />
+        )}
+
         {activeTab === 'overview' && (
           <MapView
             alerts={alerts}
@@ -258,28 +311,107 @@ export default function App() {
           />
         )}
 
-        {activeTab === 'research' && (
-          <ResearchShowcase
+        {activeTab === 'contacts' && (
+          <EmergencyContacts
             lang={lang}
             onSpeakText={speakText}
           />
         )}
+
+        {activeTab === 'signup' && (
+          <AuthPortal
+            lang={lang}
+            currentUser={currentUser}
+            setCurrentUser={setCurrentUser}
+            setActiveTab={setActiveTab}
+          />
+        )}
+
+        {activeTab === 'about' && (
+          <AboutContactView
+            mode="about"
+            lang={lang}
+            setActiveTab={setActiveTab}
+          />
+        )}
+
+        {activeTab === 'contact' && (
+          <AboutContactView
+            mode="contact"
+            lang={lang}
+            setActiveTab={setActiveTab}
+          />
+        )}
       </main>
 
-      {/* Clean Footer Without Personal or Institutional Names */}
-      <footer className="bg-slate-950 border-t border-slate-900 px-4 py-4 text-xs text-slate-500">
-        <div className="max-w-7xl mx-auto flex flex-wrap justify-between items-center gap-3">
-          <div>
-            <span className="text-slate-400 font-semibold">{t('title')} — {t('badge')}</span>
-            <p className="text-[11px] text-slate-600">Integrated Multi-Hazard Disaster Intelligence & Early Warning Network</p>
+      {/* Spacious Website Footer */}
+      <footer className="bg-slate-950 border-t border-slate-800/80 px-4 sm:px-6 lg:px-8 py-8 text-xs text-slate-400 mt-12">
+        <div className="max-w-7xl mx-auto space-y-6">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-6 pb-6 border-b border-slate-800/80">
+            <div className="space-y-2 md:col-span-1">
+              <div className="flex items-center gap-2">
+                <ShieldAlert className="w-5 h-5 text-red-500" />
+                <span className="text-white font-black text-base tracking-tight">{t('title')}</span>
+              </div>
+              <p className="text-xs text-slate-400 leading-relaxed">
+                {t('subtitle')} — Real-time satellite, radar, and AI rescue dispatch network.
+              </p>
+            </div>
+
+            <div className="space-y-2">
+              <h4 className="text-xs font-extrabold uppercase tracking-wider text-slate-200">{tr('Navigation')}</h4>
+              <div className="flex flex-col gap-1.5">
+                <button onClick={() => setActiveTab('home')} className="text-left hover:text-cyan-400 transition-colors">{t('navHome')}</button>
+                <button onClick={() => setActiveTab('overview')} className="text-left hover:text-cyan-400 transition-colors">{t('navMap')}</button>
+                <button onClick={() => setActiveTab('weather')} className="text-left hover:text-cyan-400 transition-colors">{t('navWeather')}</button>
+                <button onClick={() => setActiveTab('guide')} className="text-left hover:text-cyan-400 transition-colors">{t('navGuide')}</button>
+              </div>
+            </div>
+
+            <div className="space-y-2">
+              <h4 className="text-xs font-extrabold uppercase tracking-wider text-slate-200">{tr('AI & Public Services')}</h4>
+              <div className="flex flex-col gap-1.5">
+                <button onClick={() => setActiveTab('predictor')} className="text-left hover:text-cyan-400 transition-colors">{t('navPredictor')}</button>
+                <button onClick={() => setActiveTab('damage')} className="text-left hover:text-cyan-400 transition-colors">{t('navDamage')}</button>
+                <button onClick={() => setActiveTab('optimizer')} className="text-left hover:text-cyan-400 transition-colors">{t('navOptimizer')}</button>
+                <button onClick={() => setActiveTab('contacts')} className="text-left hover:text-cyan-400 transition-colors">{t('navEmergencyContacts')}</button>
+              </div>
+            </div>
+
+            <div className="space-y-2">
+              <h4 className="text-xs font-extrabold uppercase tracking-wider text-slate-200">{tr('24/7 Toll-Free Helplines')}</h4>
+              <div className="grid grid-cols-2 gap-2 pt-1">
+                <a href="tel:112" className="px-2.5 py-2 rounded-lg bg-red-950/60 border border-red-800/60 text-red-200 font-bold flex items-center gap-1.5 hover:bg-red-900/60">
+                  <PhoneCall className="w-3.5 h-3.5 text-red-400" /> 112 National
+                </a>
+                <a href="tel:101" className="px-2.5 py-2 rounded-lg bg-orange-950/60 border border-orange-800/60 text-orange-200 font-bold flex items-center gap-1.5 hover:bg-orange-900/60">
+                  <Flame className="w-3.5 h-3.5 text-orange-400" /> 101 Fire
+                </a>
+                <a href="tel:108" className="px-2.5 py-2 rounded-lg bg-emerald-950/60 border border-emerald-800/60 text-emerald-200 font-bold flex items-center gap-1.5 hover:bg-emerald-900/60">
+                  <HeartHandshake className="w-3.5 h-3.5 text-emerald-400" /> 108 Medical
+                </a>
+                <a href="tel:100" className="px-2.5 py-2 rounded-lg bg-blue-950/60 border border-blue-800/60 text-blue-200 font-bold flex items-center gap-1.5 hover:bg-blue-900/60">
+                  <Shield className="w-3.5 h-3.5 text-blue-400" /> 100 Police
+                </a>
+              </div>
+            </div>
           </div>
 
-          <div className="flex items-center gap-3 text-[11px] font-mono text-slate-400">
-            <span>WCAG 2.1 AA Compliant</span>
-            <span>•</span>
-            <span className="text-cyan-400">22 Indian Languages Active</span>
-            <span>•</span>
-            <span className="text-emerald-400">Zero-Key Map Architecture</span>
+          <div className="flex flex-wrap justify-between items-center gap-4 text-[11px] text-slate-500">
+            <div className="flex flex-wrap items-center gap-4">
+              <span>© {new Date().getFullYear()} {t('title')}</span>
+              <button onClick={() => setActiveTab('about')} className="hover:text-slate-300 underline">{t('navAbout')}</button>
+              <button onClick={() => setActiveTab('contact')} className="hover:text-slate-300 underline">{t('navContact')}</button>
+              <button onClick={() => setActiveTab('signup')} className="hover:text-slate-300 underline">{t('navSignUp')}</button>
+            </div>
+
+            <div className="flex flex-wrap items-center gap-3 font-mono text-slate-400">
+              <span>WCAG 2.1 AA Accessible</span>
+              <span>•</span>
+              <span className="text-cyan-400">Multi-Language Support</span>
+              <span>•</span>
+              <span className="text-emerald-400">100% Free Zero-Key Maps & Live Open-Meteo Telemetry</span>
+            </div>
           </div>
         </div>
       </footer>
@@ -302,17 +434,34 @@ export default function App() {
             </div>
 
             <p className="text-xs text-slate-300 leading-relaxed">
-              Transmit immediate distress coordinates to Emergency Police 112, Disaster Rescue Battalions, and Municipal Cells.
+              Transmit immediate distress coordinates to National Emergency Response (112), Fire Brigade (101), Ambulance (108), or District Rescue Battalions.
             </p>
 
-            <div className="space-y-3">
+            <div className="grid grid-cols-3 gap-2.5">
               <a
                 href="tel:112"
-                className="w-full py-3 bg-red-600 hover:bg-red-500 text-white font-extrabold text-sm rounded-xl flex items-center justify-center gap-2 shadow-lg shadow-red-600/30"
+                className="py-3 bg-red-600 hover:bg-red-500 text-white font-extrabold text-xs rounded-xl flex flex-col items-center justify-center gap-1 shadow-lg"
               >
-                {t('call112')}
+                <span className="text-base font-black">112</span>
+                <span>All-in-One SOS</span>
               </a>
+              <a
+                href="tel:101"
+                className="py-3 bg-orange-600 hover:bg-orange-500 text-white font-extrabold text-xs rounded-xl flex flex-col items-center justify-center gap-1 shadow-lg"
+              >
+                <span className="text-base font-black">101</span>
+                <span>Fire & Rescue</span>
+              </a>
+              <a
+                href="tel:108"
+                className="py-3 bg-emerald-600 hover:bg-emerald-500 text-white font-extrabold text-xs rounded-xl flex flex-col items-center justify-center gap-1 shadow-lg"
+              >
+                <span className="text-base font-black">108</span>
+                <span>Ambulance</span>
+              </a>
+            </div>
 
+            <div className="space-y-2.5 pt-2">
               <button
                 onClick={() => {
                   setIsSOSModalOpen(false);
@@ -320,7 +469,16 @@ export default function App() {
                 }}
                 className="w-full py-2.5 bg-slate-800 hover:bg-slate-700 text-cyan-300 font-bold text-xs rounded-xl border border-cyan-700/60"
               >
-                Open Full Voice and Text SOS Reporting Form
+                Open Full GPS & Voice SOS Reporting Form
+              </button>
+              <button
+                onClick={() => {
+                  setIsSOSModalOpen(false);
+                  setActiveTab('contacts');
+                }}
+                className="w-full py-2.5 bg-slate-800 hover:bg-slate-700 text-amber-300 font-bold text-xs rounded-xl border border-amber-700/60"
+              >
+                View City-Wise Police, DM / Collector & Public Representative Numbers
               </button>
             </div>
           </div>
