@@ -237,12 +237,12 @@ create table if not exists timeline_events (
 alter publication supabase_realtime add table sos_reports, shelters, timeline_events;`;
 
 const STORAGE_KEYS = {
-  SOS: 'aapdanet_rt_sos_v2',
-  SHELTERS: 'aapdanet_rt_shelters_v2',
-  TEAMS: 'aapdanet_rt_teams_v2',
-  ALERTS: 'aapdanet_rt_alerts_v2',
-  TIMELINE: 'aapdanet_rt_timeline_v2',
-  ROUTES: 'aapdanet_rt_routes_v2'
+  SOS: 'aapdanet_rt_sos_v3',
+  SHELTERS: 'aapdanet_rt_shelters_v3',
+  TEAMS: 'aapdanet_rt_teams_v3',
+  ALERTS: 'aapdanet_rt_alerts_v3',
+  TIMELINE: 'aapdanet_rt_timeline_v3',
+  ROUTES: 'aapdanet_rt_routes_v3'
 };
 
 function readStorage(key, fallback) {
@@ -289,13 +289,18 @@ async function pushToSupabaseIfConfigured(table, record) {
 }
 
 export function createOperationsStore(onStateChange) {
+  const rawRoutes = readStorage(STORAGE_KEYS.ROUTES, []);
+  const validRoutes = Array.isArray(rawRoutes)
+    ? rawRoutes.filter((r) => Array.isArray(r?.geometry) && r.geometry.length >= 2)
+    : [];
+
   let state = {
     sosReports: readStorage(STORAGE_KEYS.SOS, ENHANCED_INITIAL_SOS),
     shelters: readStorage(STORAGE_KEYS.SHELTERS, ENHANCED_INITIAL_SHELTERS),
     rescueTeams: readStorage(STORAGE_KEYS.TEAMS, ENHANCED_INITIAL_TEAMS),
     alerts: readStorage(STORAGE_KEYS.ALERTS, INITIAL_ALERTS),
     timeline: readStorage(STORAGE_KEYS.TIMELINE, INITIAL_TIMELINE),
-    activeRoutes: readStorage(STORAGE_KEYS.ROUTES, []),
+    activeRoutes: validRoutes,
     hospitals: HOSPITALS_DATA
   };
 

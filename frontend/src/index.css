@@ -58,7 +58,7 @@ html:not(.dark-mode):not(.high-contrast) .bg-\[\#0a0e17\] {
   color: #0F172A !important;
 }
 
-/* White cards with #CBD5E1 borders */
+/* White cards with #CBD5E1 borders (outside .navy-surface) */
 html:not(.dark-mode):not(.high-contrast) .bg-slate-900,
 html:not(.dark-mode):not(.high-contrast) .bg-slate-900\/95,
 html:not(.dark-mode):not(.high-contrast) .bg-slate-900\/90,
@@ -107,7 +107,7 @@ html:not(.dark-mode):not(.high-contrast) .text-slate-300:not(.keep-white) {
 
 html:not(.dark-mode):not(.high-contrast) .text-slate-400:not(.keep-white),
 html:not(.dark-mode):not(.high-contrast) .text-slate-500:not(.keep-white) {
-  color: #64748B !important;
+  color: #475569 !important;
 }
 
 /* Borders (#CBD5E1) */
@@ -119,10 +119,12 @@ html:not(.dark-mode):not(.high-contrast) .border-slate-900 {
   border-color: #CBD5E1 !important;
 }
 
-/* Semantic Color Accents in Default Palette:
-   Navy (#0B1F33) -> Blue (#1769AA / #0284C7) -> Teal (#155E75) -> Orange (#F97316) -> Amber (#F59E0B) -> Green (#15803D) -> Red (#DC2626) */
+/* Semantic Color Accents in Default Palette */
 html:not(.dark-mode):not(.high-contrast) .text-cyan-400,
 html:not(.dark-mode):not(.high-contrast) .text-cyan-300,
+html:not(.dark-mode):not(.high-contrast) .text-sky-400,
+html:not(.dark-mode):not(.high-contrast) .text-sky-300,
+html:not(.dark-mode):not(.high-contrast) .text-sky-500,
 html:not(.dark-mode):not(.high-contrast) .text-blue-400,
 html:not(.dark-mode):not(.high-contrast) .text-blue-300 {
   color: #1769AA !important;
@@ -134,22 +136,27 @@ html:not(.dark-mode):not(.high-contrast) .text-teal-300 {
 }
 
 html:not(.dark-mode):not(.high-contrast) .text-emerald-400,
-html:not(.dark-mode):not(.high-contrast) .text-emerald-300 {
+html:not(.dark-mode):not(.high-contrast) .text-emerald-300,
+html:not(.dark-mode):not(.high-contrast) .text-emerald-500 {
   color: #15803D !important;
 }
 
 html:not(.dark-mode):not(.high-contrast) .text-amber-400,
-html:not(.dark-mode):not(.high-contrast) .text-amber-300 {
+html:not(.dark-mode):not(.high-contrast) .text-amber-300,
+html:not(.dark-mode):not(.high-contrast) .text-amber-500,
+html:not(.dark-mode):not(.high-contrast) .text-yellow-300 {
   color: #B45309 !important;
 }
 
 html:not(.dark-mode):not(.high-contrast) .text-orange-400,
-html:not(.dark-mode):not(.high-contrast) .text-orange-300 {
-  color: #EA580C !important;
+html:not(.dark-mode):not(.high-contrast) .text-orange-300,
+html:not(.dark-mode):not(.high-contrast) .text-orange-500 {
+  color: #C2410C !important;
 }
 
 html:not(.dark-mode):not(.high-contrast) .text-red-400,
-html:not(.dark-mode):not(.high-contrast) .text-red-300 {
+html:not(.dark-mode):not(.high-contrast) .text-red-300,
+html:not(.dark-mode):not(.high-contrast) .text-red-500 {
   color: #DC2626 !important;
 }
 
@@ -167,6 +174,8 @@ html:not(.dark-mode):not(.high-contrast) .bg-cyan-950\/80,
 html:not(.dark-mode):not(.high-contrast) .bg-cyan-950\/50,
 html:not(.dark-mode):not(.high-contrast) .bg-cyan-950\/40,
 html:not(.dark-mode):not(.high-contrast) .bg-cyan-950\/30,
+html:not(.dark-mode):not(.high-contrast) .bg-sky-950,
+html:not(.dark-mode):not(.high-contrast) .bg-teal-950,
 html:not(.dark-mode):not(.high-contrast) .bg-blue-950,
 html:not(.dark-mode):not(.high-contrast) .bg-blue-950\/60,
 html:not(.dark-mode):not(.high-contrast) .bg-blue-950\/40,
@@ -253,10 +262,34 @@ html:not(.dark-mode):not(.high-contrast) .bg-red-600 {
   color: #FFFFFF !important;
 }
 
-/* Deep Navy (#0B1F33) Surfaces (Navbar, Top Strip, Sidebar Drawer, Hero Banner, Alert Banner, Footer) always preserve crisp white text */
+/* ==========================================================================
+   DEEP NAVY (#0B1F33) SURFACES:
+   CRITICAL FIX: Any nested bg-slate-900 / 950 / 800 INSIDE .navy-surface
+   MUST stay Dark Navy (#112A45 / #163554) so white text inside .navy-surface
+   NEVER turns into white-text-on-white-background in Light Mode!
+   ========================================================================== */
 html:not(.dark-mode):not(.high-contrast) .navy-surface,
 .navy-surface {
   background-color: #0B1F33 !important;
+  color: #FFFFFF !important;
+}
+
+html:not(.dark-mode):not(.high-contrast) .navy-surface .bg-slate-900,
+html:not(.dark-mode):not(.high-contrast) .navy-surface .bg-slate-900\/95,
+html:not(.dark-mode):not(.high-contrast) .navy-surface .bg-slate-900\/90,
+html:not(.dark-mode):not(.high-contrast) .navy-surface .bg-slate-900\/80,
+html:not(.dark-mode):not(.high-contrast) .navy-surface .bg-slate-950,
+html:not(.dark-mode):not(.high-contrast) .navy-surface .bg-slate-950\/90,
+html:not(.dark-mode):not(.high-contrast) .navy-surface .bg-slate-800,
+html:not(.dark-mode):not(.high-contrast) .navy-surface .bg-slate-800\/90,
+html:not(.dark-mode):not(.high-contrast) .navy-surface .bg-slate-800\/80 {
+  background-color: #112A45 !important;
+  color: #FFFFFF !important;
+  border-color: #334155 !important;
+}
+
+html:not(.dark-mode):not(.high-contrast) .navy-surface .bg-slate-800:hover {
+  background-color: #1E3A5F !important;
   color: #FFFFFF !important;
 }
 
@@ -271,6 +304,23 @@ html:not(.dark-mode):not(.high-contrast) .navy-surface .keep-white,
 .navy-surface .text-slate-300,
 .navy-surface .keep-white {
   color: #FFFFFF !important;
+}
+
+html:not(.dark-mode):not(.high-contrast) .navy-surface .text-sky-300,
+html:not(.dark-mode):not(.high-contrast) .navy-surface .text-sky-400,
+html:not(.dark-mode):not(.high-contrast) .navy-surface .text-cyan-300,
+html:not(.dark-mode):not(.high-contrast) .navy-surface .text-cyan-400 {
+  color: #7DD3FC !important;
+}
+
+html:not(.dark-mode):not(.high-contrast) .navy-surface .text-emerald-300,
+html:not(.dark-mode):not(.high-contrast) .navy-surface .text-emerald-400 {
+  color: #6EE7B7 !important;
+}
+
+html:not(.dark-mode):not(.high-contrast) .navy-surface .text-amber-300,
+html:not(.dark-mode):not(.high-contrast) .navy-surface .text-amber-400 {
+  color: #FCD34D !important;
 }
 
 html:not(.dark-mode):not(.high-contrast) .navy-surface .text-slate-400,
