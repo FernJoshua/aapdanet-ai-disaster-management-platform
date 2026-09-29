@@ -231,6 +231,8 @@ export default function App() {
       <main id="main-content" className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 md:py-8" role="main">
         {activeTab === 'home' && (
           <HomeView
+            alerts={alerts}
+            shelters={shelters}
             lang={lang}
             setActiveTab={setActiveTab}
             onSpeakText={speakText}

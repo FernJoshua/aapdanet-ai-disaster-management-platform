@@ -24,12 +24,12 @@ import {
   Building2
 } from 'lucide-react';
 import { getTranslation, translatePhrase } from '../utils/translations';
-import { RELIEVED_DISASTERS } from '../services/mockData';
+import { INITIAL_ALERTS, SHELTERS_DATA, RELIEVED_DISASTERS } from '../services/mockData';
 
 export default function HomeView({
-  alerts,
-  shelters,
-  lang,
+  alerts = INITIAL_ALERTS,
+  shelters = SHELTERS_DATA,
+  lang = 'en',
   setActiveTab,
   onSelectAlert,
   onSpeakText
