@@ -110,12 +110,12 @@ export default function Navbar({
 
   return (
     <header className="sticky top-0 z-50 navy-surface border-b border-slate-700/80 shadow-lg w-full max-w-full">
-      {/* Top Status Strip (#0B1F33 Deep Navy with Ocean Blue & Orange/Green Hierarchy) */}
-      <div className="bg-[#071524] border-b border-slate-800 px-3 sm:px-6 py-1.5 text-[11px]">
+      {/* Top Status Strip (#0B1F33 Deep Navy with Pure White Text) */}
+      <div className="bg-[#071524] border-b border-slate-800 px-3 sm:px-6 py-1.5 text-[11px] text-white keep-white" style={{ color: '#FFFFFF' }}>
         <div className="max-w-7xl mx-auto flex flex-wrap justify-between items-center gap-2">
-          <div className="flex items-center gap-2 font-medium text-slate-300 min-w-0">
-            <span className="inline-block w-2 h-2 rounded-full bg-[#16A34A] shrink-0" />
-            <span className="truncate">{t('stateEmergencyBar')}</span>
+          <div className="flex items-center gap-2 font-bold text-white keep-white min-w-0" style={{ color: '#FFFFFF' }}>
+            <span className="inline-block w-2 h-2 rounded-full bg-[#16A34A] shrink-0 animate-pulse" />
+            <span className="truncate text-white keep-white" style={{ color: '#FFFFFF' }}>{t('stateEmergencyBar')}</span>
           </div>
 
           <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">

@@ -253,23 +253,29 @@ html:not(.dark-mode):not(.high-contrast) .bg-red-600 {
   color: #FFFFFF !important;
 }
 
-/* Deep Navy (#0B1F33) Surfaces (Navbar, Sidebar Drawer, Hero Banner, Footer) always preserve crisp light text */
+/* Deep Navy (#0B1F33) Surfaces (Navbar, Top Strip, Sidebar Drawer, Hero Banner, Alert Banner, Footer) always preserve crisp white text */
+html:not(.dark-mode):not(.high-contrast) .navy-surface,
 .navy-surface {
   background-color: #0B1F33 !important;
-  color: #F8FAFC !important;
+  color: #FFFFFF !important;
 }
 
+html:not(.dark-mode):not(.high-contrast) .navy-surface .text-white,
+html:not(.dark-mode):not(.high-contrast) .navy-surface .text-slate-100,
+html:not(.dark-mode):not(.high-contrast) .navy-surface .text-slate-200,
+html:not(.dark-mode):not(.high-contrast) .navy-surface .text-slate-300,
+html:not(.dark-mode):not(.high-contrast) .navy-surface .keep-white,
 .navy-surface .text-white,
+.navy-surface .text-slate-100,
+.navy-surface .text-slate-200,
+.navy-surface .text-slate-300,
 .navy-surface .keep-white {
   color: #FFFFFF !important;
 }
 
-.navy-surface .text-slate-300 {
-  color: #CBD5E1 !important;
-}
-
+html:not(.dark-mode):not(.high-contrast) .navy-surface .text-slate-400,
 .navy-surface .text-slate-400 {
-  color: #94A3B8 !important;
+  color: #E2E8F0 !important;
 }
 
 /* Solid badges & buttons always keep white text */
