@@ -14,22 +14,21 @@ import AnalyticsDashboard from './components/AnalyticsDashboard';
 import EmergencyContacts from './components/EmergencyContacts';
 import AuthPortal from './components/AuthPortal';
 import AboutContactView from './components/AboutContactView';
-import { 
-  INITIAL_ALERTS, 
-  SHELTERS_DATA, 
-  RESCUE_TEAMS, 
-  CITIZEN_SOS_REPORTS 
-} from './services/mockData';
+import {
+  createOperationsStore,
+  SUPABASE_SQL_SCHEMA,
+  HOSPITALS_DATA
+} from './services/operationsStore';
+import { fetchLiveMultiHazardTelemetry } from './services/realTimeService';
 import { getTranslation, translatePhrase, getFullAudioBriefing } from './utils/translations';
-import { ShieldAlert, X, PhoneCall, Flame, HeartHandshake, Shield } from 'lucide-react';
+import { ShieldAlert, X, PhoneCall, Flame, HeartHandshake, Shield, Database, Copy, CheckCircle2, RotateCcw } from 'lucide-react';
 
 export default function App() {
-  // Default tab is Home ('home'), default language is English ('en'), default theme is Clean Navy/Light ('light')
   const [activeTab, setActiveTab] = useState('home');
   const [lang, setLang] = useState('en');
   const [theme, setTheme] = useState('light');
   const [highContrast, setHighContrast] = useState(false);
-  const [fontSize, setFontSize] = useState('normal'); // 'normal', 'large', 'xl'
+  const [fontSize, setFontSize] = useState('normal');
   const [currentUser, setCurrentUser] = useState(() => {
     try {
       const saved = localStorage.getItem('aapdanet_user');
@@ -39,15 +38,34 @@ export default function App() {
     }
   });
 
-  const [alerts] = useState(INITIAL_ALERTS);
-  const [selectedAlert, setSelectedAlert] = useState(INITIAL_ALERTS[0]);
-  const [shelters] = useState(SHELTERS_DATA);
-  const [rescueTeams] = useState(RESCUE_TEAMS);
-  const [sosReports, setSosReports] = useState(CITIZEN_SOS_REPORTS);
+  // Real-Time Operations Store State
+  const storeRef = useRef(null);
+  if (!storeRef.current) {
+    storeRef.current = createOperationsStore((nextState) => {
+      setOpsState({ ...nextState });
+    });
+  }
+
+  const [opsState, setOpsState] = useState(() => storeRef.current.getState());
+  const [selectedAlert, setSelectedAlert] = useState(() => opsState.alerts[0]);
+  const [liveTelemetry, setLiveTelemetry] = useState(null);
 
   const [isSpeaking, setIsSpeaking] = useState(false);
   const [isSirenActive, setIsSirenActive] = useState(false);
   const [isSOSModalOpen, setIsSOSModalOpen] = useState(false);
+  const [isCloudConfigOpen, setIsCloudConfigOpen] = useState(false);
+
+  // Optional Cloud Config Inputs (Supabase + NASA FIRMS)
+  const [supabaseUrl, setSupabaseUrl] = useState(() =>
+    typeof window !== 'undefined' ? localStorage.getItem('cfg_supabase_url') || '' : ''
+  );
+  const [supabaseKey, setSupabaseKey] = useState(() =>
+    typeof window !== 'undefined' ? localStorage.getItem('cfg_supabase_key') || '' : ''
+  );
+  const [firmsKey, setFirmsKey] = useState(() =>
+    typeof window !== 'undefined' ? localStorage.getItem('cfg_firms_key') || '' : ''
+  );
+  const [copiedSchema, setCopiedSchema] = useState(false);
 
   const audioCtxRef = useRef(null);
   const sirenOscRef = useRef(null);
@@ -55,7 +73,25 @@ export default function App() {
   const t = (key) => getTranslation(lang, key);
   const tr = (text) => translatePhrase(lang, text);
 
-  // Sync Clean Light Palette (default) vs Dark Mode on root <html>
+  // Sync live multi-hazard telemetry on mount and every 60 seconds
+  useEffect(() => {
+    let mounted = true;
+    const loadTelemetry = async () => {
+      try {
+        const data = await fetchLiveMultiHazardTelemetry();
+        if (mounted) setLiveTelemetry(data);
+      } catch {
+        // fallback handled inside service
+      }
+    };
+    loadTelemetry();
+    const timer = setInterval(loadTelemetry, 60000);
+    return () => {
+      mounted = false;
+      clearInterval(timer);
+    };
+  }, []);
+
   useEffect(() => {
     const root = document.documentElement;
     if (theme === 'dark') {
@@ -67,7 +103,6 @@ export default function App() {
     }
   }, [theme]);
 
-  // Global Font Sizing Engine
   useEffect(() => {
     if (fontSize === 'xl') {
       document.documentElement.style.fontSize = '120%';
@@ -78,12 +113,10 @@ export default function App() {
     }
   }, [fontSize]);
 
-  // Scroll to top on tab switch
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [activeTab]);
 
-  // Keyboard accessibility shortcuts (Alt+S = SOS, Alt+A = Audio, Alt+C = Contrast)
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (e.altKey && (e.key === 's' || e.key === 'S')) {
@@ -94,19 +127,15 @@ export default function App() {
         handleToggleSpeech();
       } else if (e.altKey && (e.key === 'c' || e.key === 'C')) {
         e.preventDefault();
-        setHighContrast(prev => !prev);
+        setHighContrast((prev) => !prev);
       }
     };
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [alerts, isSpeaking, lang, activeTab]);
+  }, [opsState.alerts, isSpeaking, lang, activeTab]);
 
-  // Web Speech API Text-to-Speech Engine
   const speakText = (text) => {
-    if (!('speechSynthesis' in window)) {
-      alert("Text-to-Speech is not supported in this browser.");
-      return;
-    }
+    if (!('speechSynthesis' in window)) return;
     window.speechSynthesis.cancel();
     const utterance = new SpeechSynthesisUtterance(text);
     utterance.rate = 0.95;
@@ -126,18 +155,16 @@ export default function App() {
     window.speechSynthesis.speak(utterance);
   };
 
-  // Comprehensive Multi-Language Audio Briefing (Reads all active alerts, open shelters, and emergency numbers)
   const handleToggleSpeech = () => {
     if (isSpeaking) {
       window.speechSynthesis.cancel();
       setIsSpeaking(false);
     } else {
-      const fullBriefing = getFullAudioBriefing(lang, activeTab, alerts, shelters);
+      const fullBriefing = getFullAudioBriefing(lang, activeTab, opsState.alerts, opsState.shelters);
       speakText(fullBriefing);
     }
   };
 
-  // Acoustic Emergency Siren Beacon for low visibility
   const toggleSiren = () => {
     if (isSirenActive) {
       if (sirenOscRef.current) {
@@ -165,26 +192,49 @@ export default function App() {
         sirenOscRef.current = osc;
         setIsSirenActive(true);
       } catch (err) {
-        console.error("Audio beacon error:", err);
+        console.error('Audio beacon error:', err);
       }
     }
   };
 
   const handleAddSOS = (newReport) => {
-    setSosReports(prev => [newReport, ...prev]);
+    storeRef.current.addSOSReport(newReport);
+  };
+
+  const handleDispatchTeam = ({ sosId, teamId, routeData }) => {
+    storeRef.current.dispatchTeamToSOS({ sosId, teamId, routeData });
+  };
+
+  const handleUpdateShelterOccupancy = (shelterId, deltaPeople) => {
+    storeRef.current.updateShelterOccupancy(shelterId, deltaPeople);
+  };
+
+  const handleSaveCloudConfig = () => {
+    try {
+      localStorage.setItem('cfg_supabase_url', supabaseUrl.trim());
+      localStorage.setItem('cfg_supabase_key', supabaseKey.trim());
+      localStorage.setItem('cfg_firms_key', firmsKey.trim());
+      storeRef.current.addTimelineEvent(
+        'Cloud Database & NASA FIRMS configuration updated',
+        supabaseUrl ? 'Supabase PostgreSQL + Realtime endpoint connected' : 'Running on BroadcastChannel + Local Persistence Bus',
+        'CONFIG',
+        'LIVE OPS'
+      );
+      setIsCloudConfigOpen(false);
+    } catch {
+      setIsCloudConfigOpen(false);
+    }
   };
 
   return (
     <div className={`min-h-screen bg-[#0a0e17] text-slate-100 flex flex-col w-full max-w-full overflow-x-hidden transition-colors duration-200 ${highContrast ? 'high-contrast' : ''}`}>
-      {/* Accessible Skip Link */}
-      <a 
-        href="#main-content" 
+      <a
+        href="#main-content"
         className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[9999] focus:bg-yellow-400 focus:text-black focus:font-bold focus:p-3 focus:rounded-lg focus:shadow-2xl"
       >
         Skip directly to Main Disaster Content (Screen Reader)
       </a>
 
-      {/* Top Deep Navy (#0B1F33) Navbar with 3-Dash Menu Drawer */}
       <Navbar
         activeTab={activeTab}
         setActiveTab={setActiveTab}
@@ -204,9 +254,8 @@ export default function App() {
         currentUser={currentUser}
       />
 
-      {/* Live Emergency Alert Ticker */}
       <LiveAlertBanner
-        alerts={alerts}
+        alerts={opsState.alerts}
         lang={lang}
         onSelectAlert={(alt) => {
           setSelectedAlert(alt);
@@ -216,12 +265,18 @@ export default function App() {
         onOpenContacts={() => setActiveTab('contacts')}
       />
 
-      {/* Spacious, Fully Responsive Main Content Viewport */}
       <main id="main-content" className="flex-1 max-w-7xl w-full mx-auto px-3 sm:px-6 lg:px-8 py-5 md:py-8 overflow-x-hidden" role="main">
         {activeTab === 'home' && (
           <HomeView
-            alerts={alerts}
-            shelters={shelters}
+            alerts={opsState.alerts}
+            shelters={opsState.shelters}
+            sosReports={opsState.sosReports}
+            rescueTeams={opsState.rescueTeams}
+            timeline={opsState.timeline}
+            liveTelemetry={liveTelemetry}
+            onDispatchTeam={handleDispatchTeam}
+            onUpdateShelterOccupancy={handleUpdateShelterOccupancy}
+            onOpenCloudConfig={() => setIsCloudConfigOpen(true)}
             lang={lang}
             setActiveTab={setActiveTab}
             onSpeakText={speakText}
@@ -234,10 +289,15 @@ export default function App() {
 
         {activeTab === 'overview' && (
           <MapView
-            alerts={alerts}
-            shelters={shelters}
-            rescueTeams={rescueTeams}
-            sosReports={sosReports}
+            alerts={opsState.alerts}
+            shelters={opsState.shelters}
+            rescueTeams={opsState.rescueTeams}
+            sosReports={opsState.sosReports}
+            hospitals={opsState.hospitals || HOSPITALS_DATA}
+            activeRoutes={opsState.activeRoutes}
+            liveTelemetry={liveTelemetry}
+            onDispatchTeam={handleDispatchTeam}
+            onUpdateShelterOccupancy={handleUpdateShelterOccupancy}
             lang={lang}
             onSpeakText={speakText}
             selectedAlert={selectedAlert}
@@ -262,6 +322,7 @@ export default function App() {
           <DisasterPredictor
             lang={lang}
             onSpeakText={speakText}
+            liveTelemetry={liveTelemetry}
           />
         )}
 
@@ -276,12 +337,16 @@ export default function App() {
           <ResourceOptimizer
             lang={lang}
             onSpeakText={speakText}
+            sosReports={opsState.sosReports}
+            rescueTeams={opsState.rescueTeams}
+            shelters={opsState.shelters}
+            onDispatchTeam={handleDispatchTeam}
           />
         )}
 
         {activeTab === 'citizen' && (
           <CitizenPortal
-            shelters={shelters}
+            shelters={opsState.shelters}
             lang={lang}
             onSubmitSOS={handleAddSOS}
             onSpeakText={speakText}
@@ -393,17 +458,119 @@ export default function App() {
               <span className="keep-white">© {new Date().getFullYear()} {t('title')}</span>
               <button onClick={() => setActiveTab('about')} className="keep-white hover:text-white underline">{t('navAbout')}</button>
               <button onClick={() => setActiveTab('contact')} className="keep-white hover:text-white underline">{t('navContact')}</button>
-              <button onClick={() => setActiveTab('signup')} className="keep-white hover:text-white underline">{t('navSignUp')}</button>
+              <button onClick={() => setIsCloudConfigOpen(true)} className="keep-white hover:text-white underline">Cloud DB & API Config</button>
             </div>
 
             <div className="flex flex-wrap items-center gap-3 font-mono text-slate-300 keep-white">
               <span className="keep-white">WCAG 2.1 AA Accessible</span>
               <span className="keep-white">•</span>
-              <span className="text-sky-300 keep-white">Zero-Key Maps & Live Open-Meteo Telemetry</span>
+              <span className="text-sky-300 keep-white">Open-Meteo • GloFAS • USGS • CAMS • FIRMS • RainViewer • OSRM</span>
             </div>
           </div>
         </div>
       </footer>
+
+      {/* Cloud DB (Supabase) & NASA FIRMS Key Modal */}
+      {isCloudConfigOpen && (
+        <div className="fixed inset-0 z-[9999] bg-black/75 backdrop-blur-xs flex items-center justify-center p-4 overflow-y-auto">
+          <div className="navy-surface border-2 border-[#0284C7] rounded-2xl max-w-2xl w-full p-6 shadow-2xl space-y-4 text-white keep-white my-8">
+            <div className="flex justify-between items-center border-b border-slate-700 pb-3">
+              <div className="flex items-center gap-2 text-sky-300 keep-white font-black text-lg">
+                <Database className="w-5 h-5" />
+                <span className="keep-white">Real-Time Cloud Database (Supabase) & NASA FIRMS Configuration</span>
+              </div>
+              <button onClick={() => setIsCloudConfigOpen(false)} className="text-slate-300 keep-white hover:text-white p-1">
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+
+            <p className="text-xs text-slate-300 keep-white leading-relaxed">
+              Out of the box, AapdaNet uses <strong>BroadcastChannel + LocalStorage</strong> for instant multi-window sync and public <strong>Open-Meteo, GloFAS, USGS, CAMS, RainViewer & OSRM</strong> feeds. To enable multi-device cloud persistence across different computers/phones, paste your free <strong>Supabase Project URL & Anon Key</strong> below:
+            </p>
+
+            <div className="space-y-3 text-xs">
+              <div>
+                <label className="block font-bold text-sky-300 keep-white mb-1">Supabase Project URL (Optional):</label>
+                <input
+                  type="text"
+                  value={supabaseUrl}
+                  onChange={(e) => setSupabaseUrl(e.target.value)}
+                  placeholder="https://your-project.supabase.co"
+                  className="w-full px-3 py-2 rounded-lg bg-slate-900 border border-slate-700 text-white keep-white font-mono"
+                />
+              </div>
+              <div>
+                <label className="block font-bold text-sky-300 keep-white mb-1">Supabase Public Anon Key (Optional):</label>
+                <input
+                  type="text"
+                  value={supabaseKey}
+                  onChange={(e) => setSupabaseKey(e.target.value)}
+                  placeholder="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+                  className="w-full px-3 py-2 rounded-lg bg-slate-900 border border-slate-700 text-white keep-white font-mono"
+                />
+              </div>
+              <div>
+                <label className="block font-bold text-orange-300 keep-white mb-1">NASA FIRMS MAP_KEY (Optional — uses public VIIRS feed if blank):</label>
+                <input
+                  type="text"
+                  value={firmsKey}
+                  onChange={(e) => setFirmsKey(e.target.value)}
+                  placeholder="Optional NASA FIRMS 32-char MAP_KEY"
+                  className="w-full px-3 py-2 rounded-lg bg-slate-900 border border-slate-700 text-white keep-white font-mono"
+                />
+              </div>
+            </div>
+
+            <div className="space-y-1.5">
+              <div className="flex items-center justify-between text-xs">
+                <span className="font-bold text-emerald-300 keep-white">Ready-to-Run Supabase PostgreSQL Schema:</span>
+                <button
+                  onClick={() => {
+                    navigator.clipboard.writeText(SUPABASE_SQL_SCHEMA);
+                    setCopiedSchema(true);
+                    setTimeout(() => setCopiedSchema(false), 2000);
+                  }}
+                  className="px-2.5 py-1 rounded bg-slate-800 hover:bg-slate-700 text-white keep-white flex items-center gap-1 text-[11px] font-bold"
+                >
+                  {copiedSchema ? <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5" />}
+                  <span>{copiedSchema ? 'Copied SQL!' : 'Copy SQL Schema'}</span>
+                </button>
+              </div>
+              <pre className="p-3 rounded-lg bg-slate-950 border border-slate-800 text-[10px] font-mono text-slate-300 keep-white max-h-36 overflow-y-auto">
+                {SUPABASE_SQL_SCHEMA}
+              </pre>
+            </div>
+
+            <div className="flex flex-wrap justify-between items-center gap-2 pt-2 border-t border-slate-700">
+              <button
+                onClick={() => {
+                  storeRef.current.resetOperationsDemo();
+                  setIsCloudConfigOpen(false);
+                }}
+                className="px-3 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-amber-300 keep-white font-bold text-xs flex items-center gap-1.5"
+              >
+                <RotateCcw className="w-3.5 h-3.5" />
+                <span>Reset Demo SOS / Shelters</span>
+              </button>
+
+              <div className="flex gap-2">
+                <button
+                  onClick={() => setIsCloudConfigOpen(false)}
+                  className="px-4 py-2 rounded-xl bg-slate-800 text-white keep-white font-bold text-xs"
+                >
+                  Cancel
+                </button>
+                <button
+                  onClick={handleSaveCloudConfig}
+                  className="px-4 py-2 rounded-xl bg-[#15803D] hover:bg-green-600 text-white keep-white font-extrabold text-xs"
+                >
+                  Save & Connect
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Global Quick SOS Modal (Alt+S) */}
       {isSOSModalOpen && (
