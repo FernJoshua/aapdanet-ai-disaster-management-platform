@@ -65,15 +65,15 @@ const createCustomIcon = (color, text, isPulsing = false, size = 28) => {
   });
 };
 
-const shelterIcon = createCustomIcon('#15803D', 'SHL', false, 28);
+const shelterIcon = createCustomIcon('#0B1F33', 'SHL', false, 28);
 const sosOpenIcon = createCustomIcon('#DC2626', 'SOS', true, 30);
-const sosRespondingIcon = createCustomIcon('#F97316', 'RESP', false, 28);
-const rescueAvailableIcon = createCustomIcon('#0284C7', 'TEAM', false, 28);
-const rescueBusyIcon = createCustomIcon('#F59E0B', 'BUSY', true, 28);
-const hospitalIcon = createCustomIcon('#0D9488', 'HOSP', false, 26);
-const fireHotspotIcon = createCustomIcon('#EA580C', 'FIRE', true, 28);
-const quakeIcon = createCustomIcon('#9333EA', 'EQ', true, 26);
-const userIcon = createCustomIcon('#1769AA', 'YOU', true, 28);
+const sosRespondingIcon = createCustomIcon('#1769AA', 'RESP', false, 28);
+const rescueAvailableIcon = createCustomIcon('#1769AA', 'TEAM', false, 28);
+const rescueBusyIcon = createCustomIcon('#0B1F33', 'BUSY', false, 28);
+const hospitalIcon = createCustomIcon('#0B1F33', 'HOSP', false, 26);
+const fireHotspotIcon = createCustomIcon('#DC2626', 'FIRE', true, 28);
+const quakeIcon = createCustomIcon('#0B1F33', 'EQ', false, 26);
+const userIcon = createCustomIcon('#1769AA', 'YOU', false, 28);
 
 function ChangeView({ center, zoom }) {
   const map = useMap();
@@ -114,6 +114,8 @@ export default function MapView({
     hospitals: true,
     rescue: true
   });
+  const [layersDropdownOpen, setLayersDropdownOpen] = useState(false);
+  const [selectedSector, setSelectedSector] = useState('all');
 
   const [tileProvider, setTileProvider] = useState('osm');
   const [viewMode, setViewMode] = useState('map');
@@ -167,6 +169,22 @@ export default function MapView({
 
   const toggleLayer = (layerName) => {
     setActiveLayers((prev) => ({ ...prev, [layerName]: !prev[layerName] }));
+  };
+
+  const handleSectorChange = (sectorKey) => {
+    setSelectedSector(sectorKey);
+    const sectors = {
+      all: { center: [18.65, 75.0], zoom: 7 },
+      mahad: { center: [18.0795, 73.4195], zoom: 13 },
+      mumbai: { center: [19.0728, 72.8795], zoom: 12 },
+      chiplun: { center: [17.5323, 73.5186], zoom: 12 },
+      nagpur: { center: [21.0842, 78.9815], zoom: 10 },
+      pune: { center: [18.5204, 73.8567], zoom: 12 },
+      kolhapur: { center: [16.705, 74.2433], zoom: 12 }
+    };
+    const target = sectors[sectorKey] || sectors.all;
+    setMapCenter(target.center);
+    setMapZoom(target.zoom);
   };
 
   const handleDetectGPS = () => {
@@ -263,217 +281,140 @@ export default function MapView({
   const fireHotspots = (telemetry?.fireHotspots || []).filter((fh) => getValidCoords(fh));
   const earthquakes = (telemetry?.earthquakes || []).filter((eq) => getValidCoords(eq));
   const radarTileUrl = telemetry?.radar?.tileUrl || telemetry?.rainRadarTileUrl || null;
+  const activeLayerCount = Object.values(activeLayers).filter(Boolean).length;
+
+  const layerOptions = [
+    { key: 'sos', label: `Citizen SOS Calls (${sosReports.length})` },
+    { key: 'floodBasins', label: `Flood River Basins (${basins.length})` },
+    { key: 'rainRadar', label: `RainViewer Radar ${radarTileUrl ? '(Live)' : ''}` },
+    { key: 'shelters', label: `Relief Shelters (${shelters.length})` },
+    { key: 'rescue', label: `Rescue Teams (${rescueTeams.length})` },
+    { key: 'hospitals', label: `Trauma Hospitals (${hospitals.length})` },
+    { key: 'fireHotspots', label: `NASA FIRMS Fire (${fireHotspots.length})` },
+    { key: 'earthquakes', label: `USGS Earthquakes (${earthquakes.length})` }
+  ];
 
   return (
     <div className="space-y-3">
-      {/* Top Deep Navy Live Command Strip + Sector Quick-Jump */}
-      <div className="navy-surface rounded-xl p-3.5 border border-slate-700 shadow-lg flex flex-wrap items-center justify-between gap-3">
-        <div className="flex flex-wrap items-center gap-2">
-          <span className="px-2.5 py-1 rounded-md bg-[#DC2626] text-white keep-white text-[11px] font-black uppercase tracking-wider flex items-center gap-1.5">
-            <Radio className="w-3.5 h-3.5 animate-pulse" />
-            GIS REAL-TIME OPERATIONS HUB
-          </span>
-          <span className="text-xs text-slate-200 keep-white font-semibold">
-            Click any <strong>SOS</strong>, <strong>Shelter</strong>, <strong>Fire Hotspot</strong>, or <strong>Flood Basin</strong> marker to execute live response actions
-          </span>
-        </div>
+      <div className="flex flex-col h-[calc(100vh-150px)] min-h-[640px] bg-slate-950 rounded-2xl overflow-hidden border border-slate-800 shadow-lg relative">
+        {/* Single Consolidated Map Control Bar with Dropdowns */}
+        <div className="navy-surface border-b border-slate-700 px-4 py-2.5 flex flex-wrap items-center justify-between gap-3 z-20">
+          <div className="flex flex-wrap items-center gap-2.5">
+            <span className="text-xs font-bold text-white keep-white flex items-center gap-1.5 mr-1">
+              <Radio className="w-3.5 h-3.5 text-sky-400" />
+              <span>GIS Operations Map</span>
+            </span>
 
-        {/* Sector Quick-Jump Buttons */}
-        <div className="flex flex-wrap items-center gap-1.5">
-          <span className="text-[11px] text-sky-300 keep-white font-bold mr-1">Jump to Sector:</span>
-          <button
-            onClick={() => { setMapCenter([18.0795, 73.4195]); setMapZoom(13); }}
-            className="px-2.5 py-1 rounded-lg bg-[#F97316] hover:bg-orange-500 text-white keep-white text-xs font-extrabold shadow-xs cursor-pointer"
-          >
-            🆘 Mahad (SOS #1042 + Savitri)
-          </button>
-          <button
-            onClick={() => { setMapCenter([19.0728, 72.8795]); setMapZoom(12); }}
-            className="px-2.5 py-1 rounded-lg bg-[#1769AA] hover:bg-[#0284C7] text-white keep-white text-xs font-bold cursor-pointer"
-          >
-            🌊 Mumbai (Mithi)
-          </button>
-          <button
-            onClick={() => { setMapCenter([17.5323, 73.5186]); setMapZoom(12); }}
-            className="px-2.5 py-1 rounded-lg bg-[#1769AA] hover:bg-[#0284C7] text-white keep-white text-xs font-bold cursor-pointer"
-          >
-            🌊 Chiplun (Vashishti)
-          </button>
-          <button
-            onClick={() => { setMapCenter([21.0842, 78.9815]); setMapZoom(10); }}
-            className="px-2.5 py-1 rounded-lg bg-[#155E75] hover:bg-[#1769AA] text-white keep-white text-xs font-bold border border-sky-400/40 cursor-pointer"
-          >
-            🔥 Nagpur (FIRMS Fire)
-          </button>
-          <button
-            onClick={() => { setMapCenter([18.65, 75.0]); setMapZoom(7); }}
-            className="px-2.5 py-1 rounded-lg bg-[#155E75] hover:bg-[#1769AA] text-white keep-white text-xs font-bold border border-sky-400/40 cursor-pointer"
-          >
-            🗺️ All Maharashtra
-          </button>
-        </div>
-      </div>
-
-      <div className="flex flex-col h-[calc(100vh-175px)] min-h-[640px] bg-slate-950 rounded-xl overflow-hidden border border-slate-800 shadow-2xl relative">
-        {/* Map Control Toolbar */}
-        <div className="navy-surface border-b border-slate-700 px-4 py-2.5 flex flex-wrap items-center justify-between gap-3 z-10">
-          <div className="flex flex-wrap items-center gap-2">
-            <button
-              onClick={() => setViewMode(viewMode === 'map' ? 'accessible-list' : 'map')}
-              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
-                viewMode === 'accessible-list'
-                  ? 'bg-yellow-400 text-black border-2 border-yellow-200'
-                  : 'bg-[#155E75] text-white keep-white hover:bg-[#1769AA]'
-              }`}
-              title="Alternative accessible text list of all map locations for screen readers"
-            >
-              {viewMode === 'map' ? <List className="w-4 h-4" /> : <MapIcon className="w-4 h-4" />}
-              <span>{viewMode === 'map' ? t('accessibleTextView') : t('mapViewMode')}</span>
-            </button>
-
-            <button
-              onClick={handleDetectGPS}
-              className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold bg-[#1769AA] text-white keep-white hover:bg-[#0284C7] transition-colors cursor-pointer"
-            >
-              <Compass className="w-4 h-4" />
-              <span>{t('gpsBtn')}</span>
-            </button>
-
-            {/* Base Tile Layer Picker */}
-            <div className="flex items-center bg-[#112A45] rounded-lg p-0.5 border border-slate-600 text-xs">
-              <button
-                onClick={() => setTileProvider('osm')}
-                className={`px-2.5 py-1 rounded text-xs font-bold transition-colors cursor-pointer ${tileProvider === 'osm' ? 'bg-[#0284C7] text-white keep-white' : 'text-slate-200 keep-white hover:text-white'}`}
+            {/* Dropdown 1: Sector Jump */}
+            <div className="flex items-center gap-1.5 text-xs">
+              <label htmlFor="sector-select" className="text-slate-300 keep-white font-medium hidden sm:inline">
+                Sector:
+              </label>
+              <select
+                id="sector-select"
+                value={selectedSector}
+                onChange={(e) => handleSectorChange(e.target.value)}
+                className="px-2.5 py-1.5 rounded-lg bg-[#112A45] border border-slate-600 text-white keep-white text-xs font-semibold cursor-pointer"
               >
-                OpenStreetMap
-              </button>
-              <button
-                onClick={() => setTileProvider('satellite')}
-                className={`px-2.5 py-1 rounded text-xs font-bold transition-colors cursor-pointer ${tileProvider === 'satellite' ? 'bg-[#0284C7] text-white keep-white' : 'text-slate-200 keep-white hover:text-white'}`}
+                <option value="all" className="bg-[#0B1F33] text-white">All Maharashtra (Overview)</option>
+                <option value="mahad" className="bg-[#0B1F33] text-white">Mahad — SOS #1042 & Savitri Basin</option>
+                <option value="mumbai" className="bg-[#0B1F33] text-white">Mumbai — Mithi River Basin</option>
+                <option value="chiplun" className="bg-[#0B1F33] text-white">Chiplun — Vashishti River Basin</option>
+                <option value="nagpur" className="bg-[#0B1F33] text-white">Nagpur — FIRMS Thermal Hotspots</option>
+                <option value="pune" className="bg-[#0B1F33] text-white">Pune — Mula-Mutha Basin</option>
+                <option value="kolhapur" className="bg-[#0B1F33] text-white">Kolhapur — Panchganga Basin</option>
+              </select>
+            </div>
+
+            {/* Dropdown 2: Base Map Style */}
+            <div className="flex items-center gap-1.5 text-xs">
+              <label htmlFor="tile-select" className="text-slate-300 keep-white font-medium hidden sm:inline">
+                Style:
+              </label>
+              <select
+                id="tile-select"
+                value={tileProvider}
+                onChange={(e) => setTileProvider(e.target.value)}
+                className="px-2.5 py-1.5 rounded-lg bg-[#112A45] border border-slate-600 text-white keep-white text-xs font-semibold cursor-pointer"
               >
-                Satellite
-              </button>
+                <option value="osm" className="bg-[#0B1F33] text-white">OpenStreetMap</option>
+                <option value="satellite" className="bg-[#0B1F33] text-white">Satellite Imagery</option>
+                <option value="topo" className="bg-[#0B1F33] text-white">Topographic Map</option>
+              </select>
+            </div>
+
+            {/* Dropdown 3: Map Layers Popover */}
+            <div className="relative">
               <button
-                onClick={() => setTileProvider('topo')}
-                className={`px-2.5 py-1 rounded text-xs font-bold transition-colors cursor-pointer ${tileProvider === 'topo' ? 'bg-[#0284C7] text-white keep-white' : 'text-slate-200 keep-white hover:text-white'}`}
+                onClick={() => setLayersDropdownOpen((prev) => !prev)}
+                className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#112A45] hover:bg-slate-800 border border-slate-600 text-white keep-white text-xs font-semibold cursor-pointer"
               >
-                Topographic
+                <Layers className="w-3.5 h-3.5 text-sky-400" />
+                <span className="keep-white">Map Layers ({activeLayerCount}/8) ▾</span>
               </button>
+
+              {layersDropdownOpen && (
+                <div className="absolute left-0 mt-2 w-64 rounded-xl navy-surface border border-slate-600 shadow-2xl p-3 z-50 space-y-2">
+                  <div className="flex items-center justify-between border-b border-slate-700 pb-1.5 text-[11px]">
+                    <span className="font-bold text-slate-300 keep-white">Toggle Map Layers</span>
+                    <button
+                      onClick={() => {
+                        const allOn = activeLayerCount < 8;
+                        setActiveLayers({
+                          rainRadar: allOn,
+                          floodBasins: allOn,
+                          fireHotspots: allOn,
+                          earthquakes: allOn,
+                          sos: allOn,
+                          shelters: allOn,
+                          hospitals: allOn,
+                          rescue: allOn
+                        });
+                      }}
+                      className="text-sky-400 keep-white font-semibold hover:underline cursor-pointer"
+                    >
+                      {activeLayerCount < 8 ? 'Enable All' : 'Hide All'}
+                    </button>
+                  </div>
+                  <div className="space-y-1">
+                    {layerOptions.map((opt) => (
+                      <label
+                        key={opt.key}
+                        className="flex items-center justify-between px-2 py-1.5 rounded-lg hover:bg-slate-800/70 text-xs text-white keep-white cursor-pointer"
+                      >
+                        <span className="keep-white">{opt.label}</span>
+                        <input
+                          type="checkbox"
+                          checked={activeLayers[opt.key]}
+                          onChange={() => toggleLayer(opt.key)}
+                          className="accent-[#1769AA] w-3.5 h-3.5 cursor-pointer"
+                        />
+                      </label>
+                    ))}
+                  </div>
+                </div>
+              )}
             </div>
           </div>
 
-          {/* 8 Live Operational Layer Toggles */}
-          <div className="flex flex-wrap items-center gap-1.5 text-xs">
-            <span className="text-slate-200 keep-white text-xs font-bold flex items-center gap-1 mr-1">
-              <Layers className="w-3.5 h-3.5 text-sky-400" />
-              Live Layers:
-            </span>
-
+          {/* Right Controls: GPS & Accessible List Toggle */}
+          <div className="flex items-center gap-2">
             <button
-              onClick={() => toggleLayer('rainRadar')}
-              className={`px-2.5 py-1 rounded text-xs font-bold border cursor-pointer ${
-                activeLayers.rainRadar
-                  ? 'bg-[#0284C7] text-white keep-white border-sky-300'
-                  : 'bg-[#112A45] text-slate-300 keep-white border-slate-600'
-              }`}
+              onClick={handleDetectGPS}
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold bg-[#1769AA] text-white keep-white hover:bg-[#125488] transition-colors cursor-pointer"
             >
-              🌧️ Rain Radar {radarTileUrl ? '(LIVE)' : ''}
+              <Compass className="w-3.5 h-3.5" />
+              <span>{t('gpsBtn')}</span>
             </button>
 
             <button
-              onClick={() => toggleLayer('floodBasins')}
-              className={`px-2.5 py-1 rounded text-xs font-bold border cursor-pointer ${
-                activeLayers.floodBasins
-                  ? 'bg-[#1769AA] text-white keep-white border-blue-300'
-                  : 'bg-[#112A45] text-slate-300 keep-white border-slate-600'
-              }`}
+              onClick={() => setViewMode(viewMode === 'map' ? 'accessible-list' : 'map')}
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold bg-[#112A45] border border-slate-600 text-white keep-white hover:bg-slate-800 transition-colors cursor-pointer"
             >
-              🌊 Flood Basins ({basins.length})
-            </button>
-
-            <button
-              onClick={() => toggleLayer('fireHotspots')}
-              className={`px-2.5 py-1 rounded text-xs font-bold border cursor-pointer ${
-                activeLayers.fireHotspots
-                  ? 'bg-[#F97316] text-white keep-white border-orange-300'
-                  : 'bg-[#112A45] text-slate-300 keep-white border-slate-600'
-              }`}
-            >
-              🔥 NASA FIRMS Fire ({fireHotspots.length})
-            </button>
-
-            <button
-              onClick={() => toggleLayer('earthquakes')}
-              className={`px-2.5 py-1 rounded text-xs font-bold border cursor-pointer ${
-                activeLayers.earthquakes
-                  ? 'bg-purple-700 text-white keep-white border-purple-400'
-                  : 'bg-[#112A45] text-slate-300 keep-white border-slate-600'
-              }`}
-            >
-              🔴 USGS Quakes ({earthquakes.length})
-            </button>
-
-            <button
-              onClick={() => toggleLayer('sos')}
-              className={`px-2.5 py-1 rounded text-xs font-bold border cursor-pointer ${
-                activeLayers.sos
-                  ? 'bg-[#DC2626] text-white keep-white border-red-300'
-                  : 'bg-[#112A45] text-slate-300 keep-white border-slate-600'
-              }`}
-            >
-              🆘 SOS ({sosReports.length})
-            </button>
-
-            <button
-              onClick={() => toggleLayer('shelters')}
-              className={`px-2.5 py-1 rounded text-xs font-bold border cursor-pointer ${
-                activeLayers.shelters
-                  ? 'bg-[#15803D] text-white keep-white border-emerald-400'
-                  : 'bg-[#112A45] text-slate-300 keep-white border-slate-600'
-              }`}
-            >
-              🏠 Shelters ({shelters.length})
-            </button>
-
-            <button
-              onClick={() => toggleLayer('hospitals')}
-              className={`px-2.5 py-1 rounded text-xs font-bold border cursor-pointer ${
-                activeLayers.hospitals
-                  ? 'bg-teal-700 text-white keep-white border-teal-400'
-                  : 'bg-[#112A45] text-slate-300 keep-white border-slate-600'
-              }`}
-            >
-              🏥 Hospitals ({hospitals.length})
-            </button>
-
-            <button
-              onClick={() => toggleLayer('rescue')}
-              className={`px-2.5 py-1 rounded text-xs font-bold border cursor-pointer ${
-                activeLayers.rescue
-                  ? 'bg-[#1769AA] text-white keep-white border-sky-400'
-                  : 'bg-[#112A45] text-slate-300 keep-white border-slate-600'
-              }`}
-            >
-              🚑 Teams ({rescueTeams.length})
+              {viewMode === 'map' ? <List className="w-3.5 h-3.5" /> : <MapIcon className="w-3.5 h-3.5" />}
+              <span>{viewMode === 'map' ? t('accessibleTextView') : t('mapViewMode')}</span>
             </button>
           </div>
-        </div>
-
-        {/* Provenance & Live Telemetry Status Bar (Navy surface so text is always crisp in Light & Dark mode) */}
-        <div className="navy-surface border-b border-slate-700 px-4 py-1.5 text-[11px] flex flex-wrap justify-between items-center gap-2">
-          <div className="flex flex-wrap items-center gap-3">
-            <span className="flex items-center gap-1.5 text-emerald-300 keep-white font-bold">
-              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
-              Open-Meteo + GloFAS River + CAMS Air + RainViewer + OSRM Routing: LIVE
-            </span>
-            <span className="text-slate-400 keep-white">|</span>
-            <span className="text-sky-300 keep-white font-semibold">
-              Active Dispatched Road Routes: {activeRoutes.length}
-            </span>
-          </div>
-          <span className="text-slate-200 keep-white font-mono">
-            Last Sync: {telemetry?.lastUpdated || 'Live Stream'}
-          </span>
         </div>
 
         {/* Main Map or Accessible List Display */}
