@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import Navbar from './components/Navbar';
+import Sidebar from './components/Sidebar';
 import LiveAlertBanner from './components/LiveAlertBanner';
 import HomeView from './components/HomeView';
 import MapView from './components/MapView';
@@ -25,6 +26,8 @@ import { ShieldAlert, X, PhoneCall, Flame, HeartHandshake, Shield, Database, Cop
 
 export default function App() {
   const [activeTab, setActiveTab] = useState('home');
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [regionScope, setRegionScope] = useState('maharashtra');
   const [lang, setLang] = useState('en');
   const [theme, setTheme] = useState('light');
   const [highContrast, setHighContrast] = useState(false);
@@ -227,7 +230,7 @@ export default function App() {
   };
 
   return (
-    <div className={`min-h-screen bg-[#0a0e17] text-slate-100 flex flex-col w-full max-w-full overflow-x-hidden transition-colors duration-200 ${highContrast ? 'high-contrast' : ''}`}>
+    <div className={`min-h-screen bg-[#090c10] text-slate-100 flex flex-col w-full max-w-full overflow-x-hidden transition-colors duration-200 ${highContrast ? 'high-contrast' : ''}`}>
       <a
         href="#main-content"
         className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[9999] focus:bg-yellow-400 focus:text-black focus:font-bold focus:p-3 focus:rounded-lg focus:shadow-2xl"
@@ -251,21 +254,40 @@ export default function App() {
         isSirenActive={isSirenActive}
         onToggleSiren={toggleSiren}
         onOpenSOSModal={() => setIsSOSModalOpen(true)}
+        onToggleSidebar={() => setSidebarOpen((prev) => !prev)}
+        regionScope={regionScope}
+        setRegionScope={setRegionScope}
         currentUser={currentUser}
       />
 
-      <LiveAlertBanner
-        alerts={opsState.alerts}
-        lang={lang}
-        onSelectAlert={(alt) => {
-          setSelectedAlert(alt);
-          setActiveTab('overview');
-        }}
-        onSpeakAlert={speakText}
-        onOpenContacts={() => setActiveTab('contacts')}
-      />
+      {activeTab !== 'home' && (
+        <LiveAlertBanner
+          alerts={opsState.alerts}
+          lang={lang}
+          onSelectAlert={(alt) => {
+            setSelectedAlert(alt);
+            setActiveTab('overview');
+          }}
+          onSpeakAlert={speakText}
+          onOpenContacts={() => setActiveTab('contacts')}
+        />
+      )}
 
-      <main id="main-content" className="flex-1 max-w-7xl w-full mx-auto px-3 sm:px-6 lg:px-8 py-5 md:py-8 overflow-x-hidden" role="main">
+      {/* Main Workspace: Left Sidebar Rail + Right Operational Viewport */}
+      <div className="flex flex-1 w-full max-w-full overflow-hidden">
+        <Sidebar
+          activeTab={activeTab}
+          setActiveTab={setActiveTab}
+          lang={lang}
+          isOpen={sidebarOpen}
+          onClose={() => setSidebarOpen(false)}
+          onOpenCloudConfig={() => setIsCloudConfigOpen(true)}
+          alertCount={opsState.alerts.length}
+          sosCount={opsState.sosReports.length}
+        />
+
+        <div className="flex-1 flex flex-col min-w-0 overflow-y-auto">
+          <main id="main-content" className="flex-1 w-full max-w-[1600px] mx-auto p-3 sm:p-5 lg:p-6" role="main">
         {activeTab === 'home' && (
           <HomeView
             alerts={opsState.alerts}
@@ -469,6 +491,8 @@ export default function App() {
           </div>
         </div>
       </footer>
+        </div>
+      </div>
 
       {/* Cloud DB (Supabase) & NASA FIRMS Key Modal */}
       {isCloudConfigOpen && (

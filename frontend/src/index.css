@@ -400,3 +400,31 @@ html:not(.dark-mode):not(.high-contrast) .navy-surface .text-slate-400,
 .card-hover:hover {
   transform: translateY(-2px);
 }
+
+/* Executive Command Center Dark Theme Defaults */
+html.dark-mode body,
+html.dark-mode {
+  background-color: #090C10 !important;
+  color: #FFFFFF !important;
+}
+
+html.dark-mode .leaflet-container {
+  background: #090C10 !important;
+}
+
+/* Thin Scrollbar for Sidebar & Data Panels */
+.scrollbar-thin::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+.scrollbar-thin::-webkit-scrollbar-track {
+  background: #090C10;
+}
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  background: #1A2230;
+  border-radius: 4px;
+}
+.scrollbar-thin::-webkit-scrollbar-thumb:hover {
+  background: #2A3548;
+}
+
