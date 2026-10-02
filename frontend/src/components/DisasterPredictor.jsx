@@ -131,16 +131,16 @@ export default function DisasterPredictor({
   return (
     <div className="space-y-5 pb-8">
       {/* Clean Top Header with Basin Selector Dropdown */}
-      <div className="navy-surface border border-slate-700 rounded-2xl p-5 shadow-sm space-y-4">
+      <div className="bg-white dark:bg-[#090c10] border border-slate-200 dark:border-[#1a2230] rounded-2xl p-5 shadow-xs space-y-4">
         <div className="flex flex-wrap items-center justify-between gap-4">
           <div>
-            <span className="text-[11px] font-bold uppercase tracking-wider text-sky-400 keep-white">
+            <span className="text-[11px] font-bold uppercase tracking-wider text-[#1769AA] dark:text-sky-400 font-mono">
               OBSERVED TELEMETRY + EXPLAINABLE RISK ENGINE
             </span>
-            <h1 className="text-xl sm:text-2xl font-bold text-white keep-white mt-0.5">
+            <h1 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white mt-0.5">
               River Basin & Multi-Hazard Risk Predictor
             </h1>
-            <p className="text-xs text-slate-300 keep-white max-w-2xl mt-1">
+            <p className="text-xs text-slate-600 dark:text-[#8e9bae] max-w-2xl mt-1">
               Separates observed sensor data (Open-Meteo, GloFAS River Discharge, NASA FIRMS, CAMS) from weighted model risk scores (0–100).
             </p>
           </div>
@@ -148,7 +148,7 @@ export default function DisasterPredictor({
           <div className="flex flex-wrap items-center gap-2">
             {/* Basin Selector Dropdown */}
             <div className="flex items-center gap-2">
-              <label htmlFor="basin-select" className="text-xs text-slate-300 keep-white font-medium">
+              <label htmlFor="basin-select" className="text-xs text-slate-600 dark:text-[#8e9bae] font-medium">
                 Select Basin:
               </label>
               <select
@@ -158,10 +158,10 @@ export default function DisasterPredictor({
                   const found = basins.find((b) => b.id === e.target.value);
                   if (found) handleSelectBasin(found);
                 }}
-                className="px-3 py-2 rounded-xl bg-[#112A45] border border-slate-600 text-white keep-white text-xs font-semibold cursor-pointer"
+                className="px-3 py-2 rounded-xl bg-slate-100 dark:bg-[#112A45] border border-slate-300 dark:border-slate-600 text-slate-900 dark:text-white text-xs font-semibold cursor-pointer"
               >
                 {basins.map((b) => (
-                  <option key={b.id} value={b.id} className="bg-[#0B1F33] text-white">
+                  <option key={b.id} value={b.id}>
                     {b.district} — {b.basinName} ({b.floodRisk?.score}/100)
                   </option>
                 ))}
@@ -171,7 +171,7 @@ export default function DisasterPredictor({
             <button
               onClick={handleRefreshAllLive}
               disabled={isSyncingLive}
-              className="flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-[#1769AA] hover:bg-[#125488] text-white keep-white font-semibold text-xs cursor-pointer"
+              className="flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-[#1769AA] hover:bg-[#125488] text-white font-semibold text-xs cursor-pointer"
             >
               <RefreshCw className={`w-3.5 h-3.5 ${isSyncingLive ? 'animate-spin' : ''}`} />
               <span>Sync APIs</span>
@@ -183,7 +183,7 @@ export default function DisasterPredictor({
                   `Risk Report: Flood Risk is ${explainableFlood.level} at ${explainableFlood.score} out of 100. Fire Risk is ${explainableFire.level} at ${explainableFire.score} out of 100.`
                 )
               }
-              className="flex items-center gap-1.5 px-3 py-2 rounded-xl bg-[#112A45] hover:bg-slate-800 text-white keep-white font-semibold text-xs border border-slate-600 cursor-pointer"
+              className="flex items-center gap-1.5 px-3 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-[#112A45] dark:hover:bg-slate-800 text-slate-800 dark:text-white font-semibold text-xs border border-slate-300 dark:border-slate-600 cursor-pointer"
             >
               <Volume2 className="w-3.5 h-3.5" />
               <span>Audio</span>
@@ -191,9 +191,9 @@ export default function DisasterPredictor({
           </div>
         </div>
 
-        <div className="text-xs font-mono text-slate-300 keep-white bg-[#112A45] px-3.5 py-2 rounded-xl border border-slate-700 flex flex-wrap items-center justify-between gap-2">
-          <span className="keep-white">Status: {liveSyncStatus}</span>
-          <span className="text-sky-300 keep-white font-semibold">
+        <div className="text-xs font-mono text-slate-700 dark:text-slate-300 bg-slate-50 dark:bg-[#112A45] px-3.5 py-2 rounded-xl border border-slate-200 dark:border-slate-700 flex flex-wrap items-center justify-between gap-2">
+          <span>Status: {liveSyncStatus}</span>
+          <span className="text-[#1769AA] dark:text-sky-300 font-semibold">
             Model: Weighted Multi-Factor Scoring
           </span>
         </div>

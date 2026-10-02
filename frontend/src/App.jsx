@@ -99,9 +99,11 @@ export default function App() {
     const root = document.documentElement;
     if (theme === 'dark') {
       root.classList.add('dark-mode');
+      root.classList.add('dark');
       root.classList.remove('light-mode');
     } else {
       root.classList.remove('dark-mode');
+      root.classList.remove('dark');
       root.classList.add('light-mode');
     }
   }, [theme]);

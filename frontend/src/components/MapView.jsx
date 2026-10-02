@@ -298,48 +298,49 @@ export default function MapView({
     <div className="space-y-3">
       <div className="flex flex-col h-[calc(100vh-150px)] min-h-[640px] bg-slate-950 rounded-2xl overflow-hidden border border-slate-800 shadow-lg relative">
         {/* Single Consolidated Map Control Bar with Dropdowns */}
-        <div className="navy-surface border-b border-slate-700 px-4 py-2.5 flex flex-wrap items-center justify-between gap-3 z-20">
+        {/* Single Consolidated Map Control Bar with Dropdowns */}
+        <div className="bg-white dark:bg-[#090c10] border-b border-slate-200 dark:border-[#1a2230] px-4 py-2.5 flex flex-wrap items-center justify-between gap-3 z-20">
           <div className="flex flex-wrap items-center gap-2.5">
-            <span className="text-xs font-bold text-white keep-white flex items-center gap-1.5 mr-1">
-              <Radio className="w-3.5 h-3.5 text-sky-400" />
+            <span className="text-xs font-bold text-slate-900 dark:text-white flex items-center gap-1.5 mr-1 font-mono">
+              <Radio className="w-3.5 h-3.5 text-[#1769AA]" />
               <span>GIS Operations Map</span>
             </span>
 
             {/* Dropdown 1: Sector Jump */}
             <div className="flex items-center gap-1.5 text-xs">
-              <label htmlFor="sector-select" className="text-slate-300 keep-white font-medium hidden sm:inline">
+              <label htmlFor="sector-select" className="text-slate-600 dark:text-[#8e9bae] font-medium hidden sm:inline">
                 Sector:
               </label>
               <select
                 id="sector-select"
                 value={selectedSector}
                 onChange={(e) => handleSectorChange(e.target.value)}
-                className="px-2.5 py-1.5 rounded-lg bg-[#112A45] border border-slate-600 text-white keep-white text-xs font-semibold cursor-pointer"
+                className="px-2.5 py-1.5 rounded-lg bg-slate-100 dark:bg-[#112A45] border border-slate-300 dark:border-slate-600 text-slate-900 dark:text-white text-xs font-semibold cursor-pointer"
               >
-                <option value="all" className="bg-[#0B1F33] text-white">All Maharashtra (Overview)</option>
-                <option value="mahad" className="bg-[#0B1F33] text-white">Mahad — SOS #1042 & Savitri Basin</option>
-                <option value="mumbai" className="bg-[#0B1F33] text-white">Mumbai — Mithi River Basin</option>
-                <option value="chiplun" className="bg-[#0B1F33] text-white">Chiplun — Vashishti River Basin</option>
-                <option value="nagpur" className="bg-[#0B1F33] text-white">Nagpur — FIRMS Thermal Hotspots</option>
-                <option value="pune" className="bg-[#0B1F33] text-white">Pune — Mula-Mutha Basin</option>
-                <option value="kolhapur" className="bg-[#0B1F33] text-white">Kolhapur — Panchganga Basin</option>
+                <option value="all">All Maharashtra (Overview)</option>
+                <option value="mahad">Mahad — SOS #1042 & Savitri Basin</option>
+                <option value="mumbai">Mumbai — Mithi River Basin</option>
+                <option value="chiplun">Chiplun — Vashishti River Basin</option>
+                <option value="nagpur">Nagpur — FIRMS Thermal Hotspots</option>
+                <option value="pune">Pune — Mula-Mutha Basin</option>
+                <option value="kolhapur">Kolhapur — Panchganga Basin</option>
               </select>
             </div>
 
             {/* Dropdown 2: Base Map Style */}
             <div className="flex items-center gap-1.5 text-xs">
-              <label htmlFor="tile-select" className="text-slate-300 keep-white font-medium hidden sm:inline">
+              <label htmlFor="tile-select" className="text-slate-600 dark:text-[#8e9bae] font-medium hidden sm:inline">
                 Style:
               </label>
               <select
                 id="tile-select"
                 value={tileProvider}
                 onChange={(e) => setTileProvider(e.target.value)}
-                className="px-2.5 py-1.5 rounded-lg bg-[#112A45] border border-slate-600 text-white keep-white text-xs font-semibold cursor-pointer"
+                className="px-2.5 py-1.5 rounded-lg bg-slate-100 dark:bg-[#112A45] border border-slate-300 dark:border-slate-600 text-slate-900 dark:text-white text-xs font-semibold cursor-pointer"
               >
-                <option value="osm" className="bg-[#0B1F33] text-white">OpenStreetMap</option>
-                <option value="satellite" className="bg-[#0B1F33] text-white">Satellite Imagery</option>
-                <option value="topo" className="bg-[#0B1F33] text-white">Topographic Map</option>
+                <option value="osm">OpenStreetMap</option>
+                <option value="satellite">Satellite Imagery</option>
+                <option value="topo">Topographic Map</option>
               </select>
             </div>
 
@@ -347,16 +348,16 @@ export default function MapView({
             <div className="relative">
               <button
                 onClick={() => setLayersDropdownOpen((prev) => !prev)}
-                className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#112A45] hover:bg-slate-800 border border-slate-600 text-white keep-white text-xs font-semibold cursor-pointer"
+                className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 dark:bg-[#112A45] dark:hover:bg-slate-800 border border-slate-300 dark:border-slate-600 text-slate-900 dark:text-white text-xs font-semibold cursor-pointer"
               >
-                <Layers className="w-3.5 h-3.5 text-sky-400" />
-                <span className="keep-white">Map Layers ({activeLayerCount}/8) ▾</span>
+                <Layers className="w-3.5 h-3.5 text-[#1769AA]" />
+                <span>Map Layers ({activeLayerCount}/8) ▾</span>
               </button>
 
               {layersDropdownOpen && (
-                <div className="absolute left-0 mt-2 w-64 rounded-xl navy-surface border border-slate-600 shadow-2xl p-3 z-50 space-y-2">
-                  <div className="flex items-center justify-between border-b border-slate-700 pb-1.5 text-[11px]">
-                    <span className="font-bold text-slate-300 keep-white">Toggle Map Layers</span>
+                <div className="absolute left-0 mt-2 w-64 rounded-xl bg-white dark:bg-[#111620] border border-slate-200 dark:border-[#1a2230] shadow-2xl p-3 z-50 space-y-2">
+                  <div className="flex items-center justify-between border-b border-slate-200 dark:border-slate-700 pb-1.5 text-[11px]">
+                    <span className="font-bold text-slate-900 dark:text-white">Toggle Map Layers</span>
                     <button
                       onClick={() => {
                         const allOn = activeLayerCount < 8;
@@ -371,7 +372,7 @@ export default function MapView({
                           rescue: allOn
                         });
                       }}
-                      className="text-sky-400 keep-white font-semibold hover:underline cursor-pointer"
+                      className="text-[#1769AA] dark:text-sky-400 font-semibold hover:underline cursor-pointer"
                     >
                       {activeLayerCount < 8 ? 'Enable All' : 'Hide All'}
                     </button>
@@ -380,9 +381,9 @@ export default function MapView({
                     {layerOptions.map((opt) => (
                       <label
                         key={opt.key}
-                        className="flex items-center justify-between px-2 py-1.5 rounded-lg hover:bg-slate-800/70 text-xs text-white keep-white cursor-pointer"
+                        className="flex items-center justify-between px-2 py-1.5 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800/70 text-xs text-slate-800 dark:text-slate-200 cursor-pointer"
                       >
-                        <span className="keep-white">{opt.label}</span>
+                        <span>{opt.label}</span>
                         <input
                           type="checkbox"
                           checked={activeLayers[opt.key]}
@@ -401,7 +402,7 @@ export default function MapView({
           <div className="flex items-center gap-2">
             <button
               onClick={handleDetectGPS}
-              className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold bg-[#1769AA] text-white keep-white hover:bg-[#125488] transition-colors cursor-pointer"
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold bg-[#1769AA] text-white hover:bg-[#125488] transition-colors cursor-pointer"
             >
               <Compass className="w-3.5 h-3.5" />
               <span>{t('gpsBtn')}</span>
@@ -409,7 +410,7 @@ export default function MapView({
 
             <button
               onClick={() => setViewMode(viewMode === 'map' ? 'accessible-list' : 'map')}
-              className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold bg-[#112A45] border border-slate-600 text-white keep-white hover:bg-slate-800 transition-colors cursor-pointer"
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-100 hover:bg-slate-200 dark:bg-[#112A45] dark:hover:bg-slate-800 border border-slate-300 dark:border-slate-600 text-slate-900 dark:text-white transition-colors cursor-pointer"
             >
               {viewMode === 'map' ? <List className="w-3.5 h-3.5" /> : <MapIcon className="w-3.5 h-3.5" />}
               <span>{viewMode === 'map' ? t('accessibleTextView') : t('mapViewMode')}</span>

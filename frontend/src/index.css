@@ -3,24 +3,27 @@
 @tailwind utilities;
 
 :root {
-  /* User's Recommended AI + Disaster Tech Palette */
-  --navy-primary: #0B1F33;
-  --teal-secondary: #155E75;
-  --ocean-blue: #1769AA;
-  --sky-blue: #0284C7;
-  --emergency-orange: #F97316;
-  --warning-amber: #F59E0B;
-  --danger-red: #DC2626;
-  --alert-red: #EF4444;
-  --safe-green: #15803D;
-  --safe-green-bright: #16A34A;
-  --bg-page: #F1F5F9;
-  --bg-offwhite: #F8FAFC;
-  --bg-card: #FFFFFF;
-  --text-main: #0F172A;
-  --text-dark-slate: #172033;
-  --text-secondary: #64748B;
-  --border-light: #CBD5E1;
+  /* Executive Command Center Palette */
+  --bg-page-light: #F8FAFC;
+  --bg-card-light: #FFFFFF;
+  --bg-subcard-light: #F1F5F9;
+  --border-light: #E2E8F0;
+  --text-primary-light: #0F172A;
+  --text-secondary-light: #334155;
+  --text-muted-light: #475569;
+
+  --bg-page-dark: #090C10;
+  --bg-card-dark: #111620;
+  --bg-subcard-dark: #0E121A;
+  --border-dark: #1A2230;
+  --text-primary-dark: #FFFFFF;
+  --text-secondary-dark: #CBD5E1;
+  --text-muted-dark: #8E9BAE;
+
+  --accent-blue: #1769AA;
+  --accent-red: #DC2626;
+  --accent-amber: #D97706;
+  --accent-green: #15803D;
 }
 
 * {
@@ -43,150 +46,234 @@ html {
 }
 
 body {
-  background-color: var(--bg-page);
-  color: var(--text-main);
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
   line-height: 1.6;
+  background-color: var(--bg-page-light);
+  color: var(--text-primary-light);
 }
 
 /* ==========================================================================
-   DEFAULT PALETTE: Clean Professional Navy (#0B1F33) + Off-White (#F1F5F9) + White Cards (#FFFFFF)
+   1. UNIVERSAL LIGHT MODE STYLING (Active when NOT .dark-mode and NOT .high-contrast)
    ========================================================================== */
-html:not(.dark-mode):not(.high-contrast) body,
-html:not(.dark-mode):not(.high-contrast) .bg-\[\#0a0e17\] {
-  background-color: #F1F5F9 !important;
+html:not(.dark-mode):not(.high-contrast) body {
+  background-color: #F8FAFC !important;
   color: #0F172A !important;
 }
 
-/* White cards with #CBD5E1 borders (outside .navy-surface) */
-html:not(.dark-mode):not(.high-contrast) .bg-slate-900,
-html:not(.dark-mode):not(.high-contrast) .bg-slate-900\/95,
-html:not(.dark-mode):not(.high-contrast) .bg-slate-900\/90,
-html:not(.dark-mode):not(.high-contrast) .bg-slate-900\/80 {
+/* Card Surfaces: Clean White with Crisp Hairline Slate Border */
+html:not(.dark-mode):not(.high-contrast) .bg-slate-900:not(button):not(.keep-dark):not(.active-nav-item):not(.logo-square),
+html:not(.dark-mode):not(.high-contrast) .bg-slate-900\/95:not(button),
+html:not(.dark-mode):not(.high-contrast) .bg-slate-900\/90:not(button),
+html:not(.dark-mode):not(.high-contrast) .bg-slate-900\/80:not(button),
+html:not(.dark-mode):not(.high-contrast) .bg-\[\#0a0e17\]:not(button),
+html:not(.dark-mode):not(.high-contrast) .bg-\[\#090c10\]:not(button):not(.keep-dark):not(.active-nav-item),
+html:not(.dark-mode):not(.high-contrast) .bg-\[\#111620\]:not(button):not(.keep-dark),
+html:not(.dark-mode):not(.high-contrast) .navy-surface:not(button):not(.keep-dark) {
   background-color: #FFFFFF !important;
   color: #0F172A !important;
-  border-color: #CBD5E1 !important;
-  box-shadow: 0 2px 8px -2px rgba(11, 31, 51, 0.07), 0 1px 3px -1px rgba(11, 31, 51, 0.05) !important;
+  border-color: #E2E8F0 !important;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.04), 0 1px 2px -1px rgba(0, 0, 0, 0.04) !important;
 }
 
-/* Off-white secondary surfaces (#F8FAFC) */
-html:not(.dark-mode):not(.high-contrast) .bg-slate-950,
-html:not(.dark-mode):not(.high-contrast) .bg-slate-950\/90,
-html:not(.dark-mode):not(.high-contrast) .bg-slate-950\/80,
-html:not(.dark-mode):not(.high-contrast) .bg-slate-950\/70,
-html:not(.dark-mode):not(.high-contrast) .bg-slate-950\/60 {
+/* Sub-Cards, Inner Tables & Panel Surfaces: Soft Slate Off-White (#F8FAFC / #F1F5F9) */
+html:not(.dark-mode):not(.high-contrast) .bg-slate-950:not(button):not(.keep-dark),
+html:not(.dark-mode):not(.high-contrast) .bg-slate-950\/90:not(button),
+html:not(.dark-mode):not(.high-contrast) .bg-slate-950\/80:not(button),
+html:not(.dark-mode):not(.high-contrast) .bg-slate-950\/70:not(button),
+html:not(.dark-mode):not(.high-contrast) .bg-slate-950\/60:not(button),
+html:not(.dark-mode):not(.high-contrast) .bg-\[\#0e121a\]:not(button):not(.keep-dark),
+html:not(.dark-mode):not(.high-contrast) .bg-\[\#112A45\]:not(button):not(.keep-dark) {
   background-color: #F8FAFC !important;
-  color: #172033 !important;
-  border-color: #CBD5E1 !important;
+  color: #0F172A !important;
+  border-color: #E2E8F0 !important;
 }
 
-html:not(.dark-mode):not(.high-contrast) .bg-slate-800,
-html:not(.dark-mode):not(.high-contrast) .bg-slate-800\/90,
-html:not(.dark-mode):not(.high-contrast) .bg-slate-800\/80,
-html:not(.dark-mode):not(.high-contrast) .bg-slate-800\/70,
-html:not(.dark-mode):not(.high-contrast) .bg-slate-800\/60 {
+html:not(.dark-mode):not(.high-contrast) .bg-slate-800:not(button):not(.keep-dark):not(.active-nav-item),
+html:not(.dark-mode):not(.high-contrast) .bg-slate-800\/90:not(button),
+html:not(.dark-mode):not(.high-contrast) .bg-slate-800\/80:not(button),
+html:not(.dark-mode):not(.high-contrast) .bg-slate-800\/70:not(button),
+html:not(.dark-mode):not(.high-contrast) .bg-slate-800\/60:not(button),
+html:not(.dark-mode):not(.high-contrast) .bg-\[\#161c28\]:not(button):not(.keep-dark) {
   background-color: #F1F5F9 !important;
-  color: #172033 !important;
-  border-color: #CBD5E1 !important;
+  color: #1E293B !important;
+  border-color: #E2E8F0 !important;
 }
 
-html:not(.dark-mode):not(.high-contrast) .bg-slate-800:hover {
+html:not(.dark-mode):not(.high-contrast) .bg-slate-800:not(button):hover {
   background-color: #E2E8F0 !important;
 }
 
-/* Typography in Default Clean Palette */
-html:not(.dark-mode):not(.high-contrast) .text-white:not(.keep-white),
-html:not(.dark-mode):not(.high-contrast) .text-slate-100:not(.keep-white),
-html:not(.dark-mode):not(.high-contrast) .text-slate-200:not(.keep-white) {
+/* ==========================================================================
+   2. TYPOGRAPHY & CONTRAST IN LIGHT MODE (WCAG AAA Compliant)
+   ========================================================================== */
+html:not(.dark-mode):not(.high-contrast) h1,
+html:not(.dark-mode):not(.high-contrast) h2,
+html:not(.dark-mode):not(.high-contrast) h3,
+html:not(.dark-mode):not(.high-contrast) h4,
+html:not(.dark-mode):not(.high-contrast) h5,
+html:not(.dark-mode):not(.high-contrast) h6 {
   color: #0F172A !important;
 }
 
-html:not(.dark-mode):not(.high-contrast) .text-slate-300:not(.keep-white) {
-  color: #172033 !important;
+/* Primary text in containers */
+html:not(.dark-mode):not(.high-contrast) .text-white:not(.keep-white):not(.btn-text),
+html:not(.dark-mode):not(.high-contrast) .text-slate-100:not(.keep-white):not(.btn-text),
+html:not(.dark-mode):not(.high-contrast) .text-slate-200:not(.keep-white):not(.btn-text) {
+  color: #0F172A !important;
 }
 
-html:not(.dark-mode):not(.high-contrast) .text-slate-400:not(.keep-white),
-html:not(.dark-mode):not(.high-contrast) .text-slate-500:not(.keep-white) {
-  color: #475569 !important;
+html:not(.dark-mode):not(.high-contrast) .text-slate-300:not(.keep-white):not(.btn-text) {
+  color: #1E293B !important;
 }
 
-/* Borders (#CBD5E1) */
+/* Secondary labels: crisp high-contrast slate (never washed out) */
+html:not(.dark-mode):not(.high-contrast) .text-slate-400:not(.keep-white):not(.btn-text),
+html:not(.dark-mode):not(.high-contrast) .text-slate-500:not(.keep-white):not(.btn-text),
+html:not(.dark-mode):not(.high-contrast) .text-\[\#8e9bae\]:not(.keep-white):not(.btn-text),
+html:not(.dark-mode):not(.high-contrast) .text-\[\#637286\]:not(.keep-white):not(.btn-text) {
+  color: #334155 !important;
+}
+
+html:not(.dark-mode):not(.high-contrast) .text-slate-600 {
+  color: #1E293B !important;
+}
+
+/* Hairline Borders in Light Mode */
 html:not(.dark-mode):not(.high-contrast) .border-slate-800,
 html:not(.dark-mode):not(.high-contrast) .border-slate-800\/80,
 html:not(.dark-mode):not(.high-contrast) .border-slate-700,
 html:not(.dark-mode):not(.high-contrast) .border-slate-700\/80,
-html:not(.dark-mode):not(.high-contrast) .border-slate-900 {
+html:not(.dark-mode):not(.high-contrast) .border-slate-900,
+html:not(.dark-mode):not(.high-contrast) .border-\[\#1a2230\] {
+  border-color: #E2E8F0 !important;
+}
+
+/* ==========================================================================
+   3. DROPDOWNS & FORM INPUTS IN LIGHT MODE
+   Eliminates black-on-navy option bugs completely
+   ========================================================================== */
+html:not(.dark-mode):not(.high-contrast) select {
+  background-color: #FFFFFF !important;
+  color: #0F172A !important;
   border-color: #CBD5E1 !important;
 }
 
-/* Semantic Color Accents in Default Palette */
-html:not(.dark-mode):not(.high-contrast) .text-cyan-400,
-html:not(.dark-mode):not(.high-contrast) .text-cyan-300,
-html:not(.dark-mode):not(.high-contrast) .text-sky-400,
-html:not(.dark-mode):not(.high-contrast) .text-sky-300,
-html:not(.dark-mode):not(.high-contrast) .text-sky-500,
-html:not(.dark-mode):not(.high-contrast) .text-blue-400,
-html:not(.dark-mode):not(.high-contrast) .text-blue-300 {
-  color: #1769AA !important;
+html:not(.dark-mode):not(.high-contrast) select option {
+  background-color: #FFFFFF !important;
+  color: #0F172A !important;
 }
 
-html:not(.dark-mode):not(.high-contrast) .text-teal-400,
-html:not(.dark-mode):not(.high-contrast) .text-teal-300 {
-  color: #155E75 !important;
+html:not(.dark-mode):not(.high-contrast) input:not([type="checkbox"]):not([type="radio"]):not([type="range"]),
+html:not(.dark-mode):not(.high-contrast) textarea {
+  background-color: #FFFFFF !important;
+  color: #0F172A !important;
+  border-color: #CBD5E1 !important;
 }
 
-html:not(.dark-mode):not(.high-contrast) .text-emerald-400,
-html:not(.dark-mode):not(.high-contrast) .text-emerald-300,
-html:not(.dark-mode):not(.high-contrast) .text-emerald-500 {
-  color: #15803D !important;
+html:not(.dark-mode):not(.high-contrast) input::placeholder,
+html:not(.dark-mode):not(.high-contrast) textarea::placeholder {
+  color: #64748B !important;
+  opacity: 1 !important;
 }
 
-html:not(.dark-mode):not(.high-contrast) .text-amber-400,
-html:not(.dark-mode):not(.high-contrast) .text-amber-300,
-html:not(.dark-mode):not(.high-contrast) .text-amber-500,
-html:not(.dark-mode):not(.high-contrast) .text-yellow-300 {
-  color: #B45309 !important;
+/* ==========================================================================
+   4. SOLID BUTTONS & PILLS (100% Crisp White Text Guaranteed)
+   ========================================================================== */
+/* Active Sidebar Pill & Logo Box in Light Mode */
+html:not(.dark-mode):not(.high-contrast) .active-nav-item,
+html:not(.dark-mode):not(.high-contrast) button.bg-slate-900,
+html:not(.dark-mode):not(.high-contrast) .logo-square {
+  background-color: #0F172A !important;
+  color: #FFFFFF !important;
 }
 
-html:not(.dark-mode):not(.high-contrast) .text-orange-400,
-html:not(.dark-mode):not(.high-contrast) .text-orange-300,
-html:not(.dark-mode):not(.high-contrast) .text-orange-500 {
-  color: #C2410C !important;
+html:not(.dark-mode):not(.high-contrast) .active-nav-item *,
+html:not(.dark-mode):not(.high-contrast) button.bg-slate-900 *,
+html:not(.dark-mode):not(.high-contrast) .logo-square * {
+  color: #FFFFFF !important;
 }
 
-html:not(.dark-mode):not(.high-contrast) .text-red-400,
-html:not(.dark-mode):not(.high-contrast) .text-red-300,
-html:not(.dark-mode):not(.high-contrast) .text-red-500 {
-  color: #DC2626 !important;
+/* Red Emergency / SOS Buttons */
+.bg-red-600,
+.bg-red-700,
+.bg-\[\#dc2626\],
+.bg-\[\#DC2626\],
+.bg-\[\#ef4444\],
+.bg-\[\#EF4444\] {
+  background-color: #DC2626 !important;
+  color: #FFFFFF !important;
 }
 
-html:not(.dark-mode):not(.high-contrast) .text-purple-400,
-html:not(.dark-mode):not(.high-contrast) .text-purple-300,
-html:not(.dark-mode):not(.high-contrast) .text-indigo-400,
-html:not(.dark-mode):not(.high-contrast) .text-indigo-300 {
-  color: #1769AA !important;
+.bg-red-600 *,
+.bg-red-700 *,
+.bg-\[\#dc2626\] *,
+.bg-\[\#DC2626\] *,
+.bg-\[\#ef4444\] *,
+.bg-\[\#EF4444\] * {
+  color: #FFFFFF !important;
 }
 
-/* Soft Tinted Badges & Alert Boxes in Default Light Mode */
-html:not(.dark-mode):not(.high-contrast) .bg-cyan-950,
-html:not(.dark-mode):not(.high-contrast) .bg-cyan-950\/90,
-html:not(.dark-mode):not(.high-contrast) .bg-cyan-950\/80,
-html:not(.dark-mode):not(.high-contrast) .bg-cyan-950\/50,
-html:not(.dark-mode):not(.high-contrast) .bg-cyan-950\/40,
-html:not(.dark-mode):not(.high-contrast) .bg-cyan-950\/30,
-html:not(.dark-mode):not(.high-contrast) .bg-sky-950,
-html:not(.dark-mode):not(.high-contrast) .bg-teal-950,
-html:not(.dark-mode):not(.high-contrast) .bg-blue-950,
-html:not(.dark-mode):not(.high-contrast) .bg-blue-950\/60,
-html:not(.dark-mode):not(.high-contrast) .bg-blue-950\/40,
-html:not(.dark-mode):not(.high-contrast) .bg-indigo-950,
-html:not(.dark-mode):not(.high-contrast) .bg-indigo-950\/40,
-html:not(.dark-mode):not(.high-contrast) .bg-purple-950\/40 {
-  background-color: #E0F2FE !important;
-  color: #0B1F33 !important;
-  border-color: #7DD3FC !important;
+/* Blue Action & Dispatch Buttons */
+.bg-cyan-600,
+.bg-blue-600,
+.bg-indigo-600,
+.bg-\[\#1769aa\],
+.bg-\[\#1769AA\],
+.bg-\[\#0284c7\],
+.bg-\[\#0284C7\] {
+  background-color: #1769AA !important;
+  color: #FFFFFF !important;
 }
 
+.bg-cyan-600 *,
+.bg-blue-600 *,
+.bg-indigo-600 *,
+.bg-\[\#1769aa\] *,
+.bg-\[\#1769AA\] *,
+.bg-\[\#0284c7\] *,
+.bg-\[\#0284C7\] * {
+  color: #FFFFFF !important;
+}
+
+/* Green Safe & Operational Badges */
+.bg-emerald-600,
+.bg-\[\#15803d\],
+.bg-\[\#15803D\],
+.bg-\[\#16a34a\] {
+  background-color: #15803D !important;
+  color: #FFFFFF !important;
+}
+
+.bg-emerald-600 *,
+.bg-\[\#15803d\] *,
+.bg-\[\#15803D\] *,
+.bg-\[\#16a34a\] * {
+  color: #FFFFFF !important;
+}
+
+/* Orange Warning Buttons */
+.bg-orange-600,
+.bg-\[\#f97316\],
+.bg-\[\#F97316\] {
+  background-color: #EA580C !important;
+  color: #FFFFFF !important;
+}
+
+.bg-orange-600 *,
+.bg-\[\#f97316\] *,
+.bg-\[\#F97316\] * {
+  color: #FFFFFF !important;
+}
+
+/* Universal keep-white class */
+.keep-white,
+.keep-white * {
+  color: #FFFFFF !important;
+}
+
+/* ==========================================================================
+   5. LIGHT MODE SOFT TINTED BADGES (Red, Amber, Green, Blue)
+   ========================================================================== */
 html:not(.dark-mode):not(.high-contrast) .bg-red-950,
 html:not(.dark-mode):not(.high-contrast) .bg-red-950\/85,
 html:not(.dark-mode):not(.high-contrast) .bg-red-950\/80,
@@ -206,8 +293,8 @@ html:not(.dark-mode):not(.high-contrast) .bg-emerald-950\/60,
 html:not(.dark-mode):not(.high-contrast) .bg-emerald-950\/40,
 html:not(.dark-mode):not(.high-contrast) .bg-emerald-950\/30,
 html:not(.dark-mode):not(.high-contrast) .bg-emerald-950\/20 {
-  background-color: #DCFCE7 !important;
-  color: #14532D !important;
+  background-color: #F0FDF4 !important;
+  color: #166534 !important;
   border-color: #86EFAC !important;
 }
 
@@ -216,132 +303,95 @@ html:not(.dark-mode):not(.high-contrast) .bg-amber-950\/80,
 html:not(.dark-mode):not(.high-contrast) .bg-amber-950\/60,
 html:not(.dark-mode):not(.high-contrast) .bg-amber-950\/40,
 html:not(.dark-mode):not(.high-contrast) .bg-amber-950\/30,
-html:not(.dark-mode):not(.high-contrast) .bg-orange-950,
-html:not(.dark-mode):not(.high-contrast) .bg-orange-950\/60,
-html:not(.dark-mode):not(.high-contrast) .bg-orange-950\/40 {
-  background-color: #FFF7ED !important;
-  color: #9A3412 !important;
-  border-color: #FDBA74 !important;
+html:not(.dark-mode):not(.high-contrast) .bg-orange-950 {
+  background-color: #FFFBEB !important;
+  color: #92400E !important;
+  border-color: #FCD34D !important;
 }
 
-/* Primary Buttons -> Ocean Blue (#1769AA) / Sky Blue (#0284C7) */
-html:not(.dark-mode):not(.high-contrast) .bg-cyan-600,
-html:not(.dark-mode):not(.high-contrast) .bg-blue-600,
-html:not(.dark-mode):not(.high-contrast) .bg-indigo-600,
-html:not(.dark-mode):not(.high-contrast) .bg-purple-600 {
-  background-color: #1769AA !important;
-  color: #FFFFFF !important;
+html:not(.dark-mode):not(.high-contrast) .bg-cyan-950,
+html:not(.dark-mode):not(.high-contrast) .bg-blue-950,
+html:not(.dark-mode):not(.high-contrast) .bg-sky-950 {
+  background-color: #F0F9FF !important;
+  color: #075985 !important;
+  border-color: #BAE6FD !important;
 }
 
-html:not(.dark-mode):not(.high-contrast) .bg-cyan-600:hover,
-html:not(.dark-mode):not(.high-contrast) .bg-blue-600:hover,
-html:not(.dark-mode):not(.high-contrast) .bg-indigo-600:hover,
-html:not(.dark-mode):not(.high-contrast) .bg-purple-600:hover {
-  background-color: #0284C7 !important;
-  color: #FFFFFF !important;
+/* Semantic text colors in light mode */
+html:not(.dark-mode):not(.high-contrast) .text-red-400,
+html:not(.dark-mode):not(.high-contrast) .text-red-500 {
+  color: #DC2626 !important;
 }
 
-/* Safe Buttons -> Forest Green (#15803D) */
-html:not(.dark-mode):not(.high-contrast) .bg-emerald-600 {
-  background-color: #15803D !important;
-  color: #FFFFFF !important;
-}
-html:not(.dark-mode):not(.high-contrast) .bg-emerald-600:hover {
-  background-color: #16A34A !important;
+html:not(.dark-mode):not(.high-contrast) .text-amber-400,
+html:not(.dark-mode):not(.high-contrast) .text-amber-500 {
+  color: #D97706 !important;
 }
 
-/* Action / High Risk Buttons -> Emergency Orange (#F97316) */
-html:not(.dark-mode):not(.high-contrast) .bg-orange-600 {
-  background-color: #F97316 !important;
-  color: #FFFFFF !important;
+html:not(.dark-mode):not(.high-contrast) .text-emerald-400,
+html:not(.dark-mode):not(.high-contrast) .text-emerald-500 {
+  color: #15803D !important;
 }
 
-/* Danger / Critical Buttons -> Alert Red (#DC2626) */
-html:not(.dark-mode):not(.high-contrast) .bg-red-600 {
-  background-color: #DC2626 !important;
-  color: #FFFFFF !important;
+html:not(.dark-mode):not(.high-contrast) .text-cyan-400,
+html:not(.dark-mode):not(.high-contrast) .text-sky-400,
+html:not(.dark-mode):not(.high-contrast) .text-blue-400 {
+  color: #1769AA !important;
 }
 
 /* ==========================================================================
-   DEEP NAVY (#0B1F33) SURFACES:
-   CRITICAL FIX: Any nested bg-slate-900 / 950 / 800 INSIDE .navy-surface
-   MUST stay Dark Navy (#112A45 / #163554) so white text inside .navy-surface
-   NEVER turns into white-text-on-white-background in Light Mode!
+   6. EXECUTIVE COMMAND CENTER DARK THEME (Active when .dark-mode or .dark)
    ========================================================================== */
-html:not(.dark-mode):not(.high-contrast) .navy-surface,
-.navy-surface {
-  background-color: #0B1F33 !important;
+html.dark-mode body,
+html.dark-mode,
+html.dark body,
+html.dark {
+  background-color: #090C10 !important;
   color: #FFFFFF !important;
 }
 
-html:not(.dark-mode):not(.high-contrast) .navy-surface .bg-slate-900,
-html:not(.dark-mode):not(.high-contrast) .navy-surface .bg-slate-900\/95,
-html:not(.dark-mode):not(.high-contrast) .navy-surface .bg-slate-900\/90,
-html:not(.dark-mode):not(.high-contrast) .navy-surface .bg-slate-900\/80,
-html:not(.dark-mode):not(.high-contrast) .navy-surface .bg-slate-950,
-html:not(.dark-mode):not(.high-contrast) .navy-surface .bg-slate-950\/90,
-html:not(.dark-mode):not(.high-contrast) .navy-surface .bg-slate-800,
-html:not(.dark-mode):not(.high-contrast) .navy-surface .bg-slate-800\/90,
-html:not(.dark-mode):not(.high-contrast) .navy-surface .bg-slate-800\/80 {
-  background-color: #112A45 !important;
+html.dark-mode .active-nav-item,
+html.dark .active-nav-item {
+  background-color: #FFFFFF !important;
+  color: #000000 !important;
+}
+
+html.dark-mode .active-nav-item *,
+html.dark .active-nav-item * {
+  color: #000000 !important;
+}
+
+html.dark-mode .logo-square,
+html.dark .logo-square {
+  background-color: #FFFFFF !important;
+  color: #090C10 !important;
+}
+
+html.dark-mode .logo-square *,
+html.dark .logo-square * {
+  color: #090C10 !important;
+}
+
+html.dark-mode select,
+html.dark select {
+  background-color: #111620 !important;
   color: #FFFFFF !important;
-  border-color: #334155 !important;
+  border-color: #1A2230 !important;
 }
 
-html:not(.dark-mode):not(.high-contrast) .navy-surface .bg-slate-800:hover {
-  background-color: #1E3A5F !important;
+html.dark-mode select option,
+html.dark select option {
+  background-color: #090C10 !important;
   color: #FFFFFF !important;
 }
 
-html:not(.dark-mode):not(.high-contrast) .navy-surface .text-white,
-html:not(.dark-mode):not(.high-contrast) .navy-surface .text-slate-100,
-html:not(.dark-mode):not(.high-contrast) .navy-surface .text-slate-200,
-html:not(.dark-mode):not(.high-contrast) .navy-surface .text-slate-300,
-html:not(.dark-mode):not(.high-contrast) .navy-surface .keep-white,
-.navy-surface .text-white,
-.navy-surface .text-slate-100,
-.navy-surface .text-slate-200,
-.navy-surface .text-slate-300,
-.navy-surface .keep-white {
-  color: #FFFFFF !important;
-}
-
-html:not(.dark-mode):not(.high-contrast) .navy-surface .text-sky-300,
-html:not(.dark-mode):not(.high-contrast) .navy-surface .text-sky-400,
-html:not(.dark-mode):not(.high-contrast) .navy-surface .text-cyan-300,
-html:not(.dark-mode):not(.high-contrast) .navy-surface .text-cyan-400 {
-  color: #7DD3FC !important;
-}
-
-html:not(.dark-mode):not(.high-contrast) .navy-surface .text-emerald-300,
-html:not(.dark-mode):not(.high-contrast) .navy-surface .text-emerald-400 {
-  color: #6EE7B7 !important;
-}
-
-html:not(.dark-mode):not(.high-contrast) .navy-surface .text-amber-300,
-html:not(.dark-mode):not(.high-contrast) .navy-surface .text-amber-400 {
-  color: #FCD34D !important;
-}
-
-html:not(.dark-mode):not(.high-contrast) .navy-surface .text-slate-400,
-.navy-surface .text-slate-400 {
-  color: #E2E8F0 !important;
-}
-
-/* Solid badges & buttons always keep white text */
-.bg-red-600,
-.bg-emerald-600,
-.bg-cyan-600,
-.bg-blue-600,
-.bg-indigo-600,
-.bg-orange-600,
-.bg-purple-600,
-.keep-white {
-  color: #FFFFFF !important;
+html.dark-mode .leaflet-container,
+html.dark .leaflet-container {
+  background: #090C10 !important;
 }
 
 /* ==========================================================================
-   ACCESSIBILITY: HIGH CONTRAST MODE (WCAG AAA FOR VISUALLY IMPAIRED)
+   7. ACCESSIBILITY: HIGH CONTRAST MODE (WCAG AAA)
    ========================================================================== */
 .high-contrast,
 .high-contrast body,
@@ -401,30 +451,22 @@ html:not(.dark-mode):not(.high-contrast) .navy-surface .text-slate-400,
   transform: translateY(-2px);
 }
 
-/* Executive Command Center Dark Theme Defaults */
-html.dark-mode body,
-html.dark-mode {
-  background-color: #090C10 !important;
-  color: #FFFFFF !important;
-}
-
-html.dark-mode .leaflet-container {
-  background: #090C10 !important;
-}
-
 /* Thin Scrollbar for Sidebar & Data Panels */
 .scrollbar-thin::-webkit-scrollbar {
   width: 5px;
   height: 5px;
 }
 .scrollbar-thin::-webkit-scrollbar-track {
-  background: #090C10;
+  background: transparent;
 }
 .scrollbar-thin::-webkit-scrollbar-thumb {
-  background: #1A2230;
+  background: #CBD5E1;
   border-radius: 4px;
 }
-.scrollbar-thin::-webkit-scrollbar-thumb:hover {
-  background: #2A3548;
+html.dark-mode .scrollbar-thin::-webkit-scrollbar-thumb,
+html.dark .scrollbar-thin::-webkit-scrollbar-thumb {
+  background: #1A2230;
 }
-
+.scrollbar-thin::-webkit-scrollbar-thumb:hover {
+  background: #94A3B8;
+}

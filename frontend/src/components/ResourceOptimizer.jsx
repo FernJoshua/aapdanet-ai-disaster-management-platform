@@ -158,16 +158,16 @@ export default function ResourceOptimizer({
   return (
     <div className="space-y-5 pb-8">
       {/* Clean Header Banner with View Dropdown */}
-      <div className="navy-surface border border-slate-700 rounded-2xl p-5 shadow-sm space-y-4">
+      <div className="bg-white dark:bg-[#090c10] border border-slate-200 dark:border-[#1a2230] rounded-2xl p-5 shadow-xs space-y-4">
         <div className="flex flex-wrap items-center justify-between gap-4">
           <div>
-            <span className="text-[11px] font-bold uppercase tracking-wider text-sky-400 keep-white">
+            <span className="text-[11px] font-bold uppercase tracking-wider text-[#1769AA] dark:text-sky-400 font-mono">
               {t('optTitle')}
             </span>
-            <h1 className="text-xl sm:text-2xl font-bold text-white keep-white mt-0.5">
+            <h1 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white mt-0.5">
               {t('optSubtitle')}
             </h1>
-            <p className="text-xs text-slate-300 keep-white max-w-2xl mt-1">
+            <p className="text-xs text-slate-600 dark:text-[#8e9bae] max-w-2xl mt-1">
               {t('optDesc')}
             </p>
           </div>
@@ -175,25 +175,25 @@ export default function ResourceOptimizer({
           <div className="flex flex-wrap items-center gap-2">
             {/* View Filter Dropdown */}
             <div className="flex items-center gap-1.5 text-xs">
-              <label htmlFor="dispatch-view-select" className="text-slate-300 keep-white font-medium">
+              <label htmlFor="dispatch-view-select" className="text-slate-600 dark:text-[#8e9bae] font-medium">
                 View:
               </label>
               <select
                 id="dispatch-view-select"
                 value={viewMode}
                 onChange={(e) => setViewMode(e.target.value)}
-                className="px-3 py-2 rounded-xl bg-[#112A45] border border-slate-600 text-white keep-white text-xs font-semibold cursor-pointer"
+                className="px-3 py-2 rounded-xl bg-slate-100 dark:bg-[#112A45] border border-slate-300 dark:border-slate-600 text-slate-900 dark:text-white text-xs font-semibold cursor-pointer"
               >
-                <option value="all" className="bg-[#0B1F33] text-white">
+                <option value="all">
                   All Active Dispatch Modules
                 </option>
-                <option value="sos-queue" className="bg-[#0B1F33] text-white">
+                <option value="sos-queue">
                   SOS Road Dispatch Queue ({sosReports.length})
                 </option>
-                <option value="matrix" className="bg-[#0B1F33] text-white">
+                <option value="matrix">
                   Sector Allocation Matrix ({activeSectors.length})
                 </option>
-                <option value="relieved" className="bg-[#0B1F33] text-white">
+                <option value="relieved">
                   Resolved & Relieved Archive ({relievedArchive.length})
                 </option>
               </select>
@@ -202,7 +202,7 @@ export default function ResourceOptimizer({
             <button
               onClick={handleRunOptimization}
               disabled={isOptimizing}
-              className="keep-white flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-[#1769AA] hover:bg-[#125488] text-white font-semibold text-xs cursor-pointer"
+              className="flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-[#1769AA] hover:bg-[#125488] text-white font-semibold text-xs cursor-pointer"
             >
               <Cpu className={`w-3.5 h-3.5 ${isOptimizing ? 'animate-spin' : ''}`} />
               <span>{isOptimizing ? 'Solving...' : t('optRunBtn')}</span>
@@ -214,7 +214,7 @@ export default function ResourceOptimizer({
                   `Resource Dispatch Status: ${activeSectors.length} active sectors. ${totalBoats} rescue boats, ${totalAmbulances} ambulances, and ${totalFire} fire engines deployed.`
                 )
               }
-              className="flex items-center gap-1.5 px-3 py-2 rounded-xl bg-[#112A45] hover:bg-slate-800 text-white keep-white font-semibold text-xs border border-slate-600 cursor-pointer"
+              className="flex items-center gap-1.5 px-3 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-[#112A45] dark:hover:bg-slate-800 text-slate-800 dark:text-white font-semibold text-xs border border-slate-300 dark:border-slate-600 cursor-pointer"
             >
               <Volume2 className="w-3.5 h-3.5" />
               <span>Audio</span>
@@ -223,7 +223,7 @@ export default function ResourceOptimizer({
         </div>
 
         {/* Clean 5-Item Fleet Summary Bar */}
-        <div className="grid grid-cols-2 sm:grid-cols-5 gap-3 pt-2 border-t border-slate-700/80">
+        <div className="grid grid-cols-2 sm:grid-cols-5 gap-3 pt-2 border-t border-slate-200 dark:border-slate-700/80">
           {[
             { label: 'Rescue Boats', val: `${totalBoats} / ${inventory.boats}`, icon: LifeBuoy },
             { label: '108 Ambulances', val: `${totalAmbulances} / ${inventory.ambulances}`, icon: Activity },
@@ -233,12 +233,12 @@ export default function ResourceOptimizer({
           ].map((item, idx) => {
             const Icon = item.icon;
             return (
-              <div key={idx} className="bg-[#112A45] border border-slate-700 rounded-xl p-3">
-                <div className="flex items-center justify-between text-[11px] text-slate-300 keep-white font-medium">
-                  <span className="keep-white">{item.label}</span>
-                  <Icon className="w-3.5 h-3.5 text-sky-400" />
+              <div key={idx} className="bg-slate-50 dark:bg-[#112A45] border border-slate-200 dark:border-slate-700 rounded-xl p-3">
+                <div className="flex items-center justify-between text-[11px] text-slate-600 dark:text-slate-300 font-medium">
+                  <span>{item.label}</span>
+                  <Icon className="w-3.5 h-3.5 text-[#1769AA] dark:text-sky-400" />
                 </div>
-                <div className="text-lg font-mono font-bold text-white keep-white mt-0.5">
+                <div className="text-lg font-mono font-bold text-slate-900 dark:text-white mt-0.5">
                   {item.val}
                 </div>
               </div>
