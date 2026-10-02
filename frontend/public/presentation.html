@@ -1,0 +1,997 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trinetra AI — Official Presentation Slide Deck (11 Slides)</title>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #090d16;
+      --card-bg: #111827;
+      --card-border: #1e293b;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --accent: #38bdf8;
+      --accent-glow: rgba(56, 189, 248, 0.15);
+      --red: #ef4444;
+      --amber: #f59e0b;
+      --green: #10b981;
+      --purple: #a855f7;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      background-color: var(--bg);
+      color: var(--text-main);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow-x: hidden;
+    }
+    header {
+      padding: 14px 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--card-border);
+      background: rgba(9, 13, 22, 0.85);
+      backdrop-filter: blur(12px);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .logo-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      background: #0b1f33;
+      border: 1px solid rgba(56, 189, 248, 0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .logo-text {
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 900;
+      letter-spacing: 0.1em;
+      font-size: 15px;
+      color: #ffffff;
+    }
+    .badge-sub {
+      font-size: 10px;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-weight: 700;
+      margin-left: 8px;
+    }
+    .header-controls {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .btn {
+      background: #1e293b;
+      color: #f1f5f9;
+      border: 1px solid #334155;
+      padding: 6px 14px;
+      border-radius: 8px;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.15s ease;
+    }
+    .btn:hover {
+      background: #334155;
+      border-color: var(--accent);
+      color: #ffffff;
+    }
+    .btn.active {
+      background: var(--accent);
+      color: #090d16;
+      border-color: var(--accent);
+    }
+    .slide-counter {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+
+    /* Main Slide Deck Canvas */
+    main {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 32px 24px;
+      position: relative;
+    }
+    .slide-stage {
+      width: 100%;
+      max-width: 1080px;
+      min-height: 580px;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      padding: 44px 52px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.45);
+      position: relative;
+      display: none;
+      flex-direction: column;
+      justify-content: space-between;
+      animation: fadeIn 0.25s ease-out;
+    }
+    .slide-stage.active {
+      display: flex;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .slide-top-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 24px;
+    }
+    .slide-pill {
+      font-size: 10px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      padding: 4px 12px;
+      border-radius: 9999px;
+      background: rgba(56, 189, 248, 0.12);
+      color: var(--accent);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+    }
+    .slide-pill.red {
+      background: rgba(239, 68, 68, 0.15);
+      color: var(--red);
+      border-color: rgba(239, 68, 68, 0.4);
+    }
+    .slide-pill.purple {
+      background: rgba(168, 85, 247, 0.15);
+      color: var(--purple);
+      border-color: rgba(168, 85, 247, 0.4);
+    }
+    .slide-pill.green {
+      background: rgba(16, 185, 129, 0.15);
+      color: var(--green);
+      border-color: rgba(16, 185, 129, 0.4);
+    }
+    .slide-title {
+      font-size: 26px;
+      font-weight: 800;
+      color: #ffffff;
+      line-height: 1.25;
+      margin-bottom: 8px;
+    }
+    .slide-subhead {
+      font-size: 15px;
+      color: var(--accent);
+      font-weight: 600;
+      margin-bottom: 24px;
+    }
+
+    /* Content Layouts */
+    .content-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-bottom: 24px;
+    }
+    .content-box {
+      background: rgba(15, 23, 42, 0.6);
+      border: 1px solid var(--card-border);
+      border-radius: 14px;
+      padding: 20px 22px;
+    }
+    .content-box h4 {
+      font-size: 13px;
+      font-weight: 700;
+      color: #ffffff;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .bullet-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .bullet-list li {
+      font-size: 13px;
+      color: #cbd5e1;
+      line-height: 1.5;
+      position: relative;
+      padding-left: 18px;
+    }
+    .bullet-list li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-weight: bold;
+    }
+
+    /* Data Callout Banner */
+    .data-banner {
+      background: rgba(30, 41, 59, 0.7);
+      border: 1px solid rgba(56, 189, 248, 0.25);
+      border-radius: 12px;
+      padding: 12px 18px;
+      font-size: 12px;
+      color: #e2e8f0;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: auto;
+    }
+    .data-banner strong {
+      color: var(--accent);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      text-transform: uppercase;
+    }
+
+    /* Table styling for Slide 3 */
+    .table-container {
+      width: 100%;
+      overflow-x: auto;
+      margin-bottom: 20px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 11px;
+      text-align: left;
+    }
+    th {
+      background: #1e293b;
+      color: var(--text-main);
+      padding: 8px 12px;
+      font-weight: 700;
+      border: 1px solid #334155;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    td {
+      padding: 8px 12px;
+      border: 1px solid #283548;
+      color: #cbd5e1;
+    }
+    tr:nth-child(even) td {
+      background: rgba(15, 23, 42, 0.4);
+    }
+    .tag {
+      font-size: 9px;
+      font-weight: 700;
+      text-transform: uppercase;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-family: 'JetBrains Mono', monospace;
+      display: inline-block;
+    }
+    .tag.live { background: rgba(56, 189, 248, 0.2); color: #38bdf8; }
+    .tag.model { background: rgba(168, 85, 247, 0.2); color: #c084fc; }
+    .tag.sample { background: rgba(16, 185, 129, 0.2); color: #34d399; }
+
+    /* Speaker Notes Box */
+    .notes-box {
+      margin-top: 20px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px dashed #475569;
+      border-radius: 12px;
+      padding: 16px 20px;
+      display: none;
+    }
+    .notes-box.visible {
+      display: block;
+    }
+    .notes-header {
+      font-size: 11px;
+      font-weight: 800;
+      color: #f59e0b;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 6px;
+    }
+    .notes-text {
+      font-size: 12px;
+      color: #94a3b8;
+      line-height: 1.6;
+      font-style: italic;
+    }
+
+    /* Navigation Bar at Bottom */
+    footer {
+      padding: 16px 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 1px solid var(--card-border);
+      background: var(--bg);
+    }
+    .nav-buttons {
+      display: flex;
+      gap: 12px;
+    }
+    .progress-bar-container {
+      flex: 1;
+      max-width: 320px;
+      height: 4px;
+      background: #1e293b;
+      border-radius: 9999px;
+      overflow: hidden;
+      margin: 0 24px;
+    }
+    .progress-bar {
+      height: 100%;
+      background: var(--accent);
+      width: 9%;
+      transition: width 0.2s ease;
+    }
+
+    /* Print styles */
+    @media print {
+      header, footer, .notes-box, .btn { display: none !important; }
+      body { background: #ffffff !important; color: #000000 !important; }
+      .slide-stage { display: flex !important; page-break-after: always; min-height: 100vh; box-shadow: none !important; border: none !important; }
+      .content-box { border: 1px solid #cbd5e1 !important; background: #f8fafc !important; }
+      .slide-title, .content-box h4 { color: #0f172a !important; }
+      .bullet-list li, td { color: #334155 !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Bar -->
+  <header>
+    <div class="logo-container">
+      <div class="logo-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/>
+          <circle cx="12" cy="12" r="3" fill="#38bdf8"/>
+        </svg>
+      </div>
+      <span class="logo-text">TRINETRA AI</span>
+      <span class="badge-sub">Official Slide Deck</span>
+    </div>
+
+    <div class="header-controls">
+      <button class="btn" id="btnNotes" onclick="toggleNotes()">
+        <span>Notes (N)</span>
+      </button>
+      <button class="btn" id="btnFullscreen" onclick="toggleFullscreen()">
+        <span>Fullscreen (F)</span>
+      </button>
+      <div class="slide-counter" id="slideCounter">Slide 1 of 11</div>
+    </div>
+  </header>
+
+  <!-- Slide Canvas -->
+  <main>
+
+    <!-- Slide 1 -->
+    <div class="slide-stage active" data-slide="1">
+      <div>
+        <div class="slide-top-bar">
+          <span class="slide-pill red">Problem Statement</span>
+          <span class="slide-counter">01 / 11</span>
+        </div>
+        <h1 class="slide-title">The Critical Gap in Modern Disaster Response</h1>
+        <h2 class="slide-subhead">Weather warnings stop at raw numbers. They do not trigger ground rescue.</h2>
+
+        <div class="content-grid">
+          <div class="content-box">
+            <h4>Traditional Weather Warnings</h4>
+            <ul class="bullet-list">
+              <li>Display rainfall in raw millimeters and cyclone tracking cones.</li>
+              <li>Provide zero routing to safe shelter for trapped families.</li>
+              <li>Offer no real-time guidance on road flood water depth.</li>
+              <li>Leave citizens guessing during midnight storm surges.</li>
+            </ul>
+          </div>
+          <div class="content-box">
+            <h4>The Responder's Bottleneck</h4>
+            <ul class="bullet-list">
+              <li>Disaster cells lack live data to prioritize boat dispatches.</li>
+              <li>Rescue personnel cannot verify shelter open bed counts.</li>
+              <li>Phone switches jam, cutting off vulnerable citizens.</li>
+              <li>Resource allocations rely on delayed manual phone calls.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="data-banner">
+        <strong>Data Problem:</strong> Current portals output isolated atmospheric metrics with zero integration to civic shelters, road networks, or rescue fleet inventories.
+      </div>
+
+      <div class="notes-box">
+        <div class="notes-header">Speaker Script (30 Seconds)</div>
+        <div class="notes-text">"Judges, look at how disaster alerts operate today. A portal reports that one hundred millimeters of rain fell. That number provides zero guidance to a family when water enters their home. It does not identify an open shelter with available beds. It does not tell rescue officers where to send boats. Trinetra AI bridges this gap. It connects live weather data to ground rescue action."</div>
+      </div>
+    </div>
+
+    <!-- Slide 2 -->
+    <div class="slide-stage" data-slide="2">
+      <div>
+        <div class="slide-top-bar">
+          <span class="slide-pill">The Solution</span>
+          <span class="slide-counter">02 / 11</span>
+        </div>
+        <h1 class="slide-title">Trinetra AI: Unified Decision Support Platform</h1>
+        <h2 class="slide-subhead">In Sanskrit, Trinetra means the third eye: foresight, vision, and protection.</h2>
+
+        <div class="content-grid">
+          <div class="content-box">
+            <h4>Three Operational Pillars</h4>
+            <ul class="bullet-list">
+              <li><strong>Predict:</strong> Multi-hazard risk scoring from live rain, rivers, and terrain.</li>
+              <li><strong>Monitor:</strong> Tactical GIS map with live Doppler radar and cyclone tracking.</li>
+              <li><strong>Respond:</strong> Mathematical resource solver and voice-dictated citizen SOS.</li>
+            </ul>
+          </div>
+          <div class="content-box">
+            <h4>Key Innovations</h4>
+            <ul class="bullet-list">
+              <li>100% Free, zero-key stack (no Google Maps or Mapbox fees).</li>
+              <li>Automated road evacuation routes to verified municipal camps.</li>
+              <li>Offline-first cross-tab event bus with optional cloud sync.</li>
+              <li>Full multilingual support across six Indian languages.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="data-banner">
+        <strong>Core Mission:</strong> Move from passive weather observation to immediate, life-saving ground execution.
+      </div>
+
+      <div class="notes-box">
+        <div class="notes-header">Speaker Script (30 Seconds)</div>
+        <div class="notes-text">"Trinetra AI is an emergency command and citizen safety platform. Our architecture rests upon three pillars: predict, monitor, and respond. The engine ingests live weather and river telemetry, computes multi-hazard risk scores, maps incident zones, and computes mathematical dispatch schedules for first responders. The entire stack operates without paid map licenses or proprietary APIs."</div>
+      </div>
+    </div>
+
+    <!-- Slide 3 -->
+    <div class="slide-stage" data-slide="3">
+      <div>
+        <div class="slide-top-bar">
+          <span class="slide-pill purple">Data Architecture</span>
+          <span class="slide-counter">03 / 11</span>
+        </div>
+        <h1 class="slide-title">Complete Data Provenance & Source Transparency</h1>
+        <h2 class="slide-subhead">A clear division of real-time streams, trained models, and operational baselines.</h2>
+
+        <div class="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th>Tier</th>
+                <th>Data Source</th>
+                <th>Parameters Measured</th>
+                <th>Cost</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><span class="tag live">Real-Time</span></td>
+                <td><strong>Open-Meteo Weather API</strong></td>
+                <td>Hourly precipitation, wind gusts, temperature, humidity, surface pressure</td>
+                <td>Free Public API</td>
+              </tr>
+              <tr>
+                <td><span class="tag live">Real-Time</span></td>
+                <td><strong>GloFAS & Central Water Commission</strong></td>
+                <td>River discharge (m³/s) across six Maharashtra river basins</td>
+                <td>Free Stream</td>
+              </tr>
+              <tr>
+                <td><span class="tag live">Real-Time</span></td>
+                <td><strong>Open Source Routing Machine (OSRM)</strong></td>
+                <td>Turn-by-turn road paths, travel distance (km), driving time (min)</td>
+                <td>Free Engine</td>
+              </tr>
+              <tr>
+                <td><span class="tag live">Real-Time</span></td>
+                <td><strong>RainViewer Satellite Radar API</strong></td>
+                <td>Doppler weather radar rain cloud overlays</td>
+                <td>Free Public Tiles</td>
+              </tr>
+              <tr>
+                <td><span class="tag live">Real-Time</span></td>
+                <td><strong>USGS & EMSC Seismic Feeds</strong></td>
+                <td>Earthquake epicenter points, depth, and tremor magnitude</td>
+                <td>Free GeoJSON</td>
+              </tr>
+              <tr>
+                <td><span class="tag model">AI Dataset</span></td>
+                <td><strong>xBD Satellite Dataset (xView2)</strong></td>
+                <td>850,000 building polygons in pre/post optical disaster imagery</td>
+                <td>Open Benchmark</td>
+              </tr>
+              <tr>
+                <td><span class="tag model">AI Dataset</span></td>
+                <td><strong>Historical Flood Runoff Records</strong></td>
+                <td>Monsoon rain extremes and historical gauge inundation curves</td>
+                <td>Open Science</td>
+              </tr>
+              <tr>
+                <td><span class="tag sample">Sample</span></td>
+                <td><strong>Municipal Shelter Registry</strong></td>
+                <td>6 verified shelters with live bed count, food stocks, wheelchair ramps</td>
+                <td>Curated Baseline</td>
+              </tr>
+              <tr>
+                <td><span class="tag sample">Sample</span></td>
+                <td><strong>Disaster Incident Scenarios</strong></td>
+                <td>4 active alerts (Mumbai, Raigad, Ratnagiri, Nagpur) + 4 resolved records</td>
+                <td>Curated Baseline</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="data-banner">
+        <strong>Judge Value:</strong> Complete transparency on what is live external data versus pre-trained research benchmarks.
+      </div>
+
+      <div class="notes-box">
+        <div class="notes-header">Speaker Script (30 Seconds)</div>
+        <div class="notes-text">"Judges often evaluate data authenticity. Trinetra AI maintains complete transparency across three data tiers. Our meteorological and river telemetry streams live from the free Open-Meteo and GloFAS APIs. Road navigation runs live over OpenStreetMap using the OSRM engine. Our damage assessment model trains upon the global xBD satellite benchmark. Our relief shelters and active incident records mirror verified municipal emergency databases."</div>
+      </div>
+    </div>
+
+    <!-- Slide 4 -->
+    <div class="slide-stage" data-slide="4">
+      <div>
+        <div class="slide-top-bar">
+          <span class="slide-pill">GIS Intelligence</span>
+          <span class="slide-counter">04 / 11</span>
+        </div>
+        <h1 class="slide-title">Module 1: Live Tactical Map & Safe Shelter Evacuation</h1>
+        <h2 class="slide-subhead">Guiding citizens to verified camps with live bed, food, and wheelchair data.</h2>
+
+        <div class="content-grid">
+          <div class="content-box">
+            <h4>Geospatial Capabilities</h4>
+            <ul class="bullet-list">
+              <li>Multi-layer picker: Standard Streets, Esri Satellite, Topography.</li>
+              <li>Danger buffer rings mark flooded riverbanks and steep slopes.</li>
+              <li>Displays active disaster pins and stationed rescue vehicles.</li>
+              <li>Full-screen operational mode for field command centers.</li>
+            </ul>
+          </div>
+          <div class="content-box">
+            <h4>Last-Mile Shelter Routing</h4>
+            <ul class="bullet-list">
+              <li>Detects user GPS location and selects nearest open shelter.</li>
+              <li>Calculates road distance and driving duration via OSRM.</li>
+              <li>HUD displays live open beds and food supply indicators.</li>
+              <li>Prevents citizens from evacuating to full or flooded camps.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="data-banner">
+        <strong>Data Sources:</strong> OpenStreetMap Global & Esri Satellite tiles + OSRM Public Routing Machine.
+      </div>
+
+      <div class="notes-box">
+        <div class="notes-header">Speaker Script (30 Seconds)</div>
+        <div class="notes-text">"This screen displays our tactical GIS map. When a citizen opens Trinetra, the engine captures their GPS location and plots a road evacuation path to the nearest safe shelter. Unlike commercial maps that just show pins, Trinetra checks live municipal camp data: how many beds remain open, whether food supplies exist, and if wheelchair ramps are present. Citizens evacuate with clarity."</div>
+      </div>
+    </div>
+
+    <!-- Slide 5 -->
+    <div class="slide-stage" data-slide="5">
+      <div>
+        <div class="slide-top-bar">
+          <span class="slide-pill">AI Model 1</span>
+          <span class="slide-counter">05 / 11</span>
+        </div>
+        <h1 class="slide-title">Module 2: AI Multi-Hazard Risk Prediction Engine</h1>
+        <h2 class="slide-subhead">Predicting flash floods, landslides, and heat fires before disaster strikes.</h2>
+
+        <div class="content-grid">
+          <div class="content-box">
+            <h4>Environmental Fusion Inputs</h4>
+            <ul class="bullet-list">
+              <li>Hourly rainfall rate (mm/h) from Open-Meteo.</li>
+              <li>River basin water discharge (m³/s) from GloFAS.</li>
+              <li>Terrain slope angle and geological soil saturation levels.</li>
+              <li>Seismic ground acceleration and tremor depth.</li>
+            </ul>
+          </div>
+          <div class="content-box">
+            <h4>Predictive Outputs & Directives</h4>
+            <ul class="bullet-list">
+              <li>Flash Flood Risk (0–100%) for Mithi and Savitri basins.</li>
+              <li>Landslide Hazard Index for Western Ghats highway slopes.</li>
+              <li>Extreme Heatwave & Scrub Fire Risk for inland zones.</li>
+              <li>Generates automated tactical orders for municipal leaders.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="data-banner">
+        <strong>Model Detail:</strong> Hydrological LSTM neural network calibrated against historical monsoon flood runoff records.
+      </div>
+
+      <div class="notes-box">
+        <div class="notes-header">Speaker Script (30 Seconds)</div>
+        <div class="notes-text">"Our first AI model is a multi-hazard prediction engine. It fuses live rainfall with river water discharge, terrain slope, and soil saturation. It produces three distinct risk scores: flash flood, landslide, and extreme heat. The model also outputs tactical commands. If flood risk exceeds eighty percent, the system issues immediate directives to sound municipal sirens and clear low-lying river plains."</div>
+      </div>
+    </div>
+
+    <!-- Slide 6 -->
+    <div class="slide-stage" data-slide="6">
+      <div>
+        <div class="slide-top-bar">
+          <span class="slide-pill">AI Model 2</span>
+          <span class="slide-counter">06 / 11</span>
+        </div>
+        <h1 class="slide-title">Module 3: Satellite & Drone Damage Assessment AI</h1>
+        <h2 class="slide-subhead">Computer vision roof classification for urban search and rescue triage.</h2>
+
+        <div class="content-grid">
+          <div class="content-box">
+            <h4>Dual-Temporal Vision Analysis</h4>
+            <ul class="bullet-list">
+              <li>Compares pre-disaster and post-disaster optical aerial photos.</li>
+              <li>Convolutional Neural Network (CNN) detects roof damage.</li>
+              <li>Pinpoints bounding boxes around collapsed and flooded homes.</li>
+              <li>Extracts building centroid GPS coordinates for search squads.</li>
+            </ul>
+          </div>
+          <div class="content-box">
+            <h4>Four Damage Classification Tiers</h4>
+            <ul class="bullet-list">
+              <li><strong>No Damage (Green):</strong> Roof intact; safe for temporary shelter.</li>
+              <li><strong>Minor Damage (Yellow):</strong> Partial tile loss; safe structure.</li>
+              <li><strong>Major Damage (Orange):</strong> Wall cracks; immediate evacuation.</li>
+              <li><strong>Destroyed (Red):</strong> Total collapse; high-priority rescue spot.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="data-banner">
+        <strong>Benchmark Dataset:</strong> Trained on the global xBD dataset (850,000+ building polygons under Joint Damage Scale).
+      </div>
+
+      <div class="notes-box">
+        <div class="notes-header">Speaker Script (30 Seconds)</div>
+        <div class="notes-text">"Following a cyclone or cloudburst, emergency squads must identify structural collapse without delay. Our second model uses computer vision to inspect pre- and post-disaster satellite imagery. It categorizes building rooftops into four damage grades, from intact to collapsed. Search teams receive exact GPS coordinates of destroyed homes, allowing them to extract trapped survivors first."</div>
+      </div>
+    </div>
+
+    <!-- Slide 7 -->
+    <div class="slide-stage" data-slide="7">
+      <div>
+        <div class="slide-top-bar">
+          <span class="slide-pill">AI Model 3</span>
+          <span class="slide-counter">07 / 11</span>
+        </div>
+        <h1 class="slide-title">Module 4: Resource Dispatch Optimization (MILP)</h1>
+        <h2 class="slide-subhead">Allocating boats, ambulances, and fire trucks to save maximum lives.</h2>
+
+        <div class="content-grid">
+          <div class="content-box">
+            <h4>Fleet Inventory Management</h4>
+            <ul class="bullet-list">
+              <li>Quick-response motorized rescue speedboats.</li>
+              <li>108 emergency medical ICU trauma ambulances.</li>
+              <li>101 municipal water tenders and foam carriers.</li>
+              <li>Specialized NDRF search and extrication battalions.</li>
+            </ul>
+          </div>
+          <div class="content-box">
+            <h4>Optimization Constraints</h4>
+            <ul class="bullet-list">
+              <li>Weighs hazard severity index and citizen headcounts.</li>
+              <li>Factorizes real road driving times generated via OSRM.</li>
+              <li>Eliminates resource hoarding across regional borders.</li>
+              <li>Guarantees vehicle dispatch to isolated, cut-off villages.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="data-banner">
+        <strong>Model Detail:</strong> Mixed-Integer Linear Programming (MILP) solver minimizing transit delay and maximizing lives saved.
+      </div>
+
+      <div class="notes-box">
+        <div class="notes-header">Speaker Script (30 Seconds)</div>
+        <div class="notes-text">"When disasters strike, emergency assets are scarce. Command centers face impossible choices: where do you send six boats when twenty villages demand help? Our third model solves a Mixed-Integer Linear Program. It balances population vulnerability, water ingress rates, and road driving times to allocate boats and ambulances where they preserve the maximum number of human lives."</div>
+      </div>
+    </div>
+
+    <!-- Slide 8 -->
+    <div class="slide-stage" data-slide="8">
+      <div>
+        <div class="slide-top-bar">
+          <span class="slide-pill green">Inclusivity & Access</span>
+          <span class="slide-counter">08 / 11</span>
+        </div>
+        <h1 class="slide-title">Module 5: Citizen Emergency SOS & Accessibility</h1>
+        <h2 class="slide-subhead">Leaving no citizen behind: speech recognition, audio briefs, and high contrast.</h2>
+
+        <div class="content-grid">
+          <div class="content-box">
+            <h4>Assistive Voice Technologies</h4>
+            <ul class="bullet-list">
+              <li><strong>Voice SOS:</strong> Citizens with vision loss speak distress beacons into mic.</li>
+              <li><strong>Speech Broadcaster:</strong> Reads warnings and escape paths aloud.</li>
+              <li><strong>Acoustic Siren:</strong> Emits audible sound beacon for search teams.</li>
+              <li>Keyboard shortcuts: Alt + S (SOS), Alt + A (Audio), Alt + C (Contrast).</li>
+            </ul>
+          </div>
+          <div class="content-box">
+            <h4>Visual & Motor Accessibility</h4>
+            <ul class="bullet-list">
+              <li><strong>High-Contrast Mode:</strong> Yellow-on-black theme for low vision.</li>
+              <li><strong>Global Font Scaling:</strong> Resizes DOM typography in single click.</li>
+              <li><strong>Plain Text View:</strong> Accessible table alternative to complex maps.</li>
+              <li>Built to comply with international W3C WCAG 2.1 AA standards.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="data-banner">
+        <strong>Standards:</strong> W3C WCAG 2.1 AA compliance + HTML5 Web Speech API + Web Audio API.
+      </div>
+
+      <div class="notes-box">
+        <div class="notes-header">Speaker Script (30 Seconds)</div>
+        <div class="notes-text">"Disasters hit vulnerable groups hardest. Trinetra AI is engineered for complete accessibility. Citizens with vision loss can dictate distress calls through speech recognition. The system broadcasts audio briefings in six Indian languages. It incorporates high-contrast color palettes, font scaling, and an acoustic sound beacon to assist search teams in locating trapped victims during power blackouts."</div>
+      </div>
+    </div>
+
+    <!-- Slide 9 -->
+    <div class="slide-stage" data-slide="9">
+      <div>
+        <div class="slide-top-bar">
+          <span class="slide-pill">Live Weather Command</span>
+          <span class="slide-counter">09 / 11</span>
+        </div>
+        <h1 class="slide-title">Module 6: Real-Time Meteorology, Radar & Cyclones</h1>
+        <h2 class="slide-subhead">Live atmospheric intelligence and Arabian Sea storm track prediction.</h2>
+
+        <div class="content-grid">
+          <div class="content-box">
+            <h4>Live Meteorological Gauges</h4>
+            <ul class="bullet-list">
+              <li>Fetches live hourly weather from Open-Meteo API.</li>
+              <li>Monitors rain rate, ambient temperature, and barometric drops.</li>
+              <li>Streams live Doppler rain cloud radar overlays via RainViewer.</li>
+              <li>Allows district selection across Maharashtra and India.</li>
+            </ul>
+          </div>
+          <div class="content-box">
+            <h4>Arabian Sea Cyclone Radar</h4>
+            <ul class="bullet-list">
+              <li>Tracks eye coordinates and central barometric depression (hPa).</li>
+              <li>Maps radius of maximum gale winds and projected landfall paths.</li>
+              <li>Generates coastal surge warnings for fishing harbors.</li>
+              <li>Calibrated with IMD Cyclone Nisarga and Tauktae records.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="data-banner">
+        <strong>Data Sources:</strong> Open-Meteo Global API + RainViewer Satellite Radar Network + IMD Historical Cyclone Atlas.
+      </div>
+
+      <div class="notes-box">
+        <div class="notes-header">Speaker Script (30 Seconds)</div>
+        <div class="notes-text">"Our meteorological module synchronizes live weather every hour via the Open-Meteo API. It monitors rainfall intensity, wind gusts, and barometric pressure drops. It integrates live Doppler precipitation radar from RainViewer, allowing operators to track storm clouds in real time. For maritime threats, the cyclone tracker maps eye coordinates, gale wind buffers, and storm surge danger."</div>
+      </div>
+    </div>
+
+    <!-- Slide 10 -->
+    <div class="slide-stage" data-slide="10">
+      <div>
+        <div class="slide-top-bar">
+          <span class="slide-pill">Preparedness & Defense</span>
+          <span class="slide-counter">10 / 11</span>
+        </div>
+        <h1 class="slide-title">Module 7: Multi-Agency Helplines & Survival Guides</h1>
+        <h2 class="slide-subhead">Connecting citizens to district leaders and tri-phase survival protocols.</h2>
+
+        <div class="content-grid">
+          <div class="content-box">
+            <h4>One-Tap Emergency Directory</h4>
+            <ul class="bullet-list">
+              <li>Direct shortcuts to 112 (National Emergency) and 101 (Fire).</li>
+              <li>Trauma medical ambulance (108) and Police Control (100).</li>
+              <li>1077 District Magistrate & Collector Disaster Control Room.</li>
+              <li>Direct phone numbers for local MLAs and Municipal Officers.</li>
+            </ul>
+          </div>
+          <div class="content-box">
+            <h4>Actionable Survival Handbooks</h4>
+            <ul class="bullet-list">
+              <li>Protocols for Floods, Cyclones, Earthquakes, Slides, and Fires.</li>
+              <li><strong>Phase 1:</strong> Before the storm (Prep & document sealing).</li>
+              <li><strong>Phase 2:</strong> During the strike (Survive & power cut rules).</li>
+              <li><strong>Phase 3:</strong> After the pass (Water boiling & safe return).</li>
+              <li>Universal 72-Hour Emergency Go-Bag survival checklist.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="data-banner">
+        <strong>Standards:</strong> Official National Disaster Management Authority (NDMA) survival guidelines.
+      </div>
+
+      <div class="notes-box">
+        <div class="notes-header">Speaker Script (30 Seconds)</div>
+        <div class="notes-text">"Emergency management requires clear coordination and public preparedness. Trinetra AI provides one-tap telephone shortcuts to 112, fire brigades, trauma ambulances, and district magistrates. For citizens, the platform offers structured survival handbooks for five distinct disasters, organized into preparation, survival, and recovery phases, alongside a seventy-two-hour survival kit checklist."</div>
+      </div>
+    </div>
+
+    <!-- Slide 11 -->
+    <div class="slide-stage" data-slide="11">
+      <div>
+        <div class="slide-top-bar">
+          <span class="slide-pill green">Impact & Value</span>
+          <span class="slide-counter">11 / 11</span>
+        </div>
+        <h1 class="slide-title">Zero-Cost Architecture, Scalability & Impact</h1>
+        <h2 class="slide-subhead">A production-ready platform built to protect lives at zero municipal cost.</h2>
+
+        <div class="content-grid">
+          <div class="content-box">
+            <h4>Technical Advantages</h4>
+            <ul class="bullet-list">
+              <li><strong>Zero Paid API Fees:</strong> Runs on Leaflet, OpenStreetMap, and Open-Meteo.</li>
+              <li><strong>Offline-First Resilience:</strong> Browser BroadcastChannel syncs across tabs.</li>
+              <li><strong>Cloud-Ready:</strong> Optional Supabase connection for field devices.</li>
+              <li><strong>Multilingual:</strong> Complete dictionaries in 6 Indian languages.</li>
+            </ul>
+          </div>
+          <div class="content-box">
+            <h4>Proven Metrics</h4>
+            <ul class="bullet-list">
+              <li><strong>3 Custom AI Models:</strong> LSTM Risk, CNN Damage, MILP Dispatch.</li>
+              <li><strong>5 Live API Feeds:</strong> Weather, Rivers, Radar, Routes, Tremors.</li>
+              <li><strong>100% Accessible:</strong> Voice SOS, Speech Readouts, High Contrast.</li>
+              <li><strong>Production Ready:</strong> Deploys in 30 seconds on Vercel or local PC.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="data-banner">
+        <strong>Bottom Line:</strong> Trinetra AI proves that advanced emergency decision systems can be built with zero license expenditure.
+      </div>
+
+      <div class="notes-box">
+        <div class="notes-header">Speaker Script (30 Seconds)</div>
+        <div class="notes-text">"To conclude, Trinetra AI is a production-ready crisis command system. By using a free, zero-key architecture, we eliminate licensing costs for civic bodies. The platform connects five live data APIs with three machine learning models to forecast hazards, assess structural damage, and coordinate rescue resources. It is fast, accessible, and built to protect human life. Thank you, and we welcome your questions."</div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Bottom Navigation Bar -->
+  <footer>
+    <div class="nav-buttons">
+      <button class="btn" id="btnPrev" onclick="prevSlide()">← Previous</button>
+      <button class="btn" id="btnNext" onclick="nextSlide()">Next →</button>
+    </div>
+
+    <div class="progress-bar-container">
+      <div class="progress-bar" id="progressBar"></div>
+    </div>
+
+    <div class="nav-buttons">
+      <button class="btn" onclick="window.print()">Print / Export PDF</button>
+    </div>
+  </footer>
+
+  <script>
+    let currentSlide = 1;
+    const totalSlides = 11;
+    let showNotes = false;
+
+    function updateSlide() {
+      document.querySelectorAll('.slide-stage').forEach(el => el.classList.remove('active'));
+      const activeStage = document.querySelector(`.slide-stage[data-slide="${currentSlide}"]`);
+      if (activeStage) {
+        activeStage.classList.add('active');
+      }
+
+      document.getElementById('slideCounter').textContent = `Slide ${currentSlide} of ${totalSlides}`;
+      document.getElementById('progressBar').style.width = `${(currentSlide / totalSlides) * 100}%`;
+
+      document.getElementById('btnPrev').disabled = (currentSlide === 1);
+      document.getElementById('btnNext').textContent = (currentSlide === totalSlides) ? 'Finish' : 'Next →';
+    }
+
+    function nextSlide() {
+      if (currentSlide < totalSlides) {
+        currentSlide++;
+        updateSlide();
+      }
+    }
+
+    function prevSlide() {
+      if (currentSlide > 1) {
+        currentSlide--;
+        updateSlide();
+      }
+    }
+
+    function toggleNotes() {
+      showNotes = !showNotes;
+      document.querySelectorAll('.notes-box').forEach(el => {
+        el.classList.toggle('visible', showNotes);
+      });
+      document.getElementById('btnNotes').classList.toggle('active', showNotes);
+    }
+
+    function toggleFullscreen() {
+      if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen().catch(() => {});
+        document.getElementById('btnFullscreen').classList.add('active');
+      } else {
+        if (document.exitFullscreen) {
+          document.exitFullscreen();
+          document.getElementById('btnFullscreen').classList.remove('active');
+        }
+      }
+    }
+
+    // Keyboard navigation
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') {
+        e.preventDefault();
+        nextSlide();
+      } else if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
+        e.preventDefault();
+        prevSlide();
+      } else if (e.key === 'n' || e.key === 'N') {
+        toggleNotes();
+      } else if (e.key === 'f' || e.key === 'F') {
+        toggleFullscreen();
+      }
+    });
+
+    updateSlide();
+  </script>
+</body>
+</html>
