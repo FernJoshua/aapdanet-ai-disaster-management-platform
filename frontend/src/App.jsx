@@ -34,7 +34,7 @@ export default function App() {
   const [fontSize, setFontSize] = useState('normal');
   const [currentUser, setCurrentUser] = useState(() => {
     try {
-      const saved = localStorage.getItem('aapdanet_user');
+      const saved = localStorage.getItem('trinetra_user') || localStorage.getItem('aapdanet_user');
       return saved ? JSON.parse(saved) : null;
     } catch {
       return null;
@@ -511,7 +511,7 @@ export default function App() {
             </div>
 
             <p className="text-xs text-slate-300 keep-white leading-relaxed">
-              Out of the box, AapdaNet uses <strong>BroadcastChannel + LocalStorage</strong> for instant multi-window sync and public <strong>Open-Meteo, GloFAS, USGS, CAMS, RainViewer & OSRM</strong> feeds. To enable multi-device cloud persistence across different computers/phones, paste your free <strong>Supabase Project URL & Anon Key</strong> below:
+              Out of the box, Trinetra uses <strong>BroadcastChannel + LocalStorage</strong> for instant multi-window sync and public <strong>Open-Meteo, GloFAS, USGS, CAMS, RainViewer & OSRM</strong> feeds. To enable multi-device cloud persistence across different computers/phones, paste your free <strong>Supabase Project URL & Anon Key</strong> below:
             </p>
 
             <div className="space-y-3 text-xs">

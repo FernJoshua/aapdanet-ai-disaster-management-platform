@@ -64,6 +64,7 @@ export default function AuthPortal({ lang, currentUser, setCurrentUser, onSpeakT
       skills: formData.skills,
       registeredAt: new Date().toLocaleDateString()
     };
+    localStorage.setItem('trinetra_user', JSON.stringify(userObj));
     localStorage.setItem('aapdanet_user', JSON.stringify(userObj));
     setCurrentUser(userObj);
     onSpeakText(
@@ -72,6 +73,7 @@ export default function AuthPortal({ lang, currentUser, setCurrentUser, onSpeakT
   };
 
   const handleLogout = () => {
+    localStorage.removeItem('trinetra_user');
     localStorage.removeItem('aapdanet_user');
     setCurrentUser(null);
   };
@@ -361,7 +363,7 @@ export default function AuthPortal({ lang, currentUser, setCurrentUser, onSpeakT
           {/* Right 5 Cols: Benefits of Signing Up */}
           <div className="lg:col-span-5 bg-slate-900 border border-slate-800 rounded-3xl p-6 sm:p-8 shadow-xl space-y-5">
             <h3 className="text-lg font-extrabold text-white">
-              Why Register on AapdaNet AI?
+              Why Register on Trinetra AI?
             </h3>
 
             <div className="space-y-4 text-xs">

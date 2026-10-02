@@ -33,7 +33,7 @@ export const INDIAN_LANGUAGES = [
 export const translations = {
   en: {
     // Branding & Header
-    title: "AapdaNet AI",
+    title: "Trinetra AI",
     badge: "Real-Time Disaster Decision Support",
     subtitle: "AI-Powered Multi-Hazard Forecasting, Rescue Dispatch & Citizen Safety Portal",
     stateEmergencyBar: "LIVE EMERGENCY OPERATIONS CENTER • 24x7 REAL-TIME SURVEILLANCE & RESCUE TRIAGE",
@@ -89,7 +89,7 @@ export const translations = {
     // Home Page Placards
     heroTag: "NEXT-GENERATION REAL-TIME CRISIS RESPONSE PLATFORM",
     heroTitle: "Protecting Lives with Real-Time AI, Live Meteorology & Instant Rescue Dispatch",
-    heroDesc: "Unlike standard weather bulletin websites that only display forecasts, AapdaNet AI connects live IMD & Open-Meteo telemetry directly to last-mile evacuation routing, automated NDRF/ambulance dispatch, satellite building triage, and voice-enabled citizen SOS.",
+    heroDesc: "Unlike standard weather bulletin websites that only display forecasts, Trinetra AI connects live IMD & Open-Meteo telemetry directly to last-mile evacuation routing, automated NDRF/ambulance dispatch, satellite building triage, and voice-enabled citizen SOS.",
     btnExploreMap: "Open Live GIS Crisis Map",
     btnReportSOS: "Report Emergency SOS",
     btnEmergencyNums: "Emergency Numbers (101 / 108 / DM)",
@@ -98,7 +98,7 @@ export const translations = {
     statRelievedCases: "Relieved & Resolved Incidents",
     statSheltersOpen: "Verified Safe Relief Camps",
     statLiveSensors: "Real-Time Weather & River Feeds",
-    whySpecialTitle: "What Makes AapdaNet AI Special Compared to Standard Weather Websites?",
+    whySpecialTitle: "What Makes Trinetra AI Special Compared to Standard Weather Websites?",
     whySpecialSubtitle: "Bridging the gap between meteorological warnings and life-saving ground execution",
     ongoingSectionTitle: "Active On-Going Real-Time Emergencies (Main Command Focus)",
     relievedSectionTitle: "Already Relieved & Resolved Disasters Archive",
@@ -205,7 +205,7 @@ export const translations = {
   },
 
   hi: {
-    title: "आपदानेट एआई (AapdaNet AI)",
+    title: "त्रिनेत्र एआई (Trinetra AI)",
     badge: "रीयल-टाइम आपदा निर्णय प्रणाली",
     subtitle: "एआई-संचालित बहु-आपदा पूर्वानुमान, बचाव आवंटन और नागरिक सुरक्षा पोर्टल",
     stateEmergencyBar: "लाइव आपातकालीन संचालन केंद्र • 24x7 रीयल-टाइम निगरानी और त्वरित बचाव सहायता",
@@ -265,7 +265,7 @@ export const translations = {
     statRelievedCases: "राहत प्राप्त एवं हल किए गए मामले",
     statSheltersOpen: "सक्रिय सुरक्षित राहत शिविर",
     statLiveSensors: "लाइव मौसम और नदी सेंसर",
-    whySpecialTitle: "सामान्य मौसम वेबसाइटों की तुलना में आपदानेट एआई (AapdaNet AI) क्यों खास है?",
+    whySpecialTitle: "सामान्य मौसम वेबसाइटों की तुलना में त्रिनेत्र एआई (Trinetra AI) क्यों खास है?",
     whySpecialSubtitle: "मौसम की चेतावनी से लेकर ज़मीनी बचाव कार्य तक का संपूर्ण समाधान",
     ongoingSectionTitle: "वर्तमान में चल रही सक्रिय आपातकालीन स्थितियां (मुख्य फोकस)",
     relievedSectionTitle: "राहत प्राप्त और सफलतापूर्वक हल की गई आपदाओं का रिकॉर्ड",
@@ -364,7 +364,7 @@ export const translations = {
   },
 
   mr: {
-    title: "आपदानिट एआय (AapdaNet AI)",
+    title: "त्रिनेत्र एआय (Trinetra AI)",
     badge: "रिअल-टाइम आपत्ती निर्णय प्रणाली",
     subtitle: "एआय-संचलित बहु-आपत्ती अंदाज, बचाव पथक वाटप आणि नागरिक सुरक्षा व्यासपीठ",
     stateEmergencyBar: "थेट आपत्कालीन कार्य केंद्र • २४x७ रिअल-टाइम निरीक्षण आणि तातडीची बचाव मदत",
@@ -424,7 +424,7 @@ export const translations = {
     statRelievedCases: "निवारण झालेल्या व पूर्ण मोहिमा",
     statSheltersOpen: "सक्रिय सुरक्षित निवारा केंद्रे",
     statLiveSensors: "थेट हवामान आणि नदी सेन्सर्स",
-    whySpecialTitle: "सामान्य हवामान वेबसाइटच्या तुलनेत आपदानिट एआय (AapdaNet AI) का विशेष आहे?",
+    whySpecialTitle: "सामान्य हवामान वेबसाइटच्या तुलनेत त्रिनेत्र एआय (Trinetra AI) का विशेष आहे?",
     whySpecialSubtitle: "हवामानाच्या इशाऱ्यांपासून थेट प्रत्यक्ष बचाव कार्यापर्यंतची संपूर्ण साखळी",
     ongoingSectionTitle: "सध्या सुरू असलेल्या प्रत्यक्ष आपत्कालीन घटना (मुख्य लक्ष)",
     relievedSectionTitle: "निवारण झालेल्या आणि यशस्वीपणे पूर्ण केलेल्या आपत्तींचा संग्रह",
@@ -523,7 +523,7 @@ export const translations = {
   },
 
   gu: {
-    title: "આપદાનેટ એઆઈ (AapdaNet AI)",
+    title: "ત્રિનેત્ર એઆઈ (Trinetra AI)",
     badge: "રીઅલ-ટાઇમ આપત્તિ નિર્ણય પ્રણાલી",
     subtitle: "એઆઈ-સંચાલિત બહુ-આપત્તિ પૂર્વાનુમાન, બચાવ ફાળવણી અને નાગરિક સુરક્ષા પોર્ટલ",
     stateEmergencyBar: "લાઇવ ઇમરજન્સી ઓપરેશન્સ સેન્ટર • 24x7 રીઅલ-ટાઇમ દેખરેખ અને બચાવ સહાય",
@@ -583,7 +583,7 @@ export const translations = {
     statRelievedCases: "ઉકેલાયેલા અને રાહત અપાયેલા કિસ્સા",
     statSheltersOpen: "સુરક્ષિત રાહત કેમ્પ",
     statLiveSensors: "લાઇવ હવામાન અને નદી સેન્સર",
-    whySpecialTitle: "સામાન્ય હવામાન વેબસાઇટ કરતાં AapdaNet AI શા માટે ખાસ છે?",
+    whySpecialTitle: "સામાન્ય હવામાન વેબસાઇટ કરતાં Trinetra AI શા માટે ખાસ છે?",
     whySpecialSubtitle: "હવામાનની ચેતવણીથી લઈને જમીની બચાવ કામગીરી સુધીનું સંપૂર્ણ સોલ્યુશન",
     ongoingSectionTitle: "હાલમાં ચાલી રહેલી સક્રિય આપત્તિઓ (મુખ્ય ધ્યાન)",
     relievedSectionTitle: "રાહત અપાયેલી અને ઉકેલાયેલી આપત્તિઓનો આર્કાઇવ",
@@ -682,7 +682,7 @@ export const translations = {
   },
 
   ta: {
-    title: "ஆப்தாநெட் ஏஐ (AapdaNet AI)",
+    title: "த்ரிநேத்ரா ஏஐ (Trinetra AI)",
     badge: "நிகழ்நேர பேரிடர் முடிவு ஆதரவு அமைப்பு",
     subtitle: "AI-இயங்கும் பல்துறை பேரிடர் முன்னறிவிப்பு, மீட்பு ஒதுக்கீடு மற்றும் குடிமக்கள் பாதுகாப்பு தளம்",
     stateEmergencyBar: "நேரடி அவசரகால செயல்பாட்டு மையம் • 24x7 நிகழ்நேர கண்காணிப்பு மற்றும் மீட்பு உதவி",
@@ -733,7 +733,7 @@ export const translations = {
 
     heroTag: "அடுத்த தலைமுறை நிகழ்நேர பேரிடர் மீட்பு தளம்",
     heroTitle: "நிகழ்நேர AI, நேரடி வானிலை மற்றும் உடனடி மீட்பு சேவைகள் மூலம் உயிர்களைப் பாதுகாத்தல்",
-    heroDesc: "சாதாரண வானிலை இணையதளங்களைப் போலன்றி, AapdaNet AI நேரடி வானிலை தரவை அருகிலுள்ள நிவாரண முகாம் வழிகாட்டல், தானியங்கி NDRF/ஆம்புலன்ஸ் அனுப்புதல் மற்றும் குரல் SOS உடன் இணைக்கிறது.",
+    heroDesc: "சாதாரண வானிலை இணையதளங்களைப் போலன்றி, Trinetra AI நேரடி வானிலை தரவை அருகிலுள்ள நிவாரண முகாம் வழிகாட்டல், தானியங்கி NDRF/ஆம்புலன்ஸ் அனுப்புதல் மற்றும் குரல் SOS உடன் இணைக்கிறது.",
     btnExploreMap: "நேரடி GIS வரைபடத்தைத் திற",
     btnReportSOS: "அவசர SOS அனுப்பு",
     btnEmergencyNums: "அவசர எண்கள் (101 / 108 / DM)",
@@ -742,7 +742,7 @@ export const translations = {
     statRelievedCases: "தீர்க்கப்பட்ட & மீட்கப்பட்ட நிகழ்வுகள்",
     statSheltersOpen: "பாதுகாப்பான நிவாரண முகாம்கள்",
     statLiveSensors: "நேரடி வானிலை & நதி சென்சார்கள்",
-    whySpecialTitle: "சாதாரண வானிலை தளங்களை விட AapdaNet AI எவ்வாறு சிறந்தது?",
+    whySpecialTitle: "சாதாரண வானிலை தளங்களை விட Trinetra AI எவ்வாறு சிறந்தது?",
     whySpecialSubtitle: "வானிலை எச்சரிக்கைகள் முதல் கள மீட்பு பணி வரை முழுமையான தீர்வு",
     ongoingSectionTitle: "தற்போது நடைபெற்று வரும் அவசர நிலைகள் (முக்கிய கவனம்)",
     relievedSectionTitle: "ஏற்கனவே மீட்கப்பட்ட மற்றும் தீர்க்கப்பட்ட பேரிடர் பதிவு",
@@ -841,7 +841,7 @@ export const translations = {
   },
 
   bn: {
-    title: "আপদানেট এআই (AapdaNet AI)",
+    title: "ত্রিনেত্র এআই (Trinetra AI)",
     badge: "রিয়েল-টাইম দুর্যোগ সিদ্ধান্ত সহায়তা ব্যবস্থা",
     subtitle: "এআই-চালিত বহুমুখী দুর্যোগ পূর্বাভাস, উদ্ধার বণ্টন ও নাগরিক সুরক্ষা পোর্টাল",
     stateEmergencyBar: "লাইভ ইমার্জেন্সি অপারেশন সেন্টার • ২৪x৭ রিয়েল-টাইম নজরদারি ও উদ্ধার সহায়তা",
@@ -892,7 +892,7 @@ export const translations = {
 
     heroTag: "অত্যাধুনিক রিয়েল-টাইম দুর্যোগ প্রতিক্রিয়া প্ল্যাটফর্ম",
     heroTitle: "রিয়েল-টাইম AI, লাইভ আবহাওয়া এবং তাৎক্ষণিক উদ্ধার অভিযানের মাধ্যমে জীবন রক্ষা",
-    heroDesc: "সাধারণ আবহাওয়া ওয়েবসাইটের মতো শুধু পূর্বাভাস নয়, AapdaNet AI লাইভ আবহাওয়া ডেটাকে সরাসরি নিকটবর্তী আশ্রয়কেন্দ্রের রুট, স্বয়ংক্রিয় NDRF/অ্যাম্বুলেন্স ডিসপ্যাচ এবং ভয়েস SOS-এর সাথে যুক্ত করে।",
+    heroDesc: "সাধারণ আবহাওয়া ওয়েবসাইটের মতো শুধু পূর্বাভাস নয়, Trinetra AI লাইভ আবহাওয়া ডেটাকে সরাসরি নিকটবর্তী আশ্রয়কেন্দ্রের রুট, স্বয়ংক্রিয় NDRF/অ্যাম্বুলেন্স ডিসপ্যাচ এবং ভয়েস SOS-এর সাথে যুক্ত করে।",
     btnExploreMap: "লাইভ GIS মানচিত্র খুলুন",
     btnReportSOS: "জরুরি SOS পাঠান",
     btnEmergencyNums: "জরুরি নম্বর (101 / 108 / DM)",
@@ -901,7 +901,7 @@ export const translations = {
     statRelievedCases: "সমাধানকৃত ও উদ্ধারকৃত ঘটনা",
     statSheltersOpen: "নিরাপদ ত্রাণ শিবির",
     statLiveSensors: "লাইভ আবহাওয়া ও নদী সেন্সর",
-    whySpecialTitle: "সাধারণ আবহাওয়া ওয়েবসাইটের তুলনায় AapdaNet AI কেন আলাদা?",
+    whySpecialTitle: "সাধারণ আবহাওয়া ওয়েবসাইটের তুলনায় Trinetra AI কেন আলাদা?",
     whySpecialSubtitle: "আবহাওয়ার সতর্কতা থেকে শুরু করে মাঠপর্যায়ের উদ্ধার অভিযান পর্যন্ত সম্পূর্ণ সমাধান",
     ongoingSectionTitle: "বর্তমানে চলমান সক্রিয় জরুরি পরিস্থিতিসমূহ (মূল ফোকাস)",
     relievedSectionTitle: "ইতিমধ্যে সমাধানকৃত ও সফলভাবে সম্পন্ন দুর্যোগ আর্কাইভ",
@@ -1064,22 +1064,22 @@ export const PHRASE_TRANSLATIONS = {
     "Platform Differentiation & Real-Time Innovation": "प्लेटफ़ॉर्म की विशेषता और रियल-टाइम नवाचार",
     "1. Live Weather → AI Multi-Hazard Cascade": "1. लाइव मौसम → AI बहु-आपदा जोखिम आकलन",
     "Standard IMD Site: Shows only raw rainfall (mm) or cyclone cone.": "सामान्य मौसम वेबसाइट: केवल कच्चा बारिश डेटा (मिमी) या चक्रवात का नक्शा दिखाती है।",
-    "AapdaNet AI: Fuses live Open-Meteo rainfall + river water levels + terrain slope to predict exact Flash Flood, Landslide, and Heat/Fire risk scores in real time.": "AapdaNet AI: लाइव बारिश + नदी जलस्तर + पहाड़ी ढलान को मिलाकर बाढ़, भूस्खलन और आग/लू के सटीक जोखिम की रियल-टाइम भविष्यवाणी करता है।",
+    "Trinetra AI: Fuses live Open-Meteo rainfall + river water levels + terrain slope to predict exact Flash Flood, Landslide, and Heat/Fire risk scores in real time.": "Trinetra AI: लाइव बारिश + नदी जलस्तर + पहाड़ी ढलान को मिलाकर बाढ़, भूस्खलन और आग/लू के सटीक जोखिम की रियल-टाइम भविष्यवाणी करता है।",
     "2. Last-Mile GPS Shelter Routing": "2. नजदीकी सुरक्षित आश्रय तक GPS मार्ग",
     "Standard IMD Site: No shelter directory or evacuation routing.": "सामान्य मौसम वेबसाइट: कोई राहत शिविर सूची या निकासी मार्ग नहीं होता।",
-    "AapdaNet AI: Detects your live GPS coordinates and plots an evacuation path to the nearest open municipal shelter with live bed/food capacity.": "AapdaNet AI: आपकी लाइव GPS लोकेशन पहचानकर उपलब्ध भोजन/बिस्तर वाले सबसे नजदीकी खुले राहत शिविर तक सुरक्षित रास्ता दिखाता है।",
+    "Trinetra AI: Detects your live GPS coordinates and plots an evacuation path to the nearest open municipal shelter with live bed/food capacity.": "Trinetra AI: आपकी लाइव GPS लोकेशन पहचानकर उपलब्ध भोजन/बिस्तर वाले सबसे नजदीकी खुले राहत शिविर तक सुरक्षित रास्ता दिखाता है।",
     "3. Automated Resource Dispatch (MILP)": "3. स्वचालित बचाव संसाधन आवंटन (MILP)",
     "Standard IMD Site: Does not track rescue boats, ambulances, or NDRF.": "सामान्य मौसम वेबसाइट: बचाव नौकाओं, एम्बुलेंस या NDRF को ट्रैक नहीं करती।",
-    "AapdaNet AI: Solves a live mathematical optimization matrix to dispatch boats, 108 ambulances, and 101 fire tenders where lives are most at risk.": "AapdaNet AI: गणितीय अनुकूलन द्वारा नावों, 108 एम्बुलेंस और 101 फायर गाड़ियों को तुरंत वहां भेजता है जहां जान का जोखिम सबसे अधिक है।",
+    "Trinetra AI: Solves a live mathematical optimization matrix to dispatch boats, 108 ambulances, and 101 fire tenders where lives are most at risk.": "Trinetra AI: गणितीय अनुकूलन द्वारा नावों, 108 एम्बुलेंस और 101 फायर गाड़ियों को तुरंत वहां भेजता है जहां जान का जोखिम सबसे अधिक है।",
     "4. Satellite & Drone Building Damage AI": "4. सैटेलाइट और ड्रोन भवन क्षति AI",
     "Standard IMD Site: Cannot inspect individual damaged houses.": "सामान्य मौसम वेबसाइट: क्षतिग्रस्त मकानों की पहचान नहीं कर सकती।",
-    "AapdaNet AI: Compares pre- and post-disaster aerial rooftops using Computer Vision to pinpoint collapsed or submerged buildings for immediate rescue.": "AapdaNet AI: आपदा से पहले और बाद की हवाई तस्वीरों की तुलना करके ढहे या डूबे हुए मकानों को तुरंत बचाव के लिए चिह्नित करता है।",
+    "Trinetra AI: Compares pre- and post-disaster aerial rooftops using Computer Vision to pinpoint collapsed or submerged buildings for immediate rescue.": "Trinetra AI: आपदा से पहले और बाद की हवाई तस्वीरों की तुलना करके ढहे या डूबे हुए मकानों को तुरंत बचाव के लिए चिह्नित करता है।",
     "5. Region & City-Specific Survival Protocols": "5. क्षेत्र और शहर के भूगोल के अनुसार सुरक्षा गाइड",
     "Standard IMD Site: Generic one-size-fits-all flyers.": "सामान्य मौसम वेबसाइट: सभी जगहों के लिए एक जैसी सामान्य जानकारी।",
-    "AapdaNet AI: Tailors Fire, Heatwave, Flood, Cyclone, and Landslide survival protocols to your exact city geography (Coastal, Ghats, or Inland Heat).": "AapdaNet AI: आपके शहर के भूगोल (तटीय, पश्चिमी घाट या मैदानी लू क्षेत्र) के अनुसार आग, लू, बाढ़ और चक्रवात से बचाव के सटीक नियम बताता है।",
+    "Trinetra AI: Tailors Fire, Heatwave, Flood, Cyclone, and Landslide survival protocols to your exact city geography (Coastal, Ghats, or Inland Heat).": "Trinetra AI: आपके शहर के भूगोल (तटीय, पश्चिमी घाट या मैदानी लू क्षेत्र) के अनुसार आग, लू, बाढ़ और चक्रवात से बचाव के सटीक नियम बताता है।",
     "6. Voice SOS & Direct City DM / Police Directory": "6. वॉयस SOS और शहर के DM / पुलिस / जनप्रतिनिधि नंबर",
     "Standard IMD Site: No citizen distress reporting or local DM/MLA contacts.": "सामान्य मौसम वेबसाइट: कोई नागरिक SOS या जिलाधिकारी/पुलिस नंबर नहीं।",
-    "AapdaNet AI: Features voice-dictated SOS for visually impaired citizens plus 1-tap calling to 101, 108, 112, Police Control, District Magistrates, and Local Representatives.": "AapdaNet AI: दृष्टिबाधित नागरिकों के लिए बोलकर SOS भेजने की सुविधा और 101, 108, 112, पुलिस कंट्रोल, जिलाधिकारी (DM) व जनप्रतिनिधियों के सीधे नंबर।",
+    "Trinetra AI: Features voice-dictated SOS for visually impaired citizens plus 1-tap calling to 101, 108, 112, Police Control, District Magistrates, and Local Representatives.": "Trinetra AI: दृष्टिबाधित नागरिकों के लिए बोलकर SOS भेजने की सुविधा और 101, 108, 112, पुलिस कंट्रोल, जिलाधिकारी (DM) व जनप्रतिनिधियों के सीधे नंबर।",
     "Open Module →": "मॉड्यूल खोलें →",
     "Audio Readout": "आवाज़ में सुनें",
     "Refresh Live Data": "लाइव डेटा रिफ्रेश करें",
@@ -1155,22 +1155,22 @@ export const PHRASE_TRANSLATIONS = {
     "Platform Differentiation & Real-Time Innovation": "या व्यासपीठाचे वेगळेपण आणि रिअल-टाइम तंत्रज्ञान",
     "1. Live Weather → AI Multi-Hazard Cascade": "१. थेट हवामान → एआय बहु-आपत्ती धोका अंदाज",
     "Standard IMD Site: Shows only raw rainfall (mm) or cyclone cone.": "सामान्य हवामान वेबसाईट: फक्त पावसाची आकडेवारी (मिमी) किंवा चक्रीवादळाचा नकाशा दाखवते.",
-    "AapdaNet AI: Fuses live Open-Meteo rainfall + river water levels + terrain slope to predict exact Flash Flood, Landslide, and Heat/Fire risk scores in real time.": "AapdaNet AI: थेट पाऊस + नदीची पातळी + डोंगर उतार एकत्र करून पूर, भूस्खलन आणि आग/उष्णतेच्या धोक्याचा अचूक रिअल-टाइम अंदाज वर्तवते.",
+    "Trinetra AI: Fuses live Open-Meteo rainfall + river water levels + terrain slope to predict exact Flash Flood, Landslide, and Heat/Fire risk scores in real time.": "Trinetra AI: थेट पाऊस + नदीची पातळी + डोंगर उतार एकत्र करून पूर, भूस्खलन आणि आग/उष्णतेच्या धोक्याचा अचूक रिअल-टाइम अंदाज वर्तवते.",
     "2. Last-Mile GPS Shelter Routing": "२. सर्वात जवळच्या सुरक्षित निवाऱ्यापर्यंत GPS मार्ग",
     "Standard IMD Site: No shelter directory or evacuation routing.": "सामान्य हवामान वेबसाईट: कोणत्याही मदत कॅम्पची माहिती किंवा मार्ग नसतो.",
-    "AapdaNet AI: Detects your live GPS coordinates and plots an evacuation path to the nearest open municipal shelter with live bed/food capacity.": "AapdaNet AI: तुमचे थेट GPS स्थान ओळखून उपलब्ध क्षमता असलेल्या सर्वात जवळच्या सुरक्षित निवारा केंद्रापर्यंतचा मार्ग दाखवते.",
+    "Trinetra AI: Detects your live GPS coordinates and plots an evacuation path to the nearest open municipal shelter with live bed/food capacity.": "Trinetra AI: तुमचे थेट GPS स्थान ओळखून उपलब्ध क्षमता असलेल्या सर्वात जवळच्या सुरक्षित निवारा केंद्रापर्यंतचा मार्ग दाखवते.",
     "3. Automated Resource Dispatch (MILP)": "३. स्वयंचलित बचाव साधनसामग्री वाटप (MILP)",
     "Standard IMD Site: Does not track rescue boats, ambulances, or NDRF.": "सामान्य हवामान वेबसाईट: रेस्क्यू बोटी, रुग्णवाहिका किंवा NDRF चा मागोवा घेत नाही.",
-    "AapdaNet AI: Solves a live mathematical optimization matrix to dispatch boats, 108 ambulances, and 101 fire tenders where lives are most at risk.": "AapdaNet AI: गणितीय मॉडेलद्वारे रेस्क्यू बोटी, १०८ रुग्णवाहिका आणि १०१ अग्निशमन गाड्या जिथे सर्वाधिक गरज आहे तिथे तातडीने पाठवते.",
+    "Trinetra AI: Solves a live mathematical optimization matrix to dispatch boats, 108 ambulances, and 101 fire tenders where lives are most at risk.": "Trinetra AI: गणितीय मॉडेलद्वारे रेस्क्यू बोटी, १०८ रुग्णवाहिका आणि १०१ अग्निशमन गाड्या जिथे सर्वाधिक गरज आहे तिथे तातडीने पाठवते.",
     "4. Satellite & Drone Building Damage AI": "४. उपग्रह आणि ड्रोन इमारत नुकसान एआय",
     "Standard IMD Site: Cannot inspect individual damaged houses.": "सामान्य हवामान वेबसाईट: पडझड झालेल्या इमारतींची पाहणी करू शकत नाही.",
-    "AapdaNet AI: Compares pre- and post-disaster aerial rooftops using Computer Vision to pinpoint collapsed or submerged buildings for immediate rescue.": "AapdaNet AI: आपत्तीपूर्वी व आपत्तीनंतरच्या हवाई चित्रांची तुलना करून कोसळलेल्या किंवा पाण्यात बुडालेल्या इमारती तातडीच्या बचावासाठी शोधून काढते.",
+    "Trinetra AI: Compares pre- and post-disaster aerial rooftops using Computer Vision to pinpoint collapsed or submerged buildings for immediate rescue.": "Trinetra AI: आपत्तीपूर्वी व आपत्तीनंतरच्या हवाई चित्रांची तुलना करून कोसळलेल्या किंवा पाण्यात बुडालेल्या इमारती तातडीच्या बचावासाठी शोधून काढते.",
     "5. Region & City-Specific Survival Protocols": "५. प्रदेश आणि शहराच्या भूगोलांनुसार सुरक्षा नियम",
     "Standard IMD Site: Generic one-size-fits-all flyers.": "सामान्य हवामान वेबसाईट: सर्व ठिकाणांसाठी सारखीच सर्वसाधारण माहिती.",
-    "AapdaNet AI: Tailors Fire, Heatwave, Flood, Cyclone, and Landslide survival protocols to your exact city geography (Coastal, Ghats, or Inland Heat).": "AapdaNet AI: तुमच्या शहराच्या भौगोलिक परिस्थितीनुसार (कोकण किनारपट्टी, पश्चिम घाट किंवा उष्ण पट्टा) आग, उष्णतेची लाट, पूर व चक्रीवादळापासून बचावाचे नियम सांगते.",
+    "Trinetra AI: Tailors Fire, Heatwave, Flood, Cyclone, and Landslide survival protocols to your exact city geography (Coastal, Ghats, or Inland Heat).": "Trinetra AI: तुमच्या शहराच्या भौगोलिक परिस्थितीनुसार (कोकण किनारपट्टी, पश्चिम घाट किंवा उष्ण पट्टा) आग, उष्णतेची लाट, पूर व चक्रीवादळापासून बचावाचे नियम सांगते.",
     "6. Voice SOS & Direct City DM / Police Directory": "६. आवाजी SOS आणि शहराचे जिल्हाधिकारी (DM) / पोलीस क्रमांक",
     "Standard IMD Site: No citizen distress reporting or local DM/MLA contacts.": "सामान्य हवामान वेबसाईट: नागरिक SOS किंवा जिल्हाधिकारी/पोलीस संपर्क नसतात.",
-    "AapdaNet AI: Features voice-dictated SOS for visually impaired citizens plus 1-tap calling to 101, 108, 112, Police Control, District Magistrates, and Local Representatives.": "AapdaNet AI: अंध व्यक्तींसाठी आवाजाने SOS पाठवण्याची सोय आणि १०१, १०८, ११२, पोलीस नियंत्रण, जिल्हाधिकारी (DM) व लोकप्रतिनिधींचे थेट क्रमांक.",
+    "Trinetra AI: Features voice-dictated SOS for visually impaired citizens plus 1-tap calling to 101, 108, 112, Police Control, District Magistrates, and Local Representatives.": "Trinetra AI: अंध व्यक्तींसाठी आवाजाने SOS पाठवण्याची सोय आणि १०१, १०८, ११२, पोलीस नियंत्रण, जिल्हाधिकारी (DM) व लोकप्रतिनिधींचे थेट क्रमांक.",
     "Open Module →": "विभाग उघडा →",
     "Audio Readout": "आवाजी वाचन",
     "Refresh Live Data": "थेट डेटा रिफ्रेश करा",
@@ -1341,21 +1341,21 @@ export function getFullAudioBriefing(lang, activeTab, alerts = [], shelters = []
   const activeAlertsCount = alerts.length || 4;
 
   if (lang === 'hi') {
-    return `आपदा-नेट एआई लाइव आपातकालीन प्रसारण। वर्तमान में ${activeAlertsCount} सक्रिय आपदा अलर्ट हैं। पहला: मुंबई उपनगर में मीठी नदी के उफान के कारण गंभीर बाढ़ का रेड अलर्ट है। दूसरा: रायगढ़ और महाड के पहाड़ी क्षेत्रों में भारी बारिश से भूस्खलन का रेड अलर्ट है। तीसरा: रत्नागिरी और चिपलून में 68 किलोमीटर प्रति घंटे की तूफानी हवाओं का ऑरेंज अलर्ट है। चौथा: नागपुर में 44.2 डिग्री सेल्सियस भीषण लू और आग के जोखिम का अलर्ट है। सुरक्षित निकासी के लिए ${openSheltersCount} राहत शिविर खुले हैं जहाँ भोजन, व्हीलचेयर और मेडिकल सुविधा उपलब्ध है। आपातकालीन सहायता के लिए राष्ट्रीय हेल्पलाइन 1 1 2, अग्निशमन दल के लिए 1 0 1, एम्बुलेंस के लिए 1 0 8, पुलिस के लिए 1 0 0, और जिलाधिकारी नियंत्रण कक्ष के लिए 1 0 7 7 पर कॉल करें।`;
+    return `त्रिनेत्र एआई लाइव आपातकालीन प्रसारण। वर्तमान में ${activeAlertsCount} सक्रिय आपदा अलर्ट हैं। पहला: मुंबई उपनगर में मीठी नदी के उफान के कारण गंभीर बाढ़ का रेड अलर्ट है। दूसरा: रायगढ़ और महाड के पहाड़ी क्षेत्रों में भारी बारिश से भूस्खलन का रेड अलर्ट है। तीसरा: रत्नागिरी और चिपलून में 68 किलोमीटर प्रति घंटे की तूफानी हवाओं का ऑरेंज अलर्ट है। चौथा: नागपुर में 44.2 डिग्री सेल्सियस भीषण लू और आग के जोखिम का अलर्ट है। सुरक्षित निकासी के लिए ${openSheltersCount} राहत शिविर खुले हैं जहाँ भोजन, व्हीलचेयर और मेडिकल सुविधा उपलब्ध है। आपातकालीन सहायता के लिए राष्ट्रीय हेल्पलाइन 1 1 2, अग्निशमन दल के लिए 1 0 1, एम्बुलेंस के लिए 1 0 8, पुलिस के लिए 1 0 0, और जिलाधिकारी नियंत्रण कक्ष के लिए 1 0 7 7 पर कॉल करें।`;
   }
   if (lang === 'mr') {
-    return `आपदा-नेट एआय थेट आपत्कालीन प्रसारण. सध्या ${activeAlertsCount} सक्रिय आपत्ती इशारे आहेत. पहिला: मुंबई उपनगरात मिठी नदीच्या पाण्याच्या पातळीत वाढ झाल्यामुळे गंभीर पुराचा रेड अलर्ट आहे. दुसरा: रायगड आणि महाडमध्ये अतिवृष्टीमुळे भूस्खलनाचा रेड अलर्ट आहे. तिसरा: रत्नागिरी आणि चिपळूणमध्ये चक्रीवादळी वाऱ्यांचा ऑरेंज अलर्ट आहे. चौथा: नागपूरमध्ये ४४.२ अंश सेल्सिअस तीव्र उष्णतेची लाट आणि आगीचा इशारा आहे. नागरिकांच्या सुरक्षिततेसाठी ${openSheltersCount} निवारा केंद्रे खुली आहेत. तातडीच्या मदतीसाठी राष्ट्रीय हेल्पलाइन १ १ २, अग्निशमन दलासाठी १ ० १, रुग्णवाहिकेसाठी १ ० ८, पोलिसांसाठी १ ० ० आणि जिल्हाधिकारी नियंत्रण कक्षासाठी १ ० ७ ७ वर कॉल करा.`;
+    return `त्रिनेत्र एआय थेट आपत्कालीन प्रसारण. सध्या ${activeAlertsCount} सक्रिय आपत्ती इशारे आहेत. पहिला: मुंबई उपनगरात मिठी नदीच्या पाण्याच्या पातळीत वाढ झाल्यामुळे गंभीर पुराचा रेड अलर्ट आहे. दुसरा: रायगड आणि महाडमध्ये अतिवृष्टीमुळे भूस्खलनाचा रेड अलर्ट आहे. तिसरा: रत्नागिरी आणि चिपळूणमध्ये चक्रीवादळी वाऱ्यांचा ऑरेंज अलर्ट आहे. चौथा: नागपूरमध्ये ४४.२ अंश सेल्सिअस तीव्र उष्णतेची लाट आणि आगीचा इशारा आहे. नागरिकांच्या सुरक्षिततेसाठी ${openSheltersCount} निवारा केंद्रे खुली आहेत. तातडीच्या मदतीसाठी राष्ट्रीय हेल्पलाइन १ १ २, अग्निशमन दलासाठी १ ० १, रुग्णवाहिकेसाठी १ ० ८, पोलिसांसाठी १ ० ० आणि जिल्हाधिकारी नियंत्रण कक्षासाठी १ ० ७ ७ वर कॉल करा.`;
   }
   if (lang === 'gu') {
-    return `આપદા-નેટ એઆઈ લાઇવ ઇમરજન્સી પ્રસારણ. હાલમાં ${activeAlertsCount} સક્રિય આપત્તિ એલર્ટ છે. મુંબઈમાં ભારે પૂરનું રેડ એલર્ટ, રાયગઢમાં ભૂસ્ખલનનું રેડ એલર્ટ, રત્નાગિરીમાં વાવાઝોડાનું ઓરેન્જ એલર્ટ અને નાગપુરમાં 44.2 ડિગ્રી હીટવેવ અને આગનું એલર્ટ છે. ${openSheltersCount} સુરક્ષિત રાહત કેમ્પ ખુલ્લા છે. તાત્કાલિક મદદ માટે નેશનલ હેલ્પલાઇન 1 1 2, ફાયર બ્રિગેડ માટે 1 0 1, એમ્બ્યુલન્સ માટે 1 0 8, પોલીસ માટે 1 0 0 અને જિલ્લા કલેક્ટર કંટ્રોલ રૂમ માટે 1 0 7 7 ડાયલ કરો.`;
+    return `ત્રિનેત્ર એઆઈ લાઇવ ઇમરજન્સી પ્રસારણ. હાલમાં ${activeAlertsCount} સક્રિય આપત્તિ એલર્ટ છે. મુંબઈમાં ભારે પૂરનું રેડ એલર્ટ, રાયગઢમાં ભૂસ્ખલનનું રેડ એલર્ટ, રત્નાગિરીમાં વાવાઝોડાનું ઓરેન્જ એલર્ટ અને નાગપુરમાં 44.2 ડિગ્રી હીટવેવ અને આગનું એલર્ટ છે. ${openSheltersCount} સુરક્ષિત રાહત કેમ્પ ખુલ્લા છે. તાત્કાલિક મદદ માટે નેશનલ હેલ્પલાઇન 1 1 2, ફાયર બ્રિગેડ માટે 1 0 1, એમ્બ્યુલન્સ માટે 1 0 8, પોલીસ માટે 1 0 0 અને જિલ્લા કલેક્ટર કંટ્રોલ રૂમ માટે 1 0 7 7 ડાયલ કરો.`;
   }
   if (lang === 'ta') {
-    return `ஆப்தா-நெட் ஏஐ நேரடி அவசர ஒலிபரப்பு. தற்போது ${activeAlertsCount} முக்கிய பேரிடர் எச்சரிக்கைகள் உள்ளன. மும்பையில் வெள்ள அபாய ரெட் அலர்ட், ராய்காட்டில் நிலச்சரிவு எச்சரிக்கை, ரத்னகிரியில் பலத்த காற்று எச்சரிக்கை மற்றும் நாக்பூரில் 44.2 டிகிரி கடும் வெப்ப அலை மற்றும் தீ எச்சரிக்கை விடுக்கப்பட்டுள்ளது. ${openSheltersCount} பாதுகாப்பு முகாம்கள் திறந்துள்ளன. அவசர உதவிக்கு தேசிய எண் 1 1 2, தீயணைப்புத் துறைக்கு 1 0 1, ஆம்புலன்ஸுக்கு 1 0 8, காவல்துறைக்கு 1 0 0 மற்றும் மாவட்ட ஆட்சியர் கட்டுப்பாட்டு அறைக்கு 1 0 7 7 எண்ணை அழைக்கவும்.`;
+    return `த்ரிநேத்ரா ஏஐ நேரடி அவசர ஒலிபரப்பு. தற்போது ${activeAlertsCount} முக்கிய பேரிடர் எச்சரிக்கைகள் உள்ளன. மும்பையில் வெள்ள அபாய ரெட் அலர்ட், ராய்காட்டில் நிலச்சரிவு எச்சரிக்கை, ரத்னகிரியில் பலத்த காற்று எச்சரிக்கை மற்றும் நாக்பூரில் 44.2 டிகிரி கடும் வெப்ப அலை மற்றும் தீ எச்சரிக்கை விடுக்கப்பட்டுள்ளது. ${openSheltersCount} பாதுகாப்பு முகாம்கள் திறந்துள்ளன. அவசர உதவிக்கு தேசிய எண் 1 1 2, தீயணைப்புத் துறைக்கு 1 0 1, ஆம்புலன்ஸுக்கு 1 0 8, காவல்துறைக்கு 1 0 0 மற்றும் மாவட்ட ஆட்சியர் கட்டுப்பாட்டு அறைக்கு 1 0 7 7 எண்ணை அழைக்கவும்.`;
   }
   if (lang === 'bn') {
-    return `আপদা-নেট এআই লাইভ জরুরি সম্প্রচার। বর্তমানে ${activeAlertsCount}টি সক্রিয় দুর্যোগ সতর্কতা রয়েছে। মুম্বাইয়ে তীব্র বন্যার রেড অ্যালার্ট, রায়গড়ে ভূমিধসের রেড অ্যালার্ট, রত্নাগিরিতে ঝড়ো হাওয়ার অরেঞ্জ অ্যালার্ট এবং নাগপুরে ৪৪.২ ডিগ্রি তাপপ্রবাহ ও অগ্নিকাণ্ডের সতর্কতা জারি রয়েছে। ${openSheltersCount}টি নিরাপদ আশ্রয়কেন্দ্র খোলা আছে। জরুরি সাহায্যের জন্য জাতীয় হেল্পলাইন ১ ১ ২, ফায়ার সার্ভিসের জন্য ১ ০ ১, অ্যাম্বুলেন্সের জন্য ১ ০ ৮, পুলিশের জন্য ১ ০ ০ এবং জেলাশাসক কন্ট্রোল রুমের জন্য ১ ০ ৭ ৭ নম্বরে কল করুন।`;
+    return `ত্রিনেত্র এআই লাইভ জরুরি সম্প্রচার। বর্তমানে ${activeAlertsCount}টি সক্রিয় দুর্যোগ সতর্কতা রয়েছে। মুম্বাইয়ে তীব্র বন্যার রেড অ্যালার্ট, রায়গড়ে ভূমিধসের রেড অ্যালার্ট, রত্নাগিরিতে ঝড়ো হাওয়ার অরেঞ্জ অ্যালার্ট এবং নাগপুরে ৪৪.২ ডিগ্রি তাপপ্রবাহ ও অগ্নিকাণ্ডের সতর্কতা জারি রয়েছে। ${openSheltersCount}টি নিরাপদ আশ্রয়কেন্দ্র খোলা আছে। জরুরি সাহায্যের জন্য জাতীয় হেল্পলাইন ১ ১ ২, ফায়ার সার্ভিসের জন্য ১ ০ ১, অ্যাম্বুলেন্সের জন্য ১ ০ ৮, পুলিশের জন্য ১ ০ ০ এবং জেলাশাসক কন্ট্রোল রুমের জন্য ১ ০ ৭ ৭ নম্বরে কল করুন।`;
   }
 
-  return `AapdaNet AI Live Emergency Command Briefing. You are currently viewing the ${activeTab} section. There are ${activeAlertsCount} active real-time disaster alerts: First, Critical Red Alert in Mumbai Suburban for Severe Urban Flooding and Mithi River Surge above 4.15 meters. Second, Critical Red Alert in Raigad and Mahad for Western Ghats Slope Saturation and Landslide risk, with 14 villages evacuating. Third, High Orange Alert in Ratnagiri and Chiplun for coastal squalls reaching 68 kilometers per hour. Fourth, High Alert in Nagpur for a 44.2 degree Celsius Extreme Heatwave and scrub fire risk. Four previously resolved disasters have been moved to the Relieved Archive. Currently, ${openSheltersCount} municipal relief shelters are open with wheelchair access, medical ICU bays, food, and drinking water. Essential Toll-Free Emergency Numbers: Dial 1 1 2 for National All-in-One Emergency, Dial 1 0 1 for Fire Brigade, Dial 1 0 8 for Medical Ambulance, Dial 1 0 0 for Police Control Room, and Dial 1 0 7 7 for the District Magistrate and Collector Disaster Control Room.`;
+  return `Trinetra AI Live Emergency Command Briefing. You are currently viewing the ${activeTab} section. There are ${activeAlertsCount} active real-time disaster alerts: First, Critical Red Alert in Mumbai Suburban for Severe Urban Flooding and Mithi River Surge above 4.15 meters. Second, Critical Red Alert in Raigad and Mahad for Western Ghats Slope Saturation and Landslide risk, with 14 villages evacuating. Third, High Orange Alert in Ratnagiri and Chiplun for coastal squalls reaching 68 kilometers per hour. Fourth, High Alert in Nagpur for a 44.2 degree Celsius Extreme Heatwave and scrub fire risk. Four previously resolved disasters have been moved to the Relieved Archive. Currently, ${openSheltersCount} municipal relief shelters are open with wheelchair access, medical ICU bays, food, and drinking water. Essential Toll-Free Emergency Numbers: Dial 1 1 2 for National All-in-One Emergency, Dial 1 0 1 for Fire Brigade, Dial 1 0 8 for Medical Ambulance, Dial 1 0 0 for Police Control Room, and Dial 1 0 7 7 for the District Magistrate and Collector Disaster Control Room.`;
 }
 

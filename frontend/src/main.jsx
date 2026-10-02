@@ -14,7 +14,7 @@ class RootErrorBoundary extends React.Component {
   }
 
   componentDidCatch(error, errorInfo) {
-    console.error('AapdaNet AI Runtime Error:', error, errorInfo);
+    console.error('Trinetra AI Runtime Error:', error, errorInfo);
   }
 
   render() {
@@ -23,7 +23,7 @@ class RootErrorBoundary extends React.Component {
         <div style={{ minHeight: '100vh', backgroundColor: '#0a0e17', color: '#f8fafc', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '24px', fontFamily: 'system-ui, sans-serif' }}>
           <div style={{ maxWidth: '520px', backgroundColor: '#111827', border: '1px solid #ef4444', borderRadius: '16px', padding: '24px' }}>
             <h1 style={{ fontSize: '20px', fontWeight: 'bold', color: '#f87171', marginBottom: '8px' }}>
-              AapdaNet AI — Interface Recovery
+              Trinetra AI — Interface Recovery
             </h1>
             <p style={{ fontSize: '13px', color: '#cbd5e1', marginBottom: '16px', lineHeight: '1.5' }}>
               An unexpected display issue occurred ({this.state.error?.message || 'Unknown error'}). Click below to reset cached state and reload the live dashboard.

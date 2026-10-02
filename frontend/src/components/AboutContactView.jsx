@@ -67,7 +67,7 @@ export default function AboutContactView({ mode = 'about', setActiveTab }) {
             ) : (
               <form onSubmit={handleContactSubmit} className="space-y-4 text-xs">
                 <h3 className="text-base font-extrabold text-white border-b border-slate-800 pb-3">
-                  Send a Direct Message to AapdaNet AI Coordination Desk
+                  Send a Direct Message to Trinetra AI Coordination Desk
                 </h3>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -181,13 +181,13 @@ export default function AboutContactView({ mode = 'about', setActiveTab }) {
       <div className="bg-slate-900 border border-slate-800 rounded-3xl p-6 sm:p-10 shadow-xl space-y-4">
         <div className="flex items-center gap-2 text-cyan-400 font-bold text-xs uppercase tracking-wider">
           <Info className="w-4 h-4" />
-          <span>About AapdaNet AI Platform</span>
+          <span>About Trinetra AI Platform</span>
         </div>
         <h1 className="text-2xl sm:text-3xl font-extrabold text-white">
           Bridging Real-Time Weather Intelligence with Last-Mile Crisis Rescue
         </h1>
         <p className="text-xs sm:text-sm text-slate-300 leading-relaxed max-w-4xl">
-          <strong>AapdaNet AI</strong> is an integrated, public-facing Multi-Hazard Disaster Management & Decision Support Platform. While conventional meteorological websites only display raw weather bulletins, AapdaNet AI translates live atmospheric and river telemetry into actionable ground response: automated evacuation routing, AI multi-hazard risk prediction, computer-vision building damage triage, and mathematical resource dispatch.
+          <strong>Trinetra AI</strong> is an integrated, public-facing Multi-Hazard Disaster Management & Decision Support Platform. While conventional meteorological websites only display raw weather bulletins, Trinetra AI translates live atmospheric and river telemetry into actionable ground response: automated evacuation routing, AI multi-hazard risk prediction, computer-vision building damage triage, and mathematical resource dispatch.
         </p>
       </div>
 

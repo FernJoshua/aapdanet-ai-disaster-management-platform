@@ -1,6 +1,6 @@
 // Real-Time Operations Store & Event Bus (Phase 2)
 // Supports:
-// 1. Zero-Config Instant Cross-Window Sync via BroadcastChannel('aapdanet_realtime_bus') + localStorage
+// 1. Zero-Config Instant Cross-Window Sync via BroadcastChannel('trinetra_realtime_bus') + localStorage
 // 2. Plug-and-Play Cloud PostgreSQL + Realtime Sync via Supabase REST API (when URL + Anon Key are configured)
 
 import { INITIAL_ALERTS, SHELTERS_DATA, RESCUE_TEAMS, CITIZEN_SOS_REPORTS } from './mockData';
@@ -237,18 +237,18 @@ create table if not exists timeline_events (
 alter publication supabase_realtime add table sos_reports, shelters, timeline_events;`;
 
 const STORAGE_KEYS = {
-  SOS: 'aapdanet_rt_sos_v3',
-  SHELTERS: 'aapdanet_rt_shelters_v3',
-  TEAMS: 'aapdanet_rt_teams_v3',
-  ALERTS: 'aapdanet_rt_alerts_v3',
-  TIMELINE: 'aapdanet_rt_timeline_v3',
-  ROUTES: 'aapdanet_rt_routes_v3'
+  SOS: 'trinetra_rt_sos_v3',
+  SHELTERS: 'trinetra_rt_shelters_v3',
+  TEAMS: 'trinetra_rt_teams_v3',
+  ALERTS: 'trinetra_rt_alerts_v3',
+  TIMELINE: 'trinetra_rt_timeline_v3',
+  ROUTES: 'trinetra_rt_routes_v3'
 };
 
 function readStorage(key, fallback) {
   if (typeof window === 'undefined') return fallback;
   try {
-    const raw = localStorage.getItem(key);
+    const raw = localStorage.getItem(key) || localStorage.getItem(key.replace('trinetra_', 'aapdanet_'));
     return raw ? JSON.parse(raw) : fallback;
   } catch {
     return fallback;
@@ -307,7 +307,7 @@ export function createOperationsStore(onStateChange) {
   let channel = null;
   if (typeof window !== 'undefined' && 'BroadcastChannel' in window) {
     try {
-      channel = new BroadcastChannel('aapdanet_realtime_bus');
+      channel = new BroadcastChannel('trinetra_realtime_bus');
       channel.onmessage = (event) => {
         if (event.data && event.data.type === 'SYNC_STATE') {
           state = {

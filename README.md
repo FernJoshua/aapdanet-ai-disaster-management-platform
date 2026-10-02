@@ -1,4 +1,4 @@
-# AapdaNet AI — Integrated Multi-Hazard Disaster Decision Support System
+# Trinetra AI — Integrated Multi-Hazard Disaster Decision Support System
 
 An advanced, inclusive, AI-powered disaster management platform combining multi-hazard forecasting, satellite damage assessment with computer vision, operational resource optimization, and emergency citizen assistance.
 
@@ -45,13 +45,13 @@ The platform is pre-configured with root and frontend `vercel.json` configuratio
 
 ### Deploy via GitHub & Vercel Dashboard (1-Click)
 1. Go to [vercel.com/new](https://vercel.com/new) and log in.
-2. Select your repository: **`FernJoshua/aapdanet-ai-disaster-management-platform`**.
+2. Select your repository: **`FernJoshua/trinetra`**.
 3. **Root Directory**:
    - Both `./` (default) and `frontend` are fully supported out-of-the-box!
    - If deploying from root (`./`), the root `vercel.json` automatically triggers `cd frontend && npm install && npm run build` and outputs to `frontend/dist`.
    - Alternatively, you can click **Edit** next to **Root Directory** and select `frontend`.
 4. Click **Deploy**!
-5. Within ~30 seconds, your site will be live at `https://aapdanet-ai-disaster-management-platform.vercel.app` (or your assigned Vercel URL).
+5. Within ~30 seconds, your site will be live at `https://trinetra.vercel.app` (or your assigned Vercel URL).
 
 ### Deploy via Vercel CLI (Alternative)
 ```bash

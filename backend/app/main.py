@@ -7,8 +7,8 @@ from app.models.damage_model import DamageAssessmentModel
 from app.models.optimization_model import ResourceOptimizer
 
 app = FastAPI(
-    title="AapdaNet AI - Maharashtra Disaster Decision Support Backend",
-    description="Multi-hazard AI forecasting, satellite damage assessment, and resource optimization API for Maharashtra",
+    title="Trinetra AI - Disaster Decision Support Backend",
+    description="Multi-hazard AI forecasting, satellite damage assessment, and resource optimization API",
     version="1.0.0"
 )
 
@@ -53,7 +53,7 @@ class SOSReportRequest(BaseModel):
 def health_check():
     return {
         "status": "online",
-        "system": "AapdaNet AI Multi-Hazard Decision Support Network",
+        "system": "Trinetra AI Multi-Hazard Decision Support Network",
         "division": "National Emergency Management & Geoinformatics",
         "models_loaded": ["Model 1: Hydrologic LSTM", "Model 2: Satellite CNN", "Model 3: Resource MILP"]
     }

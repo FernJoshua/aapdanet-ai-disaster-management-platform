@@ -135,7 +135,7 @@ export default function DisasterGuide({ lang, onSpeakText }) {
           'Inland Flash Runoff (Nagpur / Nashik): Sudden cloudbursts cause dry nallahs and causeways to overflow rapidly. Never cross a submerged low-level bridge on a two-wheeler or car.'
       },
       before: [
-        'Know your locality flood mark and locate the nearest elevated municipal school or relief camp on the AapdaNet GIS map.',
+        'Know your locality flood mark and locate the nearest elevated municipal school or relief camp on the Trinetra GIS map.',
         'Seal important documents (Aadhaar, property papers, medicines) in waterproof zip-lock bags.',
         'Keep a charged power bank, emergency torch, whistle, and 4 days of dry ration and clean drinking water ready.'
       ],
@@ -143,7 +143,7 @@ export default function DisasterGuide({ lang, onSpeakText }) {
         'Turn off the main electricity switchboard and LPG gas cylinder valve immediately if water starts entering your ground floor.',
         'Never walk through moving water deeper than 6 inches or drive through 12 inches of water—cars float and stall.',
         'Stay away from submerged electric poles, street-light junction boxes, and transformer cabins to prevent electrocution.',
-        'Move to the 1st/2nd floor or open terrace and transmit your GPS location via the AapdaNet SOS button.'
+        'Move to the 1st/2nd floor or open terrace and transmit your GPS location via the Trinetra SOS button.'
       ],
       after: [
         'Boil all drinking water or use chlorine tablets until authorities certify municipal pipelines are safe.',

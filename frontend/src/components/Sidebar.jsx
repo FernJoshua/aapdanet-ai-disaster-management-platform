@@ -90,7 +90,7 @@ export default function Sidebar({
               </div>
               <div>
                 <div className="text-sm font-black tracking-widest text-slate-900 dark:text-white uppercase leading-none font-mono">
-                  AAPDANET
+                  TRINETRA
                 </div>
                 <div className="text-[9px] text-slate-600 dark:text-[#8e9bae] tracking-wider uppercase font-semibold mt-1">
                   {t('tagline')}
