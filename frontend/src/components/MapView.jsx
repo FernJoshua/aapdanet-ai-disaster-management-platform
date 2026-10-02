@@ -843,30 +843,30 @@ export default function MapView({
 
             {/* Floating Evacuation HUD Card */}
             {nearestShelter && (
-              <div className="absolute bottom-4 left-4 z-[400] navy-surface border border-sky-500/60 rounded-xl p-3.5 max-w-xs sm:max-w-sm shadow-2xl text-xs text-white keep-white">
-                <div className="flex items-center justify-between pb-2 border-b border-slate-700 mb-2">
-                  <div className="flex items-center gap-1.5 font-extrabold text-sky-300 keep-white">
-                    <Navigation className="w-4 h-4 text-sky-400" />
-                    <span className="keep-white">Nearest Safe Evacuation Shelter</span>
+              <div className="absolute bottom-4 left-4 z-[400] bg-white dark:bg-[#111620] border border-slate-200 dark:border-sky-500/60 rounded-xl p-3.5 max-w-xs sm:max-w-sm shadow-2xl text-xs text-slate-800 dark:text-slate-200">
+                <div className="flex items-center justify-between pb-2 border-b border-slate-200 dark:border-slate-700 mb-2">
+                  <div className="flex items-center gap-1.5 font-extrabold text-sky-600 dark:text-sky-300">
+                    <Navigation className="w-4 h-4 text-sky-600 dark:text-sky-400" />
+                    <span>Nearest Safe Evacuation Shelter</span>
                   </div>
-                  <span className="px-2 py-0.5 rounded bg-[#15803D] text-white keep-white font-black text-xs">
+                  <span className="keep-white px-2 py-0.5 rounded bg-[#15803D] text-white font-black text-xs">
                     {nearestShelter.distanceKm} KM
                   </span>
                 </div>
 
                 <div className="space-y-1">
-                  <p className="font-bold text-white keep-white text-sm">{nearestShelter.name}</p>
-                  <p className="text-slate-300 keep-white text-xs">{nearestShelter.district} • {nearestShelter.phone}</p>
-                  <div className="flex items-center gap-1 text-xs text-emerald-300 keep-white font-semibold">
+                  <p className="font-bold text-slate-900 dark:text-white text-sm">{nearestShelter.name}</p>
+                  <p className="text-slate-600 dark:text-slate-300 text-xs">{nearestShelter.district} • {nearestShelter.phone}</p>
+                  <div className="flex items-center gap-1 text-xs text-emerald-700 dark:text-emerald-300 font-semibold">
                     <CheckCircle2 className="w-3.5 h-3.5" />
-                    <span className="keep-white">Available Beds: {nearestShelter.capacity - nearestShelter.currentOccupancy} / {nearestShelter.capacity}</span>
+                    <span>Available Beds: {nearestShelter.capacity - nearestShelter.currentOccupancy} / {nearestShelter.capacity}</span>
                   </div>
                 </div>
 
-                <div className="mt-2.5 pt-2 border-t border-slate-700 flex gap-2">
+                <div className="mt-2.5 pt-2 border-t border-slate-200 dark:border-slate-700 flex gap-2">
                   <button
                     onClick={() => onSpeakText(`Nearest safe shelter is ${nearestShelter.name}, located ${nearestShelter.distanceKm} kilometers away. Available beds: ${nearestShelter.capacity - nearestShelter.currentOccupancy}.`)}
-                    className="flex-1 py-1.5 px-2 bg-[#112A45] hover:bg-slate-700 text-amber-300 keep-white rounded-lg font-bold text-xs transition-colors cursor-pointer"
+                    className="flex-1 py-1.5 px-2 bg-slate-100 hover:bg-slate-200 dark:bg-[#112A45] dark:hover:bg-slate-700 text-slate-800 dark:text-amber-300 border border-slate-300 dark:border-transparent rounded-lg font-bold text-xs transition-colors cursor-pointer"
                   >
                     🔊 Audio Guide
                   </button>

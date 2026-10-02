@@ -424,71 +424,71 @@ export default function App() {
         )}
       </main>
 
-      {/* Deep Navy (#0B1F33) Website Footer */}
-      <footer className="navy-surface border-t border-slate-700 px-4 sm:px-6 lg:px-8 py-8 text-xs text-slate-300 mt-10 w-full max-w-full">
+      {/* High-Contrast Dual-Theme Footer */}
+      <footer className="bg-white dark:bg-[#090c10] border-t border-slate-200 dark:border-[#1a2230] px-4 sm:px-6 lg:px-8 py-8 text-xs text-slate-700 dark:text-slate-300 mt-10 w-full max-w-full">
         <div className="max-w-7xl mx-auto space-y-6">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 pb-6 border-b border-slate-700">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 pb-6 border-b border-slate-200 dark:border-[#1a2230]">
             <div className="space-y-2">
               <div className="flex items-center gap-2">
-                <Shield className="w-5 h-5 text-sky-400" />
-                <span className="text-white keep-white font-black text-base tracking-tight">{t('title')}</span>
+                <Shield className="w-5 h-5 text-sky-600 dark:text-sky-400" />
+                <span className="text-slate-900 dark:text-white font-black text-base tracking-tight">{t('title')}</span>
               </div>
-              <p className="text-xs text-slate-300 keep-white leading-relaxed">
+              <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
                 {t('subtitle')}
               </p>
             </div>
 
             <div className="space-y-2">
-              <h4 className="text-xs font-extrabold uppercase tracking-wider text-sky-300 keep-white">{tr('Navigation')}</h4>
+              <h4 className="text-xs font-extrabold uppercase tracking-wider text-slate-900 dark:text-sky-400">{tr('Navigation')}</h4>
               <div className="flex flex-col gap-1.5">
-                <button onClick={() => setActiveTab('home')} className="text-left text-slate-300 keep-white hover:text-sky-300 transition-colors">{t('navHome')}</button>
-                <button onClick={() => setActiveTab('overview')} className="text-left text-slate-300 keep-white hover:text-sky-300 transition-colors">{t('tabOverview')}</button>
-                <button onClick={() => setActiveTab('weather')} className="text-left text-slate-300 keep-white hover:text-sky-300 transition-colors">{t('tabWeather')}</button>
-                <button onClick={() => setActiveTab('guide')} className="text-left text-slate-300 keep-white hover:text-sky-300 transition-colors">{t('navGuides')}</button>
+                <button onClick={() => setActiveTab('home')} className="text-left text-slate-600 hover:text-slate-950 dark:text-slate-400 dark:hover:text-white transition-colors cursor-pointer">{t('navHome')}</button>
+                <button onClick={() => setActiveTab('overview')} className="text-left text-slate-600 hover:text-slate-950 dark:text-slate-400 dark:hover:text-white transition-colors cursor-pointer">{t('tabOverview')}</button>
+                <button onClick={() => setActiveTab('weather')} className="text-left text-slate-600 hover:text-slate-950 dark:text-slate-400 dark:hover:text-white transition-colors cursor-pointer">{t('tabWeather')}</button>
+                <button onClick={() => setActiveTab('guide')} className="text-left text-slate-600 hover:text-slate-950 dark:text-slate-400 dark:hover:text-white transition-colors cursor-pointer">{t('navGuides')}</button>
               </div>
             </div>
 
             <div className="space-y-2">
-              <h4 className="text-xs font-extrabold uppercase tracking-wider text-sky-300 keep-white">{tr('AI & Public Services')}</h4>
+              <h4 className="text-xs font-extrabold uppercase tracking-wider text-slate-900 dark:text-sky-400">{tr('AI & Public Services')}</h4>
               <div className="flex flex-col gap-1.5">
-                <button onClick={() => setActiveTab('predictor')} className="text-left text-slate-300 keep-white hover:text-sky-300 transition-colors">{t('tabPredictor')}</button>
-                <button onClick={() => setActiveTab('damage')} className="text-left text-slate-300 keep-white hover:text-sky-300 transition-colors">{t('tabDamage')}</button>
-                <button onClick={() => setActiveTab('optimizer')} className="text-left text-slate-300 keep-white hover:text-sky-300 transition-colors">{t('tabOptimizer')}</button>
-                <button onClick={() => setActiveTab('contacts')} className="text-left text-slate-300 keep-white hover:text-sky-300 transition-colors">{t('navContacts')}</button>
+                <button onClick={() => setActiveTab('predictor')} className="text-left text-slate-600 hover:text-slate-950 dark:text-slate-400 dark:hover:text-white transition-colors cursor-pointer">{t('tabPredictor')}</button>
+                <button onClick={() => setActiveTab('damage')} className="text-left text-slate-600 hover:text-slate-950 dark:text-slate-400 dark:hover:text-white transition-colors cursor-pointer">{t('tabDamage')}</button>
+                <button onClick={() => setActiveTab('optimizer')} className="text-left text-slate-600 hover:text-slate-950 dark:text-slate-400 dark:hover:text-white transition-colors cursor-pointer">{t('tabOptimizer')}</button>
+                <button onClick={() => setActiveTab('contacts')} className="text-left text-slate-600 hover:text-slate-950 dark:text-slate-400 dark:hover:text-white transition-colors cursor-pointer">{t('navContacts')}</button>
               </div>
             </div>
 
             <div className="space-y-2">
-              <h4 className="text-xs font-extrabold uppercase tracking-wider text-sky-300 keep-white">24/7 Toll-Free Helplines</h4>
+              <h4 className="text-xs font-extrabold uppercase tracking-wider text-slate-900 dark:text-sky-400">{tr('24/7 Toll-Free Helplines')}</h4>
               <div className="grid grid-cols-2 gap-2 pt-1">
-                <a href="tel:112" className="keep-white px-2.5 py-2 rounded-lg bg-[#DC2626] hover:bg-red-500 text-white font-bold flex items-center gap-1.5">
+                <a href="tel:112" className="keep-white px-2.5 py-2 rounded-lg bg-[#DC2626] hover:bg-red-700 text-white font-bold flex items-center gap-1.5 shadow-xs">
                   <PhoneCall className="w-3.5 h-3.5 shrink-0" /> 112 SOS
                 </a>
-                <a href="tel:101" className="keep-white px-2.5 py-2 rounded-lg bg-[#F97316] hover:bg-orange-500 text-white font-bold flex items-center gap-1.5">
+                <a href="tel:101" className="keep-white px-2.5 py-2 rounded-lg bg-[#F97316] hover:bg-orange-600 text-white font-bold flex items-center gap-1.5 shadow-xs">
                   <Flame className="w-3.5 h-3.5 shrink-0" /> 101 Fire
                 </a>
-                <a href="tel:108" className="keep-white px-2.5 py-2 rounded-lg bg-[#15803D] hover:bg-green-600 text-white font-bold flex items-center gap-1.5">
+                <a href="tel:108" className="keep-white px-2.5 py-2 rounded-lg bg-[#15803D] hover:bg-green-700 text-white font-bold flex items-center gap-1.5 shadow-xs">
                   <HeartHandshake className="w-3.5 h-3.5 shrink-0" /> 108 EMS
                 </a>
-                <button onClick={() => setActiveTab('contacts')} className="keep-white px-2.5 py-2 rounded-lg bg-[#1769AA] hover:bg-[#0284C7] text-white font-bold flex items-center gap-1.5">
+                <button onClick={() => setActiveTab('contacts')} className="keep-white px-2.5 py-2 rounded-lg bg-[#1769AA] hover:bg-[#0284C7] text-white font-bold flex items-center gap-1.5 shadow-xs cursor-pointer">
                   <Shield className="w-3.5 h-3.5 shrink-0" /> City DMs
                 </button>
               </div>
             </div>
           </div>
 
-          <div className="flex flex-wrap justify-between items-center gap-4 text-[11px] text-slate-400 keep-white">
+          <div className="flex flex-wrap justify-between items-center gap-4 text-[11px] text-slate-500 dark:text-slate-400">
             <div className="flex flex-wrap items-center gap-4">
-              <span className="keep-white">© {new Date().getFullYear()} {t('title')}</span>
-              <button onClick={() => setActiveTab('about')} className="keep-white hover:text-white underline">{t('navAbout')}</button>
-              <button onClick={() => setActiveTab('contact')} className="keep-white hover:text-white underline">{t('navContact')}</button>
-              <button onClick={() => setIsCloudConfigOpen(true)} className="keep-white hover:text-white underline">Cloud DB & API Config</button>
+              <span className="text-slate-800 dark:text-slate-200 font-medium">© {new Date().getFullYear()} {t('title')}</span>
+              <button onClick={() => setActiveTab('about')} className="text-slate-600 dark:text-slate-400 hover:text-black dark:hover:text-white underline cursor-pointer">{t('navAbout')}</button>
+              <button onClick={() => setActiveTab('contact')} className="text-slate-600 dark:text-slate-400 hover:text-black dark:hover:text-white underline cursor-pointer">{t('navContact')}</button>
+              <button onClick={() => setIsCloudConfigOpen(true)} className="text-slate-600 dark:text-slate-400 hover:text-black dark:hover:text-white underline cursor-pointer">{tr('Cloud DB & API Config')}</button>
             </div>
 
-            <div className="flex flex-wrap items-center gap-3 font-mono text-slate-300 keep-white">
-              <span className="keep-white">WCAG 2.1 AA Accessible</span>
-              <span className="keep-white">•</span>
-              <span className="text-sky-300 keep-white">Open-Meteo • GloFAS • USGS • CAMS • FIRMS • RainViewer • OSRM</span>
+            <div className="flex flex-wrap items-center gap-3 font-mono text-slate-500 dark:text-slate-400">
+              <span>{tr('WCAG 2.1 AA Accessible')}</span>
+              <span>•</span>
+              <span className="text-sky-600 dark:text-sky-400 font-medium">Open-Meteo • GloFAS • USGS • CAMS • FIRMS • RainViewer • OSRM</span>
             </div>
           </div>
         </div>

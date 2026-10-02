@@ -153,14 +153,14 @@ export default function HomeView({
         <div className="flex items-center gap-2">
           <span className="w-2 h-2 rounded-full bg-amber-500 shrink-0" />
           <span className="text-amber-800 dark:text-amber-400 font-bold uppercase tracking-wider text-[10px]">
-            LIVE OPERATIONS MODE
+            {t('liveOpsMode')}
           </span>
           <span className="text-slate-600 dark:text-[#8e9bae] hidden sm:inline">
-            — Real-time multi-hazard telemetry active for Maharashtra command triage
+            — {t('telemetryActive')}
           </span>
         </div>
         <div className="flex items-center gap-3 text-[11px] font-mono text-slate-500 dark:text-[#8e9bae]">
-          <span>LAST SYNC: {lastSyncTime}</span>
+          <span>{t('lastSync')}: {lastSyncTime}</span>
           <button
             onClick={syncAllRealTimeFeeds}
             disabled={isSyncing}
@@ -168,7 +168,7 @@ export default function HomeView({
             title="Refresh live feeds"
           >
             <RefreshCw className={`w-3 h-3 ${isSyncing ? 'animate-spin' : ''}`} />
-            <span>SYNC</span>
+            <span>{t('syncBtn')}</span>
           </button>
         </div>
       </div>
@@ -182,7 +182,7 @@ export default function HomeView({
         >
           <div className="flex items-center justify-between">
             <span className="text-[10px] font-bold uppercase tracking-wider text-slate-500 dark:text-[#8e9bae]">
-              ACTIVE INCIDENTS
+              {t('kpiActiveIncidents')}
             </span>
             <AlertTriangle className="w-4 h-4 text-[#ef4444]" />
           </div>
@@ -203,7 +203,7 @@ export default function HomeView({
         >
           <div className="flex items-center justify-between">
             <span className="text-[10px] font-bold uppercase tracking-wider text-slate-500 dark:text-[#8e9bae]">
-              CRITICAL ALERTS
+              {t('kpiCriticalAlerts')}
             </span>
             <Bell className="w-4 h-4 text-[#ef4444]" />
           </div>
@@ -224,7 +224,7 @@ export default function HomeView({
         >
           <div className="flex items-center justify-between">
             <span className="text-[10px] font-bold uppercase tracking-wider text-slate-500 dark:text-[#8e9bae]">
-              HIGH RISK REGIONS
+              {t('kpiHighRisk')}
             </span>
             <MapPin className="w-4 h-4 text-amber-500" />
           </div>
@@ -245,7 +245,7 @@ export default function HomeView({
         >
           <div className="flex items-center justify-between">
             <span className="text-[10px] font-bold uppercase tracking-wider text-slate-500 dark:text-[#8e9bae]">
-              RESPONSE TEAMS
+              {t('kpiResponseTeams')}
             </span>
             <Shield className="w-4 h-4 text-slate-400" />
           </div>
@@ -266,7 +266,7 @@ export default function HomeView({
         >
           <div className="flex items-center justify-between">
             <span className="text-[10px] font-bold uppercase tracking-wider text-slate-500 dark:text-[#8e9bae]">
-              PREDICTED RISKS
+              {t('kpiPredictedRisks')}
             </span>
             <BrainCircuit className="w-4 h-4 text-slate-400" />
           </div>
@@ -287,7 +287,7 @@ export default function HomeView({
         >
           <div className="flex items-center justify-between">
             <span className="text-[10px] font-bold uppercase tracking-wider text-slate-500 dark:text-[#8e9bae]">
-              AVG RESPONSE
+              {t('kpiAvgResponse')}
             </span>
             <Clock className="w-4 h-4 text-slate-400" />
           </div>
@@ -310,10 +310,10 @@ export default function HomeView({
           <div className="flex flex-wrap items-center justify-between gap-2 pb-3 border-b border-slate-200 dark:border-[#1a2230] z-10">
             <div className="flex items-center gap-2">
               <span className="px-2.5 py-1 rounded-md bg-slate-100 text-slate-800 dark:bg-[#1a2230] dark:text-white text-[10px] font-mono font-bold uppercase tracking-wider">
-                MAHARASHTRA OPERATIONS MAP
+                {t('mapHeader')}
               </span>
               <span className="text-[11px] text-slate-500 dark:text-[#8e9bae] hidden sm:inline">
-                Live Tactical Multi-Layer View
+                {t('mapSubheader')}
               </span>
             </div>
 
@@ -321,7 +321,7 @@ export default function HomeView({
               onClick={() => setActiveTab('overview')}
               className="text-xs font-semibold text-slate-700 hover:text-black dark:text-slate-300 dark:hover:text-white flex items-center gap-1 cursor-pointer"
             >
-              <span>Full Screen Map</span>
+              <span>{t('fullScreenMap')}</span>
               <ArrowRight className="w-3.5 h-3.5" />
             </button>
           </div>
@@ -413,7 +413,7 @@ export default function HomeView({
               <div className="flex items-center gap-2">
                 <Bell className="w-4 h-4 text-slate-700 dark:text-slate-300" />
                 <h3 className="text-xs font-bold uppercase tracking-wider text-slate-900 dark:text-white">
-                  ALERTS
+                  {t('alertsPanel')}
                 </h3>
               </div>
               <span className="text-[11px] font-mono text-slate-500 dark:text-[#8e9bae]">
@@ -445,7 +445,7 @@ export default function HomeView({
                           }`}
                         />
                         <span className="text-xs font-bold text-slate-900 dark:text-white truncate">
-                          {isCrit ? 'CRITICAL' : 'HIGH'}: {alt.title}
+                          {isCrit ? tp('CRITICAL') : tp('HIGH')}: {tp(alt.title)}
                         </span>
                       </div>
                       <span className="text-[10px] font-mono text-slate-500 dark:text-[#8e9bae] shrink-0">
@@ -454,7 +454,7 @@ export default function HomeView({
                     </div>
 
                     <p className="text-[11px] text-slate-600 dark:text-[#8e9bae] leading-relaxed line-clamp-2">
-                      {alt.description}
+                      {tp(alt.description)}
                     </p>
 
                     <div className="flex items-center justify-between pt-1 text-[10px]">
@@ -481,7 +481,7 @@ export default function HomeView({
               <div className="flex items-center gap-2">
                 <BrainCircuit className="w-4 h-4 text-slate-700 dark:text-slate-300" />
                 <h3 className="text-xs font-bold uppercase tracking-wider text-slate-900 dark:text-white">
-                  RISK PREDICTIONS
+                  {t('riskPredPanel')}
                 </h3>
               </div>
               <span className="text-[11px] font-mono text-slate-500 dark:text-[#8e9bae]">
@@ -533,7 +533,7 @@ export default function HomeView({
                     ? 'Computing OSRM Road Route...'
                     : currentSos.assignedUnit
                     ? `Assigned: ${currentSos.assignedUnit}`
-                    : `Dispatch Nearest Unit to ${currentSos.id} (${currentSos.locationName})`}
+                    : `${t('dispatchNearest')} (${currentSos.id} • ${currentSos.locationName})`}
                 </span>
               </button>
             )}
@@ -553,7 +553,7 @@ export default function HomeView({
               <Waves className="w-4 h-4 text-slate-700 dark:text-slate-300 shrink-0" />
               <div>
                 <h4 className="text-xs font-bold uppercase tracking-wider text-slate-900 dark:text-white">
-                  River Basin Hydrological Telemetry (6 Basins)
+                  {t('basinTelemetry')}
                 </h4>
                 <p className="text-[11px] text-slate-500 dark:text-[#8e9bae]">
                   Live Open-Meteo precipitation & GloFAS river discharge across Maharashtra
@@ -610,7 +610,7 @@ export default function HomeView({
               <Clock className="w-4 h-4 text-slate-700 dark:text-slate-300 shrink-0" />
               <div>
                 <h4 className="text-xs font-bold uppercase tracking-wider text-slate-900 dark:text-white">
-                  Chronological Emergency Operations Log ({timeline.length} Events)
+                  {t('eventLog')} ({timeline.length} Events)
                 </h4>
                 <p className="text-[11px] text-slate-500 dark:text-[#8e9bae]">
                   Real-time record of incoming alerts, field dispatches, and shelter intakes
@@ -659,7 +659,7 @@ export default function HomeView({
               <CheckCircle2 className="w-4 h-4 text-slate-700 dark:text-slate-300 shrink-0" />
               <div>
                 <h4 className="text-xs font-bold uppercase tracking-wider text-slate-900 dark:text-white">
-                  Mitigated & Relieved Operations Archive ({RELIEVED_DISASTERS.length} Records)
+                  {t('relievedArchive')} ({RELIEVED_DISASTERS.length} Records)
                 </h4>
                 <p className="text-[11px] text-slate-500 dark:text-[#8e9bae]">
                   Past incidents successfully evacuated, stabilized, and closed
@@ -688,7 +688,7 @@ export default function HomeView({
                       {item.status}
                     </span>
                   </div>
-                  <p className="text-[11px] text-slate-600 dark:text-[#8e9bae]">{item.summary}</p>
+                  <p className="text-[11px] text-slate-600 dark:text-[#8e9bae]">{tp(item.summary) || item.summary}</p>
                   <div className="flex items-center justify-between text-[10px] text-slate-500 dark:text-[#637286] pt-1">
                     <span>Rescued: {item.peopleRescued.toLocaleString()}</span>
                     <span>{item.resolvedTime}</span>

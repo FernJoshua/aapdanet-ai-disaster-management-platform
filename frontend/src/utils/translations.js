@@ -168,7 +168,40 @@ export const translations = {
 
     // Sign Up Portal
     authTitle: "Citizen, Volunteer & Responder Registration Portal",
-    authSubtitle: "Sign Up for Hyper-Local Ward Alerts, Family Safety Check-Ins & Community Rescue Volunteering"
+    authSubtitle: "Sign Up for Hyper-Local Ward Alerts, Family Safety Check-Ins & Community Rescue Volunteering",
+
+    // Executive Command Center & Navigation Rail
+    secCore: "Core Operations",
+    secEmergency: "Emergency Response",
+    secIntelligence: "Intelligence & Tools",
+    cmdCenter: "Command Center",
+    sysOperational: "SYSTEM OPERATIONAL",
+    kpiActiveIncidents: "ACTIVE INCIDENTS",
+    kpiCriticalAlerts: "CRITICAL ALERTS",
+    kpiHighRisk: "HIGH RISK REGIONS",
+    kpiResponseTeams: "RESPONSE TEAMS",
+    kpiPredictedRisks: "PREDICTED RISKS",
+    kpiAvgResponse: "AVG RESPONSE",
+    liveOpsMode: "LIVE OPERATIONS MODE",
+    telemetryActive: "Real-time multi-hazard telemetry active for Maharashtra command triage",
+    lastSync: "LAST SYNC",
+    syncBtn: "SYNC",
+    mapHeader: "MAHARASHTRA OPERATIONS MAP",
+    mapSubheader: "Live Tactical Multi-Layer View",
+    fullScreenMap: "Full Screen Map",
+    alertsPanel: "ALERTS",
+    riskPredPanel: "RISK PREDICTIONS",
+    dispatchNearest: "Dispatch Nearest Unit",
+    basinTelemetry: "River Basin Hydrological Telemetry (6 Basins)",
+    eventLog: "Chronological Emergency Operations Log",
+    relievedArchive: "Mitigated & Relieved Operations Archive",
+    settingsApi: "Settings & API Keys",
+    systemLive: "System Live",
+    tagline: "PREDICT • MONITOR • RESPOND",
+    stateCenter: "State Disaster Management Command Center",
+    scopeMaharashtra: "MAHARASHTRA",
+    scopeNational: "NATIONAL",
+    feedCount: "7 Feeds"
   },
 
   hi: {
@@ -294,7 +327,40 @@ export const translations = {
     contactsDesc: "सभी महत्वपूर्ण राष्ट्रीय हेल्पलाइन और प्रत्येक शहर के पुलिस कंट्रोल रूम, कलेक्टर कार्यालय और जनप्रतिनिधि सहायता केंद्रों की सूची।",
 
     authTitle: "नागरिक, स्वयंसेवक और अधिकारी पंजीकरण पोर्टल",
-    authSubtitle: "अपने क्षेत्र के लाइव एसएमएस/व्हाट्सएप अलर्ट प्राप्त करने और आपदा राहत स्वयंसेवक बनने के लिए साइन अप करें"
+    authSubtitle: "अपने क्षेत्र के लाइव एसएमएस/व्हाट्सएप अलर्ट प्राप्त करने और आपदा राहत स्वयंसेवक बनने के लिए साइन अप करें",
+
+    // Executive Command Center & Navigation Rail
+    secCore: "मुख्य संचालन",
+    secEmergency: "आपातकालीन प्रतिक्रिया",
+    secIntelligence: "इंटेलिजेंस और टूल्स",
+    cmdCenter: "कमांड सेंटर",
+    sysOperational: "सिस्टम सक्रिय",
+    kpiActiveIncidents: "सक्रिय घटनाएं",
+    kpiCriticalAlerts: "गंभीर अलर्ट",
+    kpiHighRisk: "उच्च जोखिम क्षेत्र",
+    kpiResponseTeams: "बचाव दल",
+    kpiPredictedRisks: "पूर्वानुमानित जोखिम",
+    kpiAvgResponse: "औसत प्रतिक्रिया",
+    liveOpsMode: "लाइव संचालन मोड",
+    telemetryActive: "महाराष्ट्र नियंत्रण कक्ष के लिए रीयल-टाइम बहु-आपदा टेलीमेट्री सक्रिय",
+    lastSync: "अंतिम सिंक",
+    syncBtn: "सिंक",
+    mapHeader: "महाराष्ट्र संचालन मानचित्र",
+    mapSubheader: "लाइव बहुस्तरीय सामरिक दृश्य",
+    fullScreenMap: "पूर्ण मानचित्र",
+    alertsPanel: "अलर्ट्स",
+    riskPredPanel: "जोखिम पूर्वानुमान",
+    dispatchNearest: "निकटतम इकाई को भेजें",
+    basinTelemetry: "नदी बेसिन जल विज्ञान टेलीमेट्री (6 बेसिन)",
+    eventLog: "आपातकालीन संचालन समयरेखा लॉग",
+    relievedArchive: "राहत प्राप्त व सुरक्षित आपदाओं का संग्रह",
+    settingsApi: "सेटिंग्स और API कुंजी",
+    systemLive: "सिस्टम लाइव",
+    tagline: "पूर्वानुमान • निगरानी • प्रतिक्रिया",
+    stateCenter: "राज्य आपदा प्रबंधन नियंत्रण कक्ष",
+    scopeMaharashtra: "महाराष्ट्र",
+    scopeNational: "राष्ट्रीय",
+    feedCount: "7 लाइव फीड्स"
   },
 
   mr: {
@@ -420,7 +486,40 @@ export const translations = {
     contactsDesc: "सर्व महत्त्वाचे राष्ट्रीय हेल्पलाइन क्रमांक आणि प्रत्येक शहरातील पोलीस नियंत्रण कक्ष, जिल्हाधिकारी कार्यालय व लोकप्रतिनिधी संपर्क क्रमांक.",
 
     authTitle: "नागरिक, स्वयंसेवक आणि अधिकारी नोंदणी पोर्टल",
-    authSubtitle: "आपल्या परिसरातील तातडीचे अलर्ट मिळवण्यासाठी आणि आपत्ती निवारण स्वयंसेवक होण्यासाठी साइन अप करा"
+    authSubtitle: "आपल्या परिसरातील तातडीचे अलर्ट मिळवण्यासाठी आणि आपत्ती निवारण स्वयंसेवक होण्यासाठी साइन अप करा",
+
+    // Executive Command Center & Navigation Rail
+    secCore: "मुख्य कार्यप्रणाली",
+    secEmergency: "तातडीचा प्रतिसाद",
+    secIntelligence: "माहिती व साधने",
+    cmdCenter: "नियंत्रण केंद्र",
+    sysOperational: "प्रणाली कार्यरत",
+    kpiActiveIncidents: "सक्रिय घटना",
+    kpiCriticalAlerts: "गंभीर इशारे",
+    kpiHighRisk: "अतिधोकादायक क्षेत्रे",
+    kpiResponseTeams: "बचाव पथके",
+    kpiPredictedRisks: "संभाव्य जोखीम",
+    kpiAvgResponse: "सरासरी प्रतिसाद वेळ",
+    liveOpsMode: "थेट कार्यप्रणाली मोड",
+    telemetryActive: "महाराष्ट्र नियंत्रण कक्षासाठी थेट बहु-आपत्ती टेलिमेट्री सक्रिय",
+    lastSync: "शेवटचे अपडेट",
+    syncBtn: "रिफ्रेश",
+    mapHeader: "महाराष्ट्र कार्यप्रणाली नकाशा",
+    mapSubheader: "थेट सामरिक बहुस्तरीय दृश्य",
+    fullScreenMap: "पूर्ण स्क्रीन नकाशा",
+    alertsPanel: "इशारे (ALERTS)",
+    riskPredPanel: "जोखीम अंदाज",
+    dispatchNearest: "जवळचे पथक रवाना करा",
+    basinTelemetry: "नदी खोरे जलविज्ञान टेलिमेट्री (६ खोरी)",
+    eventLog: "घटनाक्रम नोंदवही",
+    relievedArchive: "निवारण झालेल्या आपत्तींचा संग्रह",
+    settingsApi: "सेटिंग्ज व API की",
+    systemLive: "प्रणाली थेट सुरू",
+    tagline: "अंदाज • देखरेख • प्रतिसाद",
+    stateCenter: "राज्य आपत्ती व्यवस्थापन नियंत्रण कक्ष",
+    scopeMaharashtra: "महाराष्ट्र",
+    scopeNational: "राष्ट्रीय",
+    feedCount: "७ थेट फीड्स"
   },
 
   gu: {
@@ -546,7 +645,40 @@ export const translations = {
     contactsDesc: "તમામ રાષ્ટ્રીય હેલ્પલાઇન અને દરેક શહેરના પોલીસ કંટ્રોલ રૂમ, કલેક્ટર કચેરી અને જનપ્રતિનિધિ સહાય કેન્દ્રોની યાદી.",
 
     authTitle: "નાગરિક, સ્વયંસેવક અને અધિકારી નોંધણી પોર્ટલ",
-    authSubtitle: "તમારા વિસ્તારના લાઇવ SMS/WhatsApp એલર્ટ મેળવવા અને સ્વયંસેવક બનવા માટે સાઇન અપ કરો"
+    authSubtitle: "તમારા વિસ્તારના લાઇવ SMS/WhatsApp એલર્ટ મેળવવા અને સ્વયંસેવક બનવા માટે સાઇન અપ કરો",
+
+    // Executive Command Center & Navigation Rail
+    secCore: "મુખ્ય કામગીરી",
+    secEmergency: "ઇમરજન્સી પ્રતિસાદ",
+    secIntelligence: "ઇન્ટેલિજન્સ અને સાધનો",
+    cmdCenter: "કમાન્ડ સેન્ટર",
+    sysOperational: "સિસ્ટમ કાર્યરત",
+    kpiActiveIncidents: "સક્રિય ઘટનાઓ",
+    kpiCriticalAlerts: "ગંભીર ચેતવણીઓ",
+    kpiHighRisk: "ઉચ્ચ જોખમ વિસ્તારો",
+    kpiResponseTeams: "બચાવ ટીમો",
+    kpiPredictedRisks: "અંદાજિત જોખમો",
+    kpiAvgResponse: "સરેરાશ પ્રતિસાદ સમય",
+    liveOpsMode: "લાઇવ કામગીરી મોડ",
+    telemetryActive: "મહારાષ્ટ્ર કમાન્ડ ટ્રાયેજ માટે રીઅલ-ટાઇમ ટેલિમેટ્રી સક્રિય",
+    lastSync: "છેલ્લું અપડેટ",
+    syncBtn: "સિંક",
+    mapHeader: "મહારાષ્ટ્ર કામગીરી નકશો",
+    mapSubheader: "લાઇવ ટેક્ટિકલ મલ્ટી-લેયર વ્યુ",
+    fullScreenMap: "સંપૂર્ણ નકશો",
+    alertsPanel: "એલર્ટ્સ",
+    riskPredPanel: "જોખમ પૂર્વાનુમાન",
+    dispatchNearest: "નજીકની ટીમ રવાના કરો",
+    basinTelemetry: "નદી તટપ્રદેશ હાઇડ્રોલોજિકલ ટેલિમેટ્રી (6 બેસિન)",
+    eventLog: "સમયરેખા ઘટના લોગ",
+    relievedArchive: "રાહત પ્રાપ્ત આપત્તિઓનો સંગ્રહ",
+    settingsApi: "સેટિંગ્સ અને API કી",
+    systemLive: "સિસ્ટમ લાઇવ",
+    tagline: "પૂર્વાનુમાન • દેખરેખ • પ્રતિસાદ",
+    stateCenter: "રાજ્ય આપત્તિ વ્યવસ્થાપન કંટ્રોલ રૂમ",
+    scopeMaharashtra: "મહારાષ્ટ્ર",
+    scopeNational: "રાષ્ટ્રીય",
+    feedCount: "7 લાઇવ ફીડ્સ"
   },
 
   ta: {
@@ -672,7 +804,40 @@ export const translations = {
     contactsDesc: "முக்கிய தேசிய உதவி எண்கள் மற்றும் ஒவ்வொரு நகரத்தின் கட்டுப்பாட்டு அறை எண்கள்.",
 
     authTitle: "குடிமக்கள் மற்றும் தன்னார்வலர் பதிவு தளம்",
-    authSubtitle: "உடனடி எச்சரிக்கைகளைப் பெறவும் மீட்புத் தன்னார்வலராக இணையவும் பதிவு செய்யுங்கள்"
+    authSubtitle: "உடனடி எச்சரிக்கைகளைப் பெறவும் மீட்புத் தன்னார்வலராக இணையவும் பதிவு செய்யுங்கள்",
+
+    // Executive Command Center & Navigation Rail
+    secCore: "முக்கிய செயல்பாடுகள்",
+    secEmergency: "அவசரக்கால மீட்பு",
+    secIntelligence: "நுண்ணறிவு & கருவிகள்",
+    cmdCenter: "கட்டுப்பாட்டு மையம்",
+    sysOperational: "அமைப்பு செயல்பாட்டில் உள்ளது",
+    kpiActiveIncidents: "செயலில் உள்ள சம்பவங்கள்",
+    kpiCriticalAlerts: "தீவிர எச்சரிக்கைகள்",
+    kpiHighRisk: "அதிக ஆபத்துள்ள பகுதிகள்",
+    kpiResponseTeams: "மீட்புக் குழுக்கள்",
+    kpiPredictedRisks: "கணிக்கப்பட்ட அபாயங்கள்",
+    kpiAvgResponse: "சராசரி மீட்பு நேரம்",
+    liveOpsMode: "நேரடி செயல்பாட்டு முறைமை",
+    telemetryActive: "மகாராஷ்டிரா கட்டளை மையத்திற்கான நிகழ்நேர பேரிடர் கண்காணிப்பு செயலில் உள்ளது",
+    lastSync: "கடைசி புதுப்பிப்பு",
+    syncBtn: "புதுப்பி",
+    mapHeader: "மகாராஷ்டிரா செயல்பாட்டு வரைபடம்",
+    mapSubheader: "நேரடி தந்திரோபாய பல அடுக்கு காட்சி",
+    fullScreenMap: "முழு வரைபடம்",
+    alertsPanel: "எச்சரிக்கைகள்",
+    riskPredPanel: "அபாய கணிப்புகள்",
+    dispatchNearest: "அருகிலுள்ள குழுவை அனுப்பு",
+    basinTelemetry: "ஆற்றுப் படுகை நீரியல் கண்காணிப்பு (6 நதிகள்)",
+    eventLog: "காலவரிசை நிகழ்வு பதிவு",
+    relievedArchive: "மீட்கப்பட்ட சம்பவங்களின் காப்பகம்",
+    settingsApi: "அமைப்புகள் & API சாவிகள்",
+    systemLive: "அமைப்பு நேரலையில் உள்ளது",
+    tagline: "கணிப்பு • கண்காணிப்பு • மீட்பு",
+    stateCenter: "மாநில பேரிடர் மேலாண்மை கட்டுப்பாட்டு மையம்",
+    scopeMaharashtra: "மகாராஷ்டிரா",
+    scopeNational: "தேசிய",
+    feedCount: "7 நேரடி ஊட்டங்கள்"
   },
 
   bn: {
@@ -798,7 +963,40 @@ export const translations = {
     contactsDesc: "সকল গুরুত্বপূর্ণ জাতীয় হেল্পলাইন এবং প্রতিটি শহরের পুলিশ কন্ট্রোল রুম, জেলাশাসক ও জনপ্রতিনিধি সহায়তা কেন্দ্রের তালিকা।",
 
     authTitle: "নাগরিক, স্বেচ্ছাসেবক ও কর্মকর্তা নিবন্ধন পোর্টাল",
-    authSubtitle: "আপনার এলাকার লাইভ SMS/WhatsApp সতর্কতা পেতে এবং উদ্ধার স্বেচ্ছাসেবক হতে সাইন আপ করুন"
+    authSubtitle: "আপনার এলাকার লাইভ SMS/WhatsApp সতর্কতা পেতে এবং উদ্ধার স্বেচ্ছাসেবক হতে সাইন আপ করুন",
+
+    // Executive Command Center & Navigation Rail
+    secCore: "মূল কার্যক্রম",
+    secEmergency: "জরুরি প্রতিক্রিয়া",
+    secIntelligence: "গোয়েন্দা তথ্য ও সরঞ্জাম",
+    cmdCenter: "কমান্ড সেন্টার",
+    sysOperational: "সিস্টেম চালু আছে",
+    kpiActiveIncidents: "সক্রিয় ঘটনা",
+    kpiCriticalAlerts: "সংকটজনক সতর্কতা",
+    kpiHighRisk: "উচ্চ ঝুঁকিপূর্ণ এলাকা",
+    kpiResponseTeams: "উদ্ধারকারী দল",
+    kpiPredictedRisks: "পূর্বাভাসকৃত ঝুঁকি",
+    kpiAvgResponse: "গড় প্রতিক্রিয়া সময়",
+    liveOpsMode: "লাইভ অপারেশন মোড",
+    telemetryActive: "মহারাষ্ট্র কমান্ড ট্রায়াজের জন্য রিয়েল-টাইম বহু-দুর্যোগ টেলিমেট্রি সক্রিয়",
+    lastSync: "সর্বশেষ সিঙ্ক",
+    syncBtn: "সিঙ্ক",
+    mapHeader: "মহারাষ্ট্র অপারেশন ম্যাপ",
+    mapSubheader: "লাইভ কৌশলগত বহুস্তরীয় দৃশ্য",
+    fullScreenMap: "সম্পূর্ণ ম্যাপ",
+    alertsPanel: "অ্যালার্টস",
+    riskPredPanel: "ঝুঁকি পূর্বাভাস",
+    dispatchNearest: "নিকটবর্তী দল প্রেরণ করুন",
+    basinTelemetry: "নদী অববাহিকা হাইড্রোলজিক্যাল টেলিমেট্রি (৬টি অববাহিকা)",
+    eventLog: "কালানুক্রমিক অপারেশন লগ",
+    relievedArchive: "উদ্ধারকৃত দুর্যোগের সংগ্রহশালা",
+    settingsApi: "সেটিংস ও API কী",
+    systemLive: "সিস্টেম লাইভ",
+    tagline: "পূর্বাভাস • পর্যবেক্ষণ • সাড়া",
+    stateCenter: "রাজ্য দুর্যোগ ব্যবস্থাপনা কন্ট্রোল রুম",
+    scopeMaharashtra: "মহারাষ্ট্র",
+    scopeNational: "জাতীয়",
+    feedCount: "৭টি লাইভ ফিড"
   }
 };
 
@@ -887,7 +1085,13 @@ export const PHRASE_TRANSLATIONS = {
     "Refresh Live Data": "लाइव डेटा रिफ्रेश करें",
     "Before the Disaster (Preparedness)": "1. आपदा से पहले (तैयारी)",
     "During the Emergency (Survival)": "2. आपदा के दौरान (बचाव)",
-    "After the Disaster (Recovery)": "3. आपदा के बाद (सुरक्षित वापसी)"
+    "After the Disaster (Recovery)": "3. आपदा के बाद (सुरक्षित वापसी)",
+    "Navigation": "नेविगेशन",
+    "AI & Public Services": "एआई और जन सेवाएं",
+    "24/7 Toll-Free Helplines": "24/7 टोल-फ्री हेल्पलाइन",
+    "All rights reserved. Designed for National Disaster Management & Public Safety Operations.": "सर्वाधिकार सुरक्षित। राष्ट्रीय आपदा प्रबंधन और सार्वजनिक सुरक्षा संचालन के लिए तैयार।",
+    "Cloud DB & API Config": "क्लाउड डीबी और एपीआई सेटिंग्स",
+    "WCAG 2.1 AA Accessible": "WCAG 2.1 AA सुलभता प्रमाणित"
   },
   mr: {
     "CRITICAL": "अति गंभीर (CRITICAL)",
@@ -972,7 +1176,13 @@ export const PHRASE_TRANSLATIONS = {
     "Refresh Live Data": "थेट डेटा रिफ्रेश करा",
     "Before the Disaster (Preparedness)": "१. आपत्तीपूर्वी (पूर्वतयारी)",
     "During the Emergency (Survival)": "२. आपत्ती दरम्यान (प्रत्यक्ष बचाव)",
-    "After the Disaster (Recovery)": "३. आपत्तीनंतर (पुनर्वसन व काळजी)"
+    "After the Disaster (Recovery)": "३. आपत्तीनंतर (पुनर्वसन व काळजी)",
+    "Navigation": "नेव्हिगेशन",
+    "AI & Public Services": "एआय आणि सार्वजनिक सेवा",
+    "24/7 Toll-Free Helplines": "२४/७ टोल-फ्री हेल्पलाइन",
+    "All rights reserved. Designed for National Disaster Management & Public Safety Operations.": "सर्व हक्क राखीव. राष्ट्रीय आपत्ती व्यवस्थापन आणि सार्वजनिक सुरक्षा कार्यासाठी डिझाइन केलेले.",
+    "Cloud DB & API Config": "क्लाउड डेटाबेस व API रचना",
+    "WCAG 2.1 AA Accessible": "WCAG 2.1 AA सुलभता प्रमाणित"
   },
   gu: {
     "CRITICAL": "અતિ ગંભીર (CRITICAL)",
@@ -1020,7 +1230,13 @@ export const PHRASE_TRANSLATIONS = {
     "Refresh Live Data": "લાઇવ ડેટા રિફ્રેશ કરો",
     "Before the Disaster (Preparedness)": "1. આપત્તિ પહેલાં (તૈયારી)",
     "During the Emergency (Survival)": "2. આપત્તિ દરમિયાન (બચાવ)",
-    "After the Disaster (Recovery)": "3. આપત્તિ પછી (સાવચેતી)"
+    "After the Disaster (Recovery)": "3. આપત્તિ પછી (સાવચેતી)",
+    "Navigation": "નેવિગેશન",
+    "AI & Public Services": "AI અને જાહેર સેવાઓ",
+    "24/7 Toll-Free Helplines": "24/7 ટોલ-ફ્રી હેલ્પલાઇન",
+    "All rights reserved. Designed for National Disaster Management & Public Safety Operations.": "સર્વહક્ક સુરક્ષિત. આપત્તિ વ્યવસ્થાપન અને જાહેર સુરક્ષા માટે ડિઝાઇન કરેલ.",
+    "Cloud DB & API Config": "ક્લાઉડ ડેટાબેઝ અને API રૂપરેખાંકન",
+    "WCAG 2.1 AA Accessible": "WCAG 2.1 AA સુલભતા પ્રમાણિત"
   },
   ta: {
     "CRITICAL": "மிகத் தீவிரம் (CRITICAL)",
@@ -1057,7 +1273,13 @@ export const PHRASE_TRANSLATIONS = {
     "Refresh Live Data": "நேரடி தரவைப் புதுப்பி",
     "Before the Disaster (Preparedness)": "1. பேரிடருக்கு முன் (தயார்நிலை)",
     "During the Emergency (Survival)": "2. பேரிடரின் போது (பாதுகாப்பு)",
-    "After the Disaster (Recovery)": "3. பேரிடருக்குப் பின் (மீட்பு)"
+    "After the Disaster (Recovery)": "3. பேரிடருக்குப் பின் (மீட்பு)",
+    "Navigation": "வழிசெலுத்தல்",
+    "AI & Public Services": "AI மற்றும் பொதுச் சேவைகள்",
+    "24/7 Toll-Free Helplines": "24/7 கட்டணமில்லா அவசர எண்கள்",
+    "All rights reserved. Designed for National Disaster Management & Public Safety Operations.": "அனைத்து உரிமைகளும் பாதுகாக்கப்பட்டவை.",
+    "Cloud DB & API Config": "கிளவுட் தரவுத்தளம் & API கட்டமைப்பு",
+    "WCAG 2.1 AA Accessible": "WCAG 2.1 AA அணுகல்தன்மை சான்றளிக்கப்பட்டது"
   },
   bn: {
     "CRITICAL": "অতি সংকটজনক (CRITICAL)",
@@ -1094,7 +1316,13 @@ export const PHRASE_TRANSLATIONS = {
     "Refresh Live Data": "লাইভ ডেটা রিফ্রেশ করুন",
     "Before the Disaster (Preparedness)": "১. দুর্যোগের আগে (প্রস্তুতি)",
     "During the Emergency (Survival)": "২. দুর্যোগের সময় (জীবনরক্ষা)",
-    "After the Disaster (Recovery)": "৩. দুর্যোগের পরে (সতর্কতা)"
+    "After the Disaster (Recovery)": "৩. দুর্যোগের পরে (সতর্কতা)",
+    "Navigation": "নেভিগেশন",
+    "AI & Public Services": "এআই ও জনসেবা",
+    "24/7 Toll-Free Helplines": "২৪/৭ টোল-ফ্রি হেল্পলাইন",
+    "All rights reserved. Designed for National Disaster Management & Public Safety Operations.": "সর্বস্বত্ব সংরক্ষিত। জাতীয় দুর্যোগ ব্যবস্থাপনা ও জননিরাপত্তা ব্যবস্থার জন্য প্রস্তুতকৃত।",
+    "Cloud DB & API Config": "ক্লাউড ডাটাবেস ও API কনফিগারেশন",
+    "WCAG 2.1 AA Accessible": "WCAG 2.1 AA অভিগম্যতা প্রত্যয়িত"
   }
 };
 

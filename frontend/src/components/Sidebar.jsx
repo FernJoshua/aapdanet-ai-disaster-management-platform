@@ -31,29 +31,29 @@ export default function Sidebar({
 
   const navSections = [
     {
-      label: 'Core Operations',
+      label: t('secCore'),
       items: [
-        { id: 'home', label: 'Command Center', icon: LayoutGrid, count: null },
-        { id: 'overview', label: 'Operations Map', icon: MapIcon, count: null },
-        { id: 'predictor', label: 'Risk Predictions', icon: BrainCircuit, count: null },
-        { id: 'optimizer', label: 'Dispatch & Fleet', icon: Truck, count: null }
+        { id: 'home', label: t('cmdCenter'), icon: LayoutGrid, count: null },
+        { id: 'overview', label: t('tabOverview'), icon: MapIcon, count: null },
+        { id: 'predictor', label: t('tabPredictor'), icon: BrainCircuit, count: null },
+        { id: 'optimizer', label: t('tabOptimizer'), icon: Truck, count: null }
       ]
     },
     {
-      label: 'Emergency Response',
+      label: t('secEmergency'),
       items: [
-        { id: 'citizen', label: 'Citizen SOS & Shelters', icon: ShieldAlert, count: sosCount > 0 ? sosCount : null },
-        { id: 'contacts', label: '112 / 101 / 108 Helplines', icon: PhoneCall, count: null }
+        { id: 'citizen', label: t('tabCitizen'), icon: ShieldAlert, count: sosCount > 0 ? sosCount : null },
+        { id: 'contacts', label: t('tabContacts'), icon: PhoneCall, count: null }
       ]
     },
     {
-      label: 'Intelligence & Tools',
+      label: t('secIntelligence'),
       items: [
-        { id: 'weather', label: 'Weather & Radar', icon: CloudRain, count: null },
-        { id: 'damage', label: 'Damage Assessment', icon: Building2, count: null },
-        { id: 'guide', label: 'Survival Guides', icon: BookOpen, count: null },
-        { id: 'analytics', label: 'Analytics & Logs', icon: BarChart3, count: null },
-        { id: 'datasets', label: 'Datasets & Sources', icon: Database, count: null }
+        { id: 'weather', label: t('tabWeather'), icon: CloudRain, count: null },
+        { id: 'damage', label: t('tabDamage'), icon: Building2, count: null },
+        { id: 'guide', label: t('tabGuide'), icon: BookOpen, count: null },
+        { id: 'analytics', label: t('tabAnalytics'), icon: BarChart3, count: null },
+        { id: 'datasets', label: t('tabDatasets'), icon: Database, count: null }
       ]
     }
   ];
@@ -93,7 +93,7 @@ export default function Sidebar({
                   AAPDANET
                 </div>
                 <div className="text-[9px] text-slate-600 dark:text-[#8e9bae] tracking-wider uppercase font-semibold mt-1">
-                  PREDICT • MONITOR • RESPOND
+                  {t('tagline')}
                 </div>
               </div>
             </div>
@@ -166,7 +166,7 @@ export default function Sidebar({
             >
               <div className="flex items-center gap-2.5">
                 <Settings className="w-4 h-4 text-slate-500 dark:text-[#8e9bae]" />
-                <span>Settings & API Keys</span>
+                <span>{t('settingsApi')}</span>
               </div>
               <span className="w-2 h-2 rounded-full bg-emerald-500" />
             </button>
@@ -175,9 +175,9 @@ export default function Sidebar({
             <div className="px-3 py-2 rounded-xl bg-slate-50 dark:bg-[#111620] border border-slate-200 dark:border-[#1a2230] flex items-center justify-between text-[11px]">
               <div className="flex items-center gap-2">
                 <span className="w-2 h-2 rounded-full bg-emerald-500" />
-                <span className="font-semibold text-slate-700 dark:text-slate-300">System Live</span>
+                <span className="font-semibold text-slate-700 dark:text-slate-300">{t('systemLive')}</span>
               </div>
-              <span className="text-[10px] font-mono text-slate-500 dark:text-[#8e9bae]">7 Feeds</span>
+              <span className="text-[10px] font-mono text-slate-500 dark:text-[#8e9bae]">{t('feedCount')}</span>
             </div>
           </div>
         </div>
